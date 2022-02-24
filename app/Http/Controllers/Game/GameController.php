@@ -25,7 +25,7 @@ class GameController extends Controller {
     ]);
   }
 
-  public function loadLobby() {
+  public function lobby() {
     dump('Lobby');
   }
 }

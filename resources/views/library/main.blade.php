@@ -11,7 +11,7 @@
   @foreach ($games as $game)
   <div class="library-game relative shadow-xl my-2 cursor-pointer hover:z-10 hover:scale-125 transition-all"
     style="flex-basis:24%">
-    <a href="{{ route('game.lobby', ['game' => $game->name]) }}">
+    <a href="{{ route('game.lobby', ['game' => $game->id]) }}">
       <p class="text-center bg-white rounded">{{ $game->name }}</p>
       <img src="{{ $game->image }}" alt="">
       <div class="play absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-all">

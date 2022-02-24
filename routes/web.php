@@ -6,6 +6,7 @@ use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
 use App\Http\Middleware\CheckGameExists;
+use App\Http\Middleware\CheckUserHaveGame;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +57,10 @@ Route::group([
   'as' => 'game.'
 ], function () {
   Route::post('{game}', [GameController::class, 'add'])->name('add');
-  Route::get('{game}/lobby', [GameController::class, 'loadLobby'])->name('lobby');
+  Route::get('{game}/lobby', [GameController::class, 'lobby'])
+    ->middleware(CheckGameExists::class)
+    ->middleware(CheckUserHaveGame::class)
+    ->name('lobby');
 });
 
 // Zabezpieczenia
