@@ -1,0 +1,12 @@
+@extends('layouts.main')
+
+@section('content')
+<div class="text-center">
+  Library <br><br>
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem deleniti a, ex odit laudantium ipsam minus maxime
+  repellat sit culpa, labore sapiente, voluptatibus modi facere! Error at expedita sed voluptate. <br><br>
+</div>
+
+
+
+@endsection

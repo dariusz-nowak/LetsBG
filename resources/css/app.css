@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.user-menu.active,
+.search-form.active {
+  height: 40px;
+}
+
+.library-game:hover .play {
+  opacity: .5;
+}
+
+.offer::after {
+  content: "";
+  flex: 0 0 32%;
+}
+
+.prices.hide {
+  display: none;
+}

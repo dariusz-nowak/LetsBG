@@ -1,0 +1,38 @@
+WZÓR
+X. Przekierowanie
+    - Ścieżka
+    - Nazwa
+
+1. Strona główna
+    - /
+    - homepage
+
+I. Grupa przekierowań oferty
+    1. Oferta gier
+        - /offer
+        - offer
+    2. Szczegóły gry
+        - /offer/{game}
+        - game
+
+II. Grupa przekierowań użytkownika
+    1. Profil użytkownika
+        - /user/profile
+        - profile
+    2. Biblioteka gier
+        - /user/library
+        - library
+    3. Lista znajomych
+        - /user/friends
+        - friends
+
+III. Grupa przekierowań gier
+    1. Lobby
+        - /game/lobby
+        - lobby
+    2. Pokój
+        - /game/room
+        - room
+    3. Gra
+        - /game/{game}
+        - game
