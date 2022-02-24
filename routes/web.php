@@ -72,5 +72,3 @@ Route::get('{whatever}', [Homepage::class, 'redirect']);
 Route::get('library/{whatever}', [Homepage::class, 'redirect']);
 Route::get('cart/{whatever}', [Homepage::class, 'redirect']);
 Route::get('game/{whatever}', [Homepage::class, 'redirect']);
-
-// Testy
