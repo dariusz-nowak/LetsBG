@@ -5,6 +5,7 @@ use App\Http\Controllers\Offer\OfferController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckGameExists;
 use App\Http\Middleware\CheckUserHaveGame;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +30,13 @@ Route::group([
 ], function () {
   Route::get('', [OfferController::class, 'show'])->name('offer');
   Route::get('search', [OfferController::class, 'search'])->name('search');
-  Route::get('{game}', [OfferController::class, 'gameDetails'])->middleware(CheckGameExists::class)->name('game');
+  Route::get('{game}', [OfferController::class, 'gameDetails'])
+    ->middleware(CheckGameExists::class)->name('game');
 });
 
 // Biblioteka
 Route::group([
+  'middleware' => 'auth',
   'prefix' => 'library',
   'as' => 'library.'
 ], function () {
@@ -42,6 +45,7 @@ Route::group([
 
 // Koszyk
 Route::group([
+  'middleware' => 'auth',
   'prefix' => 'cart',
   'as' => 'cart.',
 ], function () {
@@ -54,13 +58,13 @@ Route::group([
 
 // Gry
 Route::group([
+  'middleware' => 'auth',
   'as' => 'game.'
 ], function () {
   Route::post('{game}', [GameController::class, 'add'])->name('add');
   Route::get('{game}/lobby', [GameController::class, 'lobby'])
     ->middleware(CheckGameExists::class)
-    ->middleware(CheckUserHaveGame::class)
-    ->name('lobby');
+    ->middleware(CheckUserHaveGame::class)->name('lobby');
 });
 
 // Zabezpieczenia
