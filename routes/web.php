@@ -41,6 +41,9 @@ Route::group([
   'as' => 'library.'
 ], function () {
   Route::get('', [LibraryController::class, 'show'])->name('show');
+  Route::post('{game}', [LibraryController::class, 'checkGameStatus'])
+    ->middleware(CheckGameExists::class)
+    ->middleware(CheckUserHaveGame::class)->name('checkGameStatus');
 });
 
 // Koszyk
@@ -61,10 +64,10 @@ Route::group([
   'middleware' => 'auth',
   'as' => 'game.'
 ], function () {
-  Route::post('{game}', [GameController::class, 'add'])->name('add');
   Route::get('{game}/lobby', [GameController::class, 'lobby'])
     ->middleware(CheckGameExists::class)
     ->middleware(CheckUserHaveGame::class)->name('lobby');
+  Route::post('{game}', [GameController::class, 'add'])->name('add');
 });
 
 // Zabezpieczenia

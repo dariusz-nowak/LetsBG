@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Repository\Library;
 
 use App\Models\Game;
-use App\Models\User;
 use App\Repository\LibraryRepository as LibraryRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
-use stdClass;
 
 class LibraryRepository implements LibraryRepositoryInterface {
   private Game $gameModel;

@@ -33,7 +33,7 @@ class OfferController extends Controller {
     ]);
   }
 
-  public function search(Request $request, Search $req): View {
+  public function search(Request $request): View {
 
     $categories = $languages = $ages = $producers = [];
     foreach ($request->all() as $property => $filter) {

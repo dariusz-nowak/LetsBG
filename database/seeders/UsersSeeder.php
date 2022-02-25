@@ -40,9 +40,12 @@ class UsersSeeder extends Seeder {
 
     for ($i = 1; $i < $gamesCount + 1; $i++) {
       for ($j = 1; $j < $faker->numberBetween(1, 16); $j++) {
+        $randomBoolean = $faker->boolean();
         $pivotGames[] = [
           'user_id' => $i,
           'game_id' => $faker->numberBetween(1, 50),
+          'favorite' => $randomBoolean,
+          'hidden' => !$randomBoolean
         ];
       }
     }

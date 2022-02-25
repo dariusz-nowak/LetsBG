@@ -19,4 +19,10 @@ class LibraryController extends Controller {
       'games' => $this->libraryRepository->getAll(),
     ]);
   }
+  public function checkGameStatus($gameId) {
+    dd($gameId);
+    return view('library.main', [
+      'games' => $this->libraryRepository->getAll(),
+    ]);
+  }
 }
