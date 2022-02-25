@@ -2,7 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.fav-games-menu.active,
 .user-menu.active,
+.cart-menu.active,
 .search-form.active {
   height: 40px;
 }

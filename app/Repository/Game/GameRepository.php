@@ -24,6 +24,6 @@ class GameRepository implements GameRepositoryInterface {
   }
 
   public function add(Game $game) {
-    return $this->userModel->games()->save($game, ['user_id' => Auth::user()->id]);
+    return $this->userModel->games()->save($game, ['user_id' => Auth::user()->id, 'favorite' => 0, 'hidden' => 0]);
   }
 }

@@ -6,5 +6,6 @@ namespace App\Repository;
 
 interface LibraryRepository {
   public function getAll();
-  public function add($gameId);
+  public function checkGameStatus($gameId, $status);
+  public function getFavorites();
 }

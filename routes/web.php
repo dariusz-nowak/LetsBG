@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckGameExists;
+use App\Http\Middleware\CheckGameStatus;
 use App\Http\Middleware\CheckUserHaveGame;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,8 @@ Route::group([
   'as' => 'library.'
 ], function () {
   Route::get('', [LibraryController::class, 'show'])->name('show');
-  Route::post('{game}', [LibraryController::class, 'checkGameStatus'])
+  Route::post('{game}/{status}', [LibraryController::class, 'checkGameStatus'])
+    ->middleware(CheckGameStatus::class)
     ->middleware(CheckGameExists::class)
     ->middleware(CheckUserHaveGame::class)->name('checkGameStatus');
 });

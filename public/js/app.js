@@ -5625,29 +5625,45 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-
-if (document.querySelector('.user')) {
-  var user = document.querySelector('.user');
-  var userMenu = document.querySelector('.user-menu');
-  user.addEventListener('click', function (e) {
-    e.preventDefault();
-    userMenu.classList.toggle('active');
-    searchForm.classList.remove('active');
-  });
-}
-
-if (document.querySelector('.cart')) {
-  var cart = document.querySelector('.cart');
-  var cartMenu = false;
-}
-
 var search = document.querySelector('.search');
 var searchForm = document.querySelector('.search-form');
 search.addEventListener('click', function (e) {
   e.preventDefault();
   searchForm.classList.toggle('active');
+  if (document.querySelector('.fav-games')) document.querySelector('.fav-games').classList.remove('active');
   if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
+  if (document.querySelector('.cart-menu')) document.querySelector('.cart-menu').classList.remove('active');
 });
+
+if (document.querySelector('.fav-games')) {
+  var favGamesBtn = document.querySelector('.fav-games');
+  var favGamesMenu = document.querySelector('.fav-games-menu');
+  var userBtn = document.querySelector('.user');
+  var userMenu = document.querySelector('.user-menu');
+  var cart = document.querySelector('.cart');
+  var cartMenu = document.querySelector('.cart-menu');
+  favGamesBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    favGamesMenu.classList.toggle('active');
+    userMenu.classList.remove('active');
+    cartMenu.classList.remove('active');
+    searchForm.classList.remove('active');
+  });
+  userBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    favGamesMenu.classList.remove('active');
+    userMenu.classList.toggle('active');
+    cartMenu.classList.remove('active');
+    searchForm.classList.remove('active');
+  });
+  cart.addEventListener('click', function (e) {
+    e.preventDefault();
+    favGamesMenu.classList.remove('active');
+    userMenu.classList.remove('active');
+    cartMenu.classList.toggle('active');
+    searchForm.classList.remove('active');
+  });
+}
 
 if (document.querySelector('.errors')) {
   setTimeout(function () {

@@ -6,30 +6,51 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-if (document.querySelector('.user')) {
-  const user = document.querySelector('.user')
-  const userMenu = document.querySelector('.user-menu')
-
-  user.addEventListener('click', e => {
-    e.preventDefault()
-    userMenu.classList.toggle('active')
-    searchForm.classList.remove('active')
-  })
-}
-
-if (document.querySelector('.cart')) {
-  const cart = document.querySelector('.cart')
-  const cartMenu = false;
-}
-
 const search = document.querySelector('.search')
 const searchForm = document.querySelector('.search-form')
 
 search.addEventListener('click', e => {
   e.preventDefault()
   searchForm.classList.toggle('active')
+  if (document.querySelector('.fav-games')) document.querySelector('.fav-games').classList.remove('active')
   if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active')
+  if (document.querySelector('.cart-menu')) document.querySelector('.cart-menu').classList.remove('active')
 })
+
+if (document.querySelector('.fav-games')) {
+  const favGamesBtn = document.querySelector('.fav-games')
+  const favGamesMenu = document.querySelector('.fav-games-menu')
+
+  const userBtn = document.querySelector('.user')
+  const userMenu = document.querySelector('.user-menu')
+
+  const cart = document.querySelector('.cart')
+  const cartMenu = document.querySelector('.cart-menu');
+
+  favGamesBtn.addEventListener('click', e => {
+    e.preventDefault()
+    favGamesMenu.classList.toggle('active')
+    userMenu.classList.remove('active')
+    cartMenu.classList.remove('active')
+    searchForm.classList.remove('active')
+  })
+
+  userBtn.addEventListener('click', e => {
+    e.preventDefault()
+    favGamesMenu.classList.remove('active')
+    userMenu.classList.toggle('active')
+    cartMenu.classList.remove('active')
+    searchForm.classList.remove('active')
+  })
+
+  cart.addEventListener('click', e => {
+    e.preventDefault()
+    favGamesMenu.classList.remove('active')
+    userMenu.classList.remove('active')
+    cartMenu.classList.toggle('active')
+    searchForm.classList.remove('active')
+  })
+}
 
 if (document.querySelector('.errors')) {
   setTimeout(() => {

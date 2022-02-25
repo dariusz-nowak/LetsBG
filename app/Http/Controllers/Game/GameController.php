@@ -22,6 +22,7 @@ class GameController extends Controller {
     $this->gameRepository->add($this->gameRepository->getGame($gameId));
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
+      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
 

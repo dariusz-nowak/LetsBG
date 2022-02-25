@@ -11,18 +11,20 @@ class LibraryController extends Controller {
 
   private LibraryRepository $libraryRepository;
 
-  public function __construct(LibraryRepository $libraryRepository,) {
+  public function __construct(LibraryRepository $libraryRepository) {
     $this->libraryRepository = $libraryRepository;
   }
   public function show() {
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
+      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
-  public function checkGameStatus($gameId) {
-    dd($gameId);
+  public function checkGameStatus($gameId, $status) {
+    $this->libraryRepository->checkGameStatus($gameId, $status);
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
+      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
 }
