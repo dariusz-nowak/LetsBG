@@ -59,8 +59,8 @@
           </div>
         </li>
         <li>
-          <button class="cart p-1.5">
-            <a href="">
+          <button class="p-1.5">
+            <a href="{{ route('cart.show') }}">
               <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1" />
@@ -69,12 +69,6 @@
               </svg>
             </a>
           </button>
-          <div
-            class="cart-menu absolute top-0 left-0 max-w-full h-0 overflow-hidden w-full mt-14 shadow-md transition-all duration-300 bg-white">
-            <ul class="flex justify-end max-w-screen-lg m-auto">
-              <li>cart menu</li>
-            </ul>
-          </div>
         </li>
         @endguest
         <li>

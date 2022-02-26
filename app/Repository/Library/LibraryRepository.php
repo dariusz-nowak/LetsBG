@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Repository\Library;
 
 use App\Models\Game;
-use App\Models\User;
 use App\Repository\LibraryRepository as LibraryRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +18,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
   public function getAll() {
     return $this->gameModel->with('genres')->with('producers')
       ->whereHas('users', function ($query) {
-        $query->where('user_id', Auth::user()->id);
+        if (Auth::user()) $query->where('user_id', Auth::user()->id);
       })
       ->paginate(24);
   }
@@ -46,6 +45,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
       }
     };
   }
+
   public function getFavorites() {
     return $this->gameModel->with('genres')->with('producers')
       ->whereHas('users', function ($query) {

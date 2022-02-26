@@ -5,17 +5,30 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Cart\CartRepository;
 
 class CartController extends Controller {
+  private CartRepository $cartRepository;
+
+  public function __construct(CartRepository $cartRepository) {
+    $this->cartRepository = $cartRepository;
+  }
+
   public function show() {
-    dump('koszyk');
+    return view('cart.main', [
+      'products' => session('cartItems'),
+    ]);
   }
-  public function add() {
+
+  public function add($gameId) {
+    return $this->cartRepository->add($gameId);
   }
-  public function update() {
+
+  public function remove($gameId) {
+    return $this->cartRepository->remove($gameId);
   }
-  public function remove() {
-  }
+
   public function clear() {
+    return $this->cartRepository->clear();
   }
 }

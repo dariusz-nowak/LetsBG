@@ -55,10 +55,9 @@ Route::group([
   'as' => 'cart.',
 ], function () {
   Route::get('', [CartController::class, 'show'])->name('show');
-  Route::post('add', [CartController::class, 'add'])->name('add');
-  Route::post('update', [CartController::class, 'update'])->name('update');
-  Route::post('remove', [CartController::class, 'remove'])->name('remove');
-  Route::post('clear', [CartController::class, 'clear'])->name('clear');
+  Route::post('add/{game}', [CartController::class, 'add'])->name('add');
+  Route::get('remove/{game}', [CartController::class, 'remove'])->name('remove');
+  Route::get('clear', [CartController::class, 'clear'])->name('clear');
 });
 
 // Gry

@@ -8,7 +8,6 @@
   repellat sit culpa, labore sapiente, voluptatibus modi facere! Error at expedita sed voluptate.<br><br>
 </div>
 
-
 <div class="flex">
   <div class="filters basis-1/6">
     <div class="px-4 pb-4 shadow-lg">
@@ -197,7 +196,10 @@
                 <input type="submit" value="Add to Library" class="block w-full py-2 cursor-pointer">
               </form>
               @else
-              <p class="block py-2">Add to cart</p>
+              <form action="{{ route('cart.add', ['game' => $game->id]) }}" method="post">
+                @csrf
+                <input type="submit" value="Add to cart" class="block w-full py-2 cursor-pointer">
+              </form>
               @endif
             </button>
           </div>

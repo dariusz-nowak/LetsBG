@@ -5632,7 +5632,6 @@ search.addEventListener('click', function (e) {
   searchForm.classList.toggle('active');
   if (document.querySelector('.fav-games')) document.querySelector('.fav-games').classList.remove('active');
   if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
-  if (document.querySelector('.cart-menu')) document.querySelector('.cart-menu').classList.remove('active');
 });
 
 if (document.querySelector('.fav-games')) {
@@ -5640,27 +5639,16 @@ if (document.querySelector('.fav-games')) {
   var favGamesMenu = document.querySelector('.fav-games-menu');
   var userBtn = document.querySelector('.user');
   var userMenu = document.querySelector('.user-menu');
-  var cart = document.querySelector('.cart');
-  var cartMenu = document.querySelector('.cart-menu');
   favGamesBtn.addEventListener('click', function (e) {
     e.preventDefault();
     favGamesMenu.classList.toggle('active');
     userMenu.classList.remove('active');
-    cartMenu.classList.remove('active');
     searchForm.classList.remove('active');
   });
   userBtn.addEventListener('click', function (e) {
     e.preventDefault();
     favGamesMenu.classList.remove('active');
     userMenu.classList.toggle('active');
-    cartMenu.classList.remove('active');
-    searchForm.classList.remove('active');
-  });
-  cart.addEventListener('click', function (e) {
-    e.preventDefault();
-    favGamesMenu.classList.remove('active');
-    userMenu.classList.remove('active');
-    cartMenu.classList.toggle('active');
     searchForm.classList.remove('active');
   });
 }

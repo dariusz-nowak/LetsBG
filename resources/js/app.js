@@ -14,7 +14,6 @@ search.addEventListener('click', e => {
   searchForm.classList.toggle('active')
   if (document.querySelector('.fav-games')) document.querySelector('.fav-games').classList.remove('active')
   if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active')
-  if (document.querySelector('.cart-menu')) document.querySelector('.cart-menu').classList.remove('active')
 })
 
 if (document.querySelector('.fav-games')) {
@@ -24,14 +23,10 @@ if (document.querySelector('.fav-games')) {
   const userBtn = document.querySelector('.user')
   const userMenu = document.querySelector('.user-menu')
 
-  const cart = document.querySelector('.cart')
-  const cartMenu = document.querySelector('.cart-menu');
-
   favGamesBtn.addEventListener('click', e => {
     e.preventDefault()
     favGamesMenu.classList.toggle('active')
     userMenu.classList.remove('active')
-    cartMenu.classList.remove('active')
     searchForm.classList.remove('active')
   })
 
@@ -39,15 +34,6 @@ if (document.querySelector('.fav-games')) {
     e.preventDefault()
     favGamesMenu.classList.remove('active')
     userMenu.classList.toggle('active')
-    cartMenu.classList.remove('active')
-    searchForm.classList.remove('active')
-  })
-
-  cart.addEventListener('click', e => {
-    e.preventDefault()
-    favGamesMenu.classList.remove('active')
-    userMenu.classList.remove('active')
-    cartMenu.classList.toggle('active')
     searchForm.classList.remove('active')
   })
 }

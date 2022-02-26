@@ -17,14 +17,12 @@ class LibraryController extends Controller {
   public function show() {
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
-      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
   public function checkGameStatus($gameId, $status) {
     $this->libraryRepository->checkGameStatus($gameId, $status);
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
-      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
 }

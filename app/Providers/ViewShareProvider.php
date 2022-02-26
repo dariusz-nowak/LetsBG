@@ -4,11 +4,10 @@ namespace App\Providers;
 
 use App\Repository\Library\LibraryRepository;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Auth;
 
-class AppServiceProvider extends ServiceProvider {
+class ViewShareProvider extends ServiceProvider {
   /**
-   * Register any application services.
+   * Register services.
    *
    * @return void
    */
@@ -17,10 +16,11 @@ class AppServiceProvider extends ServiceProvider {
   }
 
   /**
-   * Bootstrap any application services.
+   * Bootstrap services.
    *
    * @return void
    */
-  public function boot() {
+  public function boot(LibraryRepository $libraryRepository) {
+    view()->share('favoriteGames', $libraryRepository->getFavorites());
   }
 }

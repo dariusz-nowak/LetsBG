@@ -16,9 +16,7 @@ class Homepage extends Controller {
   }
 
   public function load() {
-    return view('homepage', [
-      'favoriteGames' => $this->libraryRepository->getFavorites(),
-    ]);
+    return view('homepage', []);
   }
   public function redirect() {
     return redirect('/');

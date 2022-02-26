@@ -7,6 +7,7 @@
   repellat sit culpa, labore sapiente, voluptatibus modi facere! Error at expedita sed voluptate. <br><br>
 </div>
 
+
 <div class="library flex flex-wrap justify-around">
   @foreach ($games as $game)
   <div

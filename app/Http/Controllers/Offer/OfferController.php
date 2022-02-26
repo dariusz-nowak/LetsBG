@@ -33,7 +33,6 @@ class OfferController extends Controller {
       'games' => $this->offerRepository->getAll(Auth::user()),
       'genres' => $this->genreRepository->getAll(),
       'producers' => $this->producersRepository->getAll(),
-      'favoriteGames' => $this->libraryRepository->getAll(),
     ]);
   }
 
@@ -69,13 +68,11 @@ class OfferController extends Controller {
       'genres' => $this->genreRepository->getAll(),
       'producers' => $this->producersRepository->getAll(),
       'request' => $request->all(),
-      'favoriteGames' => $this->libraryRepository->getFavorites()
     ]);
   }
   public function gameDetails($gameId) {
     return view('offer.game', [
       'game' => $this->offerRepository->getGame($gameId),
-      'favoriteGames' => $this->libraryRepository->getFavorites(),
     ]);
   }
 }
