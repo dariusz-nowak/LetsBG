@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-{{ dump($products) }}
+@foreach ($products as $product)
+{{dump($product)}}
+@endforeach
 @endsection

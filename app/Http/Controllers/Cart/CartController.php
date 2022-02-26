@@ -16,7 +16,7 @@ class CartController extends Controller {
 
   public function show() {
     return view('cart.main', [
-      'products' => session('cartItems'),
+      'products' => $this->cartRepository->getGames(),
     ]);
   }
 

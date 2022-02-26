@@ -4,9 +4,20 @@ declare(strict_types=1);
 
 namespace App\Repository\Cart;
 
+use App\Models\Game;
 use App\Repository\CartRepository as CartRepositoryInterface;
 
 class CartRepository implements CartRepositoryInterface {
+
+  private Game $gameModel;
+
+  public function __construct(Game $gameModel) {
+    $this->gameModel = $gameModel;
+  }
+
+  public function getGames() {
+    return $this->gameModel->whereIn('id', session('cartItems'))->get();
+  }
 
   public function add($gameId) {
     $cartItemsSession = session('cartItems') ?? [];
