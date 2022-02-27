@@ -83,7 +83,7 @@ Koszyk pusty
     $sum = 0;
     foreach($products as $product) $sum += $product->price;
     $currency = array_keys($cartSections, $cartSections[$key])[0];
-    $exchangeRate = Currency::convert()->from($currency)->to('USD')->get();
+    $exchangeRate = Currency::convert()->from($currency)->to($userSettings->currency)->get();
     $finalPrice = round($sum * $exchangeRate, 2);
     $finalSum += $finalPrice;
     @endphp

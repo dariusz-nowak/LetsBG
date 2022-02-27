@@ -35,6 +35,14 @@ class UsersSeeder extends Seeder {
       'updated_at' => Carbon::now(),
     ]);
 
+    DB::table('users_settings')->insert([
+      'user_id' => 1,
+      'currency' => 'USD',
+      'language' => 'english',
+      'created_at' => Carbon::now(),
+      'updated_at' => Carbon::now()
+    ]);
+
     $pivotGames = [];
     $gamesCount = 50;
 

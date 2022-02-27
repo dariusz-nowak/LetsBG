@@ -5625,49 +5625,76 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-var search = document.querySelector('.search');
-var searchForm = document.querySelector('.search-form');
-search.addEventListener('click', function (e) {
-  e.preventDefault();
-  searchForm.classList.toggle('active');
-  if (document.querySelector('.fav-games')) document.querySelector('.fav-games').classList.remove('active');
-  if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
-});
 
-if (document.querySelector('.fav-games')) {
-  var favGamesBtn = document.querySelector('.fav-games');
-  var favGamesMenu = document.querySelector('.fav-games-menu');
-  var userBtn = document.querySelector('.user');
-  var userMenu = document.querySelector('.user-menu');
-  favGamesBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    favGamesMenu.classList.toggle('active');
-    userMenu.classList.remove('active');
-    searchForm.classList.remove('active');
-  });
-  userBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    favGamesMenu.classList.remove('active');
-    userMenu.classList.toggle('active');
-    searchForm.classList.remove('active');
-  });
-}
+if (document.querySelector('header')) {
+  if (document.querySelector('header .currency')) {
+    var currency = document.querySelector('header .currency');
+    var currencyForm = document.querySelector('header .currency-form');
+    currency.addEventListener('click', function () {
+      return currencyForm.classList.toggle('active');
+    });
+  }
 
-if (document.querySelector('.errors')) {
-  setTimeout(function () {
-    document.querySelector('.errors').style.opacity = 0;
+  if (document.querySelector('header .language')) {
+    var language = document.querySelector('header .language');
+    var languageForm = document.querySelector('header .language-form');
+    language.addEventListener('click', function () {
+      return languageForm.classList.toggle('active');
+    });
+  }
+
+  var search = document.querySelector('.search');
+  var searchForm = document.querySelector('.search-form');
+  search.addEventListener('click', function (e) {
+    e.preventDefault();
+    searchForm.classList.toggle('active');
+    if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active');
+    if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
+  });
+
+  if (document.querySelector('.fav-games')) {
+    var favGamesBtn = document.querySelector('.fav-games');
+    var favGamesMenu = document.querySelector('.fav-games-menu');
+    var userBtn = document.querySelector('.user');
+    var userMenu = document.querySelector('.user-menu');
+    favGamesBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      favGamesMenu.classList.toggle('active');
+      userMenu.classList.remove('active');
+      searchForm.classList.remove('active');
+    });
+    userBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      favGamesMenu.classList.remove('active');
+      userMenu.classList.toggle('active');
+      searchForm.classList.remove('active');
+    });
+  }
+
+  if (document.querySelector('.errors')) {
     setTimeout(function () {
-      document.querySelector('.errors').remove();
-    }, 1000);
-  }, 5000);
+      document.querySelector('.errors').style.opacity = 0;
+      setTimeout(function () {
+        document.querySelector('.errors').remove();
+      }, 1000);
+    }, 5000);
+  }
+
+  if (document.querySelector('.free')) {
+    if (document.querySelector('.free').firstChild.checked) document.querySelector('.prices').classList.add('hide');
+    document.querySelector('.free').addEventListener('change', function () {
+      return document.querySelector('.prices').classList.toggle('hide');
+    });
+  }
 }
 
-if (document.querySelector('.free')) {
-  if (document.querySelector('.free').firstChild.checked) document.querySelector('.prices').classList.add('hide');
-  document.querySelector('.free').addEventListener('change', function () {
-    return document.querySelector('.prices').classList.toggle('hide');
-  });
-}
+document.querySelector('body>.content').addEventListener('click', function () {
+  if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active');
+  if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
+  if (document.querySelector('.currency-form')) document.querySelector('.currency-form').classList.remove('active');
+  if (document.querySelector('.language-form')) document.querySelector('.language-form').classList.remove('active');
+  if (document.querySelector('.search-form')) document.querySelector('.search-form').classList.remove('active');
+});
 
 /***/ }),
 

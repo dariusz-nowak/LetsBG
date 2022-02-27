@@ -1,7 +1,7 @@
 <div class="fixed w-full px-5 pt-3 pb-2 bg-white border-b-2 border-gray-50 shadow-md z-50">
   <div class="flex max-w-screen-lg m-auto">
     <div class="w-1/2 m-1.5 font-semibold">
-      logo
+      LetsBG
     </div>
     <div class="w-1/2">
       <ul class="flex justify-end">
@@ -29,7 +29,7 @@
             </a>
           </button>
           <div
-            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 overflow-hidden w-full mt-14 shadow-md transition-all duration-300 bg-white">
+            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all overflow-hidden">
             <ul class="flex justify-end max-w-screen-lg m-auto">
               @foreach ($favoriteGames as $game)
               <li class="p-2">{{ $game->name }}</li>
@@ -48,18 +48,57 @@
             </a>
           </button>
           <div
-            class="user-menu absolute top-0 left-0 max-w-full h-0 overflow-hidden w-full mt-14 shadow-md transition-all duration-300 bg-white">
+            class="user-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all overflow-hidden">
             <ul class="flex justify-end max-w-screen-lg m-auto">
               <li class="p-2"><button><a href="{{ route('profile.show') }}" class="font-semibold">Account</a></button>
               </li>
               <li class="p-2"><button><a href="{{ route('library.show') }}" class="font-semibold">Library</a></button>
+              </li>
+              <li class="currency p-2">
+                <button class="font-semibold">Currency
+                  <svg class="inline-block h-4 w-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {{-- @php dump($currenciesList) @endphp
+                @php dump($languagesList) @endphp --}}
+
+                <div class="currency-form absolute flex flex-col h-0 overflow-hidden bg-white">
+                  @foreach ($currenciesList as $currency)
+                  <form action="{{ route('settings.changeCurrency', ['currency' => $currency]) }}" method="post"
+                    class="w-20">
+                    @csrf
+                    <input type="submit" value="{{$currency}}"
+                      class="p-2 w-full cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
+                  </form>
+                  @endforeach
+                </div>
+
+
+
+              </li>
+              <li class="language p-2">
+                <button class="font-semibold">Language
+                  <svg class="inline-block h-4 w-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <form action="" method="post"
+                  class="language-form absolute flex flex-col w-24 h-0 overflow-hidden bg-white">
+                  @csrf
+                  <input type="submit" value="Polish"
+                    class="p-2 cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
+                  <input type="submit" value="English"
+                    class="p-2 cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
+                </form>
               </li>
               <li class="p-2"><button><a href="{{ route('logout') }}" class="font-semibold">Logout</a></button>
             </ul>
           </div>
         </li>
         <li>
-          <button class="p-1.5">
+          <button class="relative p-1.5">
             <a href="{{ route('cart.show') }}">
               <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -67,6 +106,11 @@
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
+              @if (session('cartItems'))
+              <p class="absolute -bottom-1 -right-1 w-5 h-5 bg-red-600 rounded-full text-white text-sm">
+                {{ count(session('cartItems')) }}
+              </p>
+              @endif
             </a>
           </button>
         </li>
@@ -81,7 +125,7 @@
             </a>
           </button>
           <div
-            class="search-form absolute top-0 left-0 max-w-full h-0 overflow-hidden w-full mt-14 shadow-md transition-all duration-300 bg-white">
+            class="search-form absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all overflow-hidden">
             <form action="{{ route('offer.search') }}" method="get" class="flex justify-end max-w-screen-lg m-auto">
               <input type="text" name="phrase" id="" class="h-7 w-1/4">
               <input type="submit" value="Search" class="px-4 bg-gray-700 text-white">

@@ -5,8 +5,18 @@
 .fav-games-menu.active,
 .user-menu.active,
 .cart-menu.active,
-.search-form.active {
+.search-form.active,
+.currency-form.active,
+.language-form.active {
   height: 40px;
+  visibility: visible;
+  overflow: visible;
+}
+
+.currency-form.active,
+.language-form.active {
+  height: auto;
+  border: 2px solid gainsboro
 }
 
 .library-game:hover .play {

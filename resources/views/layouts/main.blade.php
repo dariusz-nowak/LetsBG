@@ -20,9 +20,10 @@
   <header>
     @include('shared.header')
   </header>
-
-  <div class="max-w-screen-lg m-auto pt-24">
-    @yield('content')
+  <div class="content relative top-20">
+    <div class="max-w-screen-lg m-auto">
+      @yield('content')
+    </div>
   </div>
 
   @if ($errors->any())
