@@ -1,15 +1,33 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'cc766661b730ad32b53a24ce58fe0895250be664',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'amrshawky/currency' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../amrshawky/currency',
+            'aliases' => array(),
+            'reference' => '39f13b6783ef611fd13916d48abd31bca2ab1e54',
+            'dev_requirement' => false,
+        ),
+        'amrshawky/laravel-currency' => array(
+            'pretty_version' => '5.0.0',
+            'version' => '5.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../amrshawky/laravel-currency',
+            'aliases' => array(),
+            'reference' => '34df93d1bc19758fe8bc2be63a0fc1580cb2b3bd',
+            'dev_requirement' => false,
+        ),
         'bacon/bacon-qr-code' => array(
             'pretty_version' => '2.0.6',
             'version' => '2.0.6.0',
@@ -437,12 +455,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'cc766661b730ad32b53a24ce58fe0895250be664',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

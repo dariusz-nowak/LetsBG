@@ -70,21 +70,28 @@ Koszyk pusty
 <table class="table-auto w-1/2 ml-auto">
   <thead>
     <tr>
-      <th class="border-2">Price</th>
-      <th class="border-2">Currency</th>
-      <th class="border-2">Exchange rate</th>
-      <th class="border-2">Final Price</th>
+      <th>Price</th>
+      <th>Currency</th>
+      <th>Exchange rate</th>
+      <th>Final Price</th>
     </tr>
   </thead>
   <tbody>
+    @php $finalSum = 0 @endphp
     @foreach ($cartSections as $key => $products)
+    @php
+    $sum = 0;
+    foreach($products as $product) $sum += $product->price;
+    $currency = array_keys($cartSections, $cartSections[$key])[0];
+    $exchangeRate = Currency::convert()->from($currency)->to('USD')->get();
+    $finalPrice = round($sum * $exchangeRate, 2);
+    $finalSum += $finalPrice;
+    @endphp
     <tr>
-      <td class="text-center border-2">
-        @php $sum = 0; foreach($products as $product) $sum += $product->price; echo number_format($sum, 2) @endphp
-      </td>
-      <td class="text-center border-2">{{ array_keys($cartSections, $cartSections[$key])[0] }}</td>
-      <td class="text-center border-2">Pobrać z kursów</td>
-      <td class="text-center border-2">Cena * Kurs</td>
+      <td class="text-center border-2">{{ $sum }}</td>
+      <td class="text-center border-2">{{ $currency }}</td>
+      <td class="text-center border-2">{{ $exchangeRate }}</td>
+      <td class="text-center border-2">{{ $finalPrice }}</td>
     </tr>
     @endforeach
   </tbody>
@@ -93,7 +100,7 @@ Koszyk pusty
       <td></td>
       <td></td>
       <td></td>
-      <td class="border-2 text-center">1500 PLN</td>
+      <td class="border-2 text-center">{{ $finalSum }}</td>
     </tr>
   </tfoot>
 </table>

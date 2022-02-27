@@ -18,10 +18,10 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
@@ -183,6 +183,8 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         'A' => 
         array (
             'App\\' => 4,
+            'AmrShawky\\LaravelCurrency\\' => 26,
+            'AmrShawky\\' => 10,
         ),
     );
 
@@ -556,6 +558,14 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AmrShawky\\LaravelCurrency\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amrshawky/laravel-currency/src',
+        ),
+        'AmrShawky\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/amrshawky/currency/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -576,6 +586,21 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
     );
 
     public static $classMap = array (
+        'AmrShawky\\API' => __DIR__ . '/..' . '/amrshawky/currency/src/API.php',
+        'AmrShawky\\Currency' => __DIR__ . '/..' . '/amrshawky/currency/src/Currency.php',
+        'AmrShawky\\CurrencyConversion' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyConversion.php',
+        'AmrShawky\\CurrencyFactory' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyFactory.php',
+        'AmrShawky\\CurrencyFluctuations' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyFluctuations.php',
+        'AmrShawky\\CurrencyHistoricalRates' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyHistoricalRates.php',
+        'AmrShawky\\CurrencyLatestRates' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyLatestRates.php',
+        'AmrShawky\\CurrencyRates' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyRates.php',
+        'AmrShawky\\CurrencyRatesProxy' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyRatesProxy.php',
+        'AmrShawky\\CurrencyTimeSeriesRates' => __DIR__ . '/..' . '/amrshawky/currency/src/CurrencyTimeSeriesRates.php',
+        'AmrShawky\\Exceptions\\RequestException' => __DIR__ . '/..' . '/amrshawky/currency/src/Exceptions/RequestException.php',
+        'AmrShawky\\LaravelCurrency\\CurrencyServiceProvider' => __DIR__ . '/..' . '/amrshawky/laravel-currency/src/CurrencyServiceProvider.php',
+        'AmrShawky\\LaravelCurrency\\Facade\\Currency' => __DIR__ . '/..' . '/amrshawky/laravel-currency/src/Facade/Currency.php',
+        'AmrShawky\\Traits\\HttpRequest' => __DIR__ . '/..' . '/amrshawky/currency/src/Traits/HttpRequest.php',
+        'AmrShawky\\Traits\\ParamsOverload' => __DIR__ . '/..' . '/amrshawky/currency/src/Traits/ParamsOverload.php',
         'App\\Actions\\Fortify\\CreateNewUser' => __DIR__ . '/../..' . '/app/Actions/Fortify/CreateNewUser.php',
         'App\\Actions\\Fortify\\PasswordValidationRules' => __DIR__ . '/../..' . '/app/Actions/Fortify/PasswordValidationRules.php',
         'App\\Actions\\Fortify\\ResetUserPassword' => __DIR__ . '/../..' . '/app/Actions/Fortify/ResetUserPassword.php',
@@ -593,6 +618,7 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckGameExists' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckGameExists.php',
+        'App\\Http\\Middleware\\CheckGameStatus' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckGameStatus.php',
         'App\\Http\\Middleware\\CheckUserHaveGame' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckUserHaveGame.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
@@ -601,6 +627,7 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Middleware\\ViewShareMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/ViewShareMiddleware.php',
         'App\\Http\\Requests\\Search' => __DIR__ . '/../..' . '/app/Http/Requests/Search.php',
         'App\\Models\\Game' => __DIR__ . '/../..' . '/app/Models/Game.php',
         'App\\Models\\Genre' => __DIR__ . '/../..' . '/app/Models/Genre.php',
@@ -613,6 +640,8 @@ class ComposerStaticInite7d34de39e3b207fd87e2d11ea35ee1e
         'App\\Providers\\FortifyServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FortifyServiceProvider.php',
         'App\\Providers\\JetstreamServiceProvider' => __DIR__ . '/../..' . '/app/Providers/JetstreamServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Repository\\CartRepository' => __DIR__ . '/../..' . '/app/Repository/CartRepository.php',
+        'App\\Repository\\Cart\\CartRepository' => __DIR__ . '/../..' . '/app/Repository/Cart/CartRepository.php',
         'App\\Repository\\GameRepository' => __DIR__ . '/../..' . '/app/Repository/GameRepository.php',
         'App\\Repository\\Game\\GameRepository' => __DIR__ . '/../..' . '/app/Repository/Game/GameRepository.php',
         'App\\Repository\\GenreRepository' => __DIR__ . '/../..' . '/app/Repository/GenreRepository.php',

@@ -97,4 +97,6 @@ return array(
     'Barryvdh\\Debugbar\\' => array($vendorDir . '/barryvdh/laravel-debugbar/src'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'App\\' => array($baseDir . '/app'),
+    'AmrShawky\\LaravelCurrency\\' => array($vendorDir . '/amrshawky/laravel-currency/src'),
+    'AmrShawky\\' => array($vendorDir . '/amrshawky/currency/src'),
 );

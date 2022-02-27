@@ -16,9 +16,6 @@ class Homepage extends Controller {
   }
 
   public function load() {
-
-    dd(json_decode('http://api.nbp.pl/api/exchangerates/rates/a/chf/'));
-
     return view('homepage', []);
   }
   public function redirect() {
