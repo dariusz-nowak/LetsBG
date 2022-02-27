@@ -27,14 +27,15 @@ class GamesSeeder extends Seeder {
     $gamesCount = 50;
 
     for ($i = 1; $i < $gamesCount + 1; $i++) {
+      $langWithpriceCurrency = $faker->randomElement([['english', 'USD'], ['polish', 'PLN']]);
       $games[] = [
         'name' => $faker->words($faker->numberBetween(1, 3), true),
         'description' => $faker->sentence(64, true),
         'short_description' => $faker->sentence(16, true),
-        'language' => $faker->randomElement(['english', 'polish']),
+        'language' => $langWithpriceCurrency[0],
         'image' => 'https://picsum.photos/seed/picsum/300/300',
         'price' => $faker->randomElement([$faker->randomFloat(2, 10, 200), 0]),
-        'price_currency' => 'USD',
+        'price_currency' => $langWithpriceCurrency[1],
         'min_age' => $faker->randomElement([3, 7, 12, 18]) . '+',
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()

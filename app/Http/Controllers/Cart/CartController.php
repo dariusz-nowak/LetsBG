@@ -16,7 +16,7 @@ class CartController extends Controller {
 
   public function show() {
     return view('cart.main', [
-      'products' => $this->cartRepository->getGames(),
+      'products' => $this->cartRepository->show(),
     ]);
   }
 

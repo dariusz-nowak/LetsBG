@@ -16,7 +16,7 @@
     <div class="flex flex-col justify-between h-full">
       <div>
         <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
-            href="{{ route('offer.game', ['game' => $game->id . ',' . $game->name]) }}"
+            href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
             class="relative top-1/2 -translate-y-1/2 block p-4">{{ $game->name }}</a>
         </p>
         <div class="relative">

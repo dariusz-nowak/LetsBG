@@ -138,7 +138,7 @@
         <div class="flex flex-col justify-between h-full">
           <div>
             <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
-                href="{{ route('offer.game', ['game' => $game->id . ',' . $game->name]) }}"
+                href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
                 class="relative top-1/2 -translate-y-1/2 block p-4">{{ $game->name }}</a>
             </p>
             <div class="relative">
@@ -174,7 +174,7 @@
               @if ($game->price == 0)
               <p>Free</p>
               @else
-              <p>{{ $game->price }} {{ $game->price_currency }}</p>
+              <p>{{ number_format($game->price, 2) }} {{ $game->price_currency }}</p>
               @endif
             </div>
           </div>
@@ -182,7 +182,7 @@
         <div>
           <div class="flex mt-2 border-t-2 border-neutral-100">
             <button class="basis-1/2 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all"><a
-                href="{{ route('offer.game', ['game' => $game->id . '?game=' . $game->name]) }}"
+                href="{{ route('offer.gameDetails', ['game' => $game->id . '?game=' . $game->name]) }}"
                 class="block py-2">Details</a></button>
             <button class="basis-1/2 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all">
               @if (Auth::check() && !$game->users->isEmpty())

@@ -7,7 +7,7 @@
       <ul class="flex justify-end">
         <li class="p-1.5"><button><a href="{{ route('homepage') }}" class="font-semibold">Homepage</a></button>
         </li>
-        <li class="p-1.5"><button><a href="{{ route('offer.offer') }}" class="font-semibold">Offer</a></button></li>
+        <li class="p-1.5"><button><a href="{{ route('offer.show') }}" class="font-semibold">Offer</a></button></li>
         <li class="mx-1.5 py-1.5 border-gray-100 border-l-2"></li>
         @guest
         <li class="p-1.5"><button><a href="{{ route('login') }}" class="font-semibold">Login</a></button></li>

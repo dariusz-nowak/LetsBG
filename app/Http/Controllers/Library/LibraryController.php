@@ -14,13 +14,13 @@ class LibraryController extends Controller {
   public function __construct(LibraryRepository $libraryRepository) {
     $this->libraryRepository = $libraryRepository;
   }
-  public function show() {
-    return view('library.main', [
-      'games' => $this->libraryRepository->getAll(),
-    ]);
-  }
+
   public function checkGameStatus($gameId, $status) {
     $this->libraryRepository->checkGameStatus($gameId, $status);
+    return redirect()->route('library.show');
+  }
+
+  public function show() {
     return view('library.main', [
       'games' => $this->libraryRepository->getAll(),
     ]);

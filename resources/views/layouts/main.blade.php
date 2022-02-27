@@ -26,11 +26,11 @@
   </div>
 
   @if ($errors->any())
-    <div class="errors fixed bottom-0 right-0 pb-6 pr-6 transition-all duration-700 opacity-1">
-      @foreach ($errors->all() as $error)
-      <p class="bg-red-400 ml-auto mr-2 my-4 px-6 py-2 w-fit rounded-xl text-lg text-white shadow-xl">{{$error}}</p>
-      @endforeach
-    </div>
+  <div class="errors fixed bottom-0 right-0 pb-6 pr-6 transition-all duration-700 opacity-1">
+    @foreach ($errors->all() as $error)
+    <p class="bg-red-400 ml-auto mr-2 my-4 px-6 py-2 w-fit rounded-xl text-lg text-white shadow-xl">{{$error}}</p>
+    @endforeach
+  </div>
   @endif
 
   <script src="{{ mix('js/app.js') }}"></script>

@@ -15,8 +15,8 @@ class CartRepository implements CartRepositoryInterface {
     $this->gameModel = $gameModel;
   }
 
-  public function getGames() {
-    return $this->gameModel->whereIn('id', session('cartItems'))->get();
+  public function show() {
+    if (session('cartItems')) return $this->gameModel->whereIn('id', session('cartItems'))->get();
   }
 
   public function add($gameId) {

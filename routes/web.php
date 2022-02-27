@@ -31,10 +31,10 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'prefix' => 'offer', // ścieżka początkowa do przekierowania
     'as' => 'offer.' // ścieżka początkowa do nazwy
   ], function () {
-    Route::get('', [OfferController::class, 'show'])->name('offer');
+    Route::get('', [OfferController::class, 'show'])->name('show');
     Route::get('search', [OfferController::class, 'search'])->name('search');
     Route::get('{game}', [OfferController::class, 'gameDetails'])
-      ->middleware(CheckGameExists::class)->name('game');
+      ->middleware(CheckGameExists::class)->name('gameDetails');
   });
 
   // Biblioteka
@@ -58,8 +58,8 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
   ], function () {
     Route::get('', [CartController::class, 'show'])->name('show');
     Route::post('add/{game}', [CartController::class, 'add'])->name('add');
-    Route::get('remove/{game}', [CartController::class, 'remove'])->name('remove');
-    Route::get('clear', [CartController::class, 'clear'])->name('clear');
+    Route::post('remove/{game}', [CartController::class, 'remove'])->name('remove');
+    Route::post('clear', [CartController::class, 'clear'])->name('clear');
   });
 
   // Gry
