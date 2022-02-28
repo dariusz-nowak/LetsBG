@@ -1,4 +1,5 @@
 Zbiorcze:
+- Dodać walidacje formularzy
 - Dodać wiadomości dla użytkownika
 
 Header:
@@ -40,7 +41,7 @@ Cart:
 - Dodać kroki zamówienia
 - Dodać widok pustego koszyka
 
-Messages:
+Messages (Mail):
 - Dodać widok wiadomości prywatnych
 
 Policy:
