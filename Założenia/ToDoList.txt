@@ -7,8 +7,8 @@ Header:
 
 Homepage:
 - Dodać info ogólne o stronie
-- Dodać widget najlepiej sprzedawanych (?)
-- Dodać widget z promocjami (?)
+- Dodać widget najlepiej sprzedawanych (4 + link do reszty)
+- Dodać widget z promocjami (4 + link do reszty)
 
 Offer:
 - Dodać info ogólne o ofercie
