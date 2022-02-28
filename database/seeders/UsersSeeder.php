@@ -16,6 +16,8 @@ class UsersSeeder extends Seeder {
    */
   public function run() {
     DB::table('users')->truncate();
+    DB::table('users_settings')->truncate();
+    DB::table('users_informations')->truncate();
     DB::table('pivot_users_games')->truncate();
 
     $faker = Factory::create();
@@ -41,6 +43,19 @@ class UsersSeeder extends Seeder {
       'language' => 'english',
       'created_at' => Carbon::now(),
       'updated_at' => Carbon::now()
+    ]);
+
+    DB::table('users_informations')->insert([
+      'user_id' => 1,
+      'first_name' => 'Dariusz',
+      'last_name' => 'Nowak',
+      'phone' => '788660097',
+      'street' => 'ul. Anny Jasinskiej',
+      'house_number' => '7',
+      'apartment_number' => '1a',
+      'post_code' => '54-330',
+      'city' => 'Wroclaw',
+      'country' => 'Polska'
     ]);
 
     $pivotGames = [];

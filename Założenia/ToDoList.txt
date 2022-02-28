@@ -1,8 +1,12 @@
+Account:
+- Edytować widok edycji informacji profilowych
+
 Zbiorcze:
 - Dodać walidacje formularzy
-- Dodać wiadomości dla użytkownika
+- Dodać wiadomości dla użytkownika (session flash + redirect)
 
 Header:
+- Dodać link do biblioteki, jeśli brak ulubionych gier
 - Dodać linki do ulubionych gier (do lobby)
 - Dodać wielojęzykowość
 
@@ -26,10 +30,6 @@ Game:
 - Dodać info ogólne o widoku gry
 - Edytować widok gry
 
-Account:
-- Dodać info ogólne o koncie
-- Dodać własny widok konta
-
 Library:
 - Dodać info ogólne o bibliotece
 - Oddzielić ulubione i zwykłe od nielubianych
@@ -43,6 +43,7 @@ Cart:
 
 Messages (Mail):
 - Dodać widok wiadomości prywatnych
+- Oprogramować wiadomości prywatne
 
 Policy:
 - Dodać politykę prywatności

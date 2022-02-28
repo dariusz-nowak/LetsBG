@@ -31,3 +31,8 @@
 .prices.hide {
   display: none;
 }
+
+.accound-details input.active {
+  background-color: rgb(31 41 55);
+  color: white;
+}

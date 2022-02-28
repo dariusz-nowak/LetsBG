@@ -10,6 +10,7 @@ use App\Http\Middleware\CheckGameExists;
 use App\Http\Middleware\CheckGameStatus;
 use App\Http\Middleware\CheckUserHaveGame;
 use App\Http\Middleware\ViewShareMiddleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
