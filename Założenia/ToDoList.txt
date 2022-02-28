@@ -12,11 +12,8 @@ Homepage:
 
 Offer:
 - Dodać info ogólne o ofercie
-- Zmienić wyświetlanie przycisku "Add to cart"
-  względem
-  tego, czy dana rzecz jest w koszyku
-- Określić domyślne zaznaczenie języka wg
-  ustawień użytkownika
+- Zmienić wyświetlanie przycisku "Add to cart" względem tego, czy dana rzecz jest w koszyku
+- Określić domyślne zaznaczenie języka wg ustawień użytkownika
 
 Bestsellers:
 - Dodać podstronę z najlepiej sprzedającymi się grami
