@@ -8,19 +8,13 @@
   <title>{{ config('app.name', 'LetsBG') }}</title>
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-  <style>
-    body {
-      height: 110vh;
-    }
-  </style>
 </head>
 
 <body>
   <header>
     @include('shared.header')
   </header>
-  <div class="content relative top-20">
+  <div class="content relative top-14" style="min-height: calc(100vh - 56px)">
     <div class="max-w-screen-lg m-auto">
       @yield('content')
     </div>

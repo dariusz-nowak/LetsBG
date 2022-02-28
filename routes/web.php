@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth::user();
 Route::group(['middleware' => ViewShareMiddleware::class], function () {
   Route::get('/', [Homepage::class, 'load'])->name('homepage');
 
