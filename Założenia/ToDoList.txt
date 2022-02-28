@@ -1,0 +1,56 @@
+Zbiorcze:
+- Dodać wiadomości dla użytkownika
+
+Header:
+- Dodać linki do ulubionych gier (do lobby)
+- Dodać wielojęzykowość
+
+Homepage:
+- Dodać info ogólne o stronie
+- Dodać widget najlepiej sprzedawanych (?)
+- Dodać widget z promocjami (?)
+
+Offer:
+- Dodać info ogólne o ofercie
+- Zmienić wyświetlanie przycisku "Add to cart"
+  względem
+  tego, czy dana rzecz jest w koszyku
+- Określić domyślne zaznaczenie języka wg
+  ustawień użytkownika
+
+Bestsellers:
+- Dodać podstronę z najlepiej sprzedającymi się grami
+
+Promotions:
+- Dodać podstronę z promocjami
+
+Game:
+- Dodać info ogólne o widoku gry
+- Edytować widok gry
+
+Account:
+- Dodać info ogólne o koncie
+- Dodać własny widok konta
+
+Library:
+- Dodać info ogólne o bibliotece
+- Oddzielić ulubione i zwykłe od nielubianych
+- Dodać ocenianie gier (?)
+
+Cart:
+- Dodać info ogólne o koszyku
+- Dodać czyszczenie koszyka względem waluty
+- Dodać kroki zamówienia
+- Dodać widok pustego koszyka
+
+Messages:
+- Dodać widok wiadomości prywatnych
+
+Policy:
+- Dodać politykę prywatności
+
+Regulations:
+- Dodać regulamin strony
+
+Lobby:
+- Dodać lobby gier

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Offer;
 
+use App\Http\Requests\Search;
 use App\Models\Game;
 use App\Repository\OfferRepository as OfferRepositoryInterface;
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Search extends FormRequest {
@@ -11,8 +10,6 @@ class Search extends FormRequest {
   }
 
   public function rules() {
-    $userId = Auth::id();
-
     return [
       'min_price' => 'integer|min:1|nullable',
       'max_price' => 'integer|min:1|nullable',

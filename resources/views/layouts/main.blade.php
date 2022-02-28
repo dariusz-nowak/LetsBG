@@ -14,20 +14,23 @@
   <header>
     @include('shared.header')
   </header>
-  <div class="content relative top-14" style="min-height: calc(100vh - 56px)">
-    <div class="max-w-screen-lg m-auto">
+  <div class="content relative top-16" style="min-height: calc(100vh - 360px)">
+    <div class="max-w-screen-lg pt-10 m-auto">
+      @if ($errors->any())
+      <div class="messages mb-10">
+        @include('shared.messages')
+      </div>
+      @endif
       @yield('content')
     </div>
   </div>
-
-  @if ($errors->any())
-  <div class="errors fixed bottom-0 right-0 pb-6 pr-6 transition-all duration-700 opacity-1">
-    @foreach ($errors->all() as $error)
-    <p class="bg-red-400 ml-auto mr-2 my-4 px-6 py-2 w-fit rounded-xl text-lg text-white shadow-xl">{{$error}}</p>
-    @endforeach
-  </div>
-  @endif
-
+  <footer>
+    <div class="relative top-14 w-full mt-10 bg-gray-800 text-white">
+      <div class="max-w-screen-lg pt-14 pb-20 m-auto">
+        @include('shared.footer')
+      </div>
+    </div>
+  </footer>
   <script src="{{ mix('js/app.js') }}"></script>
 </body>
 

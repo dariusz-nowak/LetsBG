@@ -5,12 +5,11 @@ use App\Http\Controllers\Offer\OfferController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
-use App\Http\Controllers\UserSettings\UserSettings;
+use App\Http\Controllers\UserSettings\UserSettingsController;
 use App\Http\Middleware\CheckGameExists;
 use App\Http\Middleware\CheckGameStatus;
 use App\Http\Middleware\CheckUserHaveGame;
 use App\Http\Middleware\ViewShareMiddleware;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,7 +68,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'prefix' => 'settings',
     'as' => 'settings.'
   ], function () {
-    Route::post('changeCurrency', [UserSettings::class, 'changeCurrency'])->name('changeCurrency');
+    Route::post('changeCurrency/{currency}', [UserSettingsController::class, 'changeCurrency'])->name('changeCurrency');
   });
 
   // Gry

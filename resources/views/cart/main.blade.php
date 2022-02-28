@@ -67,11 +67,10 @@ Koszyk pusty
   </tfoot>
 </table>
 @endforeach
-<table class="table-auto w-1/2 ml-auto">
+<table class="table-auto w-2/5 ml-auto">
   <thead>
     <tr>
       <th>Price</th>
-      <th>Currency</th>
       <th>Exchange rate</th>
       <th>Final Price</th>
     </tr>
@@ -88,10 +87,15 @@ Koszyk pusty
     $finalSum += $finalPrice;
     @endphp
     <tr>
-      <td class="text-center border-2">{{ $sum }}</td>
-      <td class="text-center border-2">{{ $currency }}</td>
-      <td class="text-center border-2">{{ $exchangeRate }}</td>
-      <td class="text-center border-2">{{ $finalPrice }}</td>
+      <td class="text-center border-2">{{ $sum }} {{ $currency }}</td>
+      <td class="text-center border-2">
+        @if ($exchangeRate == 1)
+          N/A
+        @else
+          {{ $exchangeRate }}
+        @endif
+      </td>
+      <td class="text-center border-2">{{ $finalPrice }} {{ $userSettings->currency }}</td>
     </tr>
     @endforeach
   </tbody>
@@ -99,12 +103,9 @@ Koszyk pusty
     <tr>
       <td></td>
       <td></td>
-      <td></td>
-      <td class="border-2 text-center">{{ $finalSum }}</td>
+      <td class="border-2 text-center">{{ $finalSum }} {{ $userSettings->currency }}</td>
     </tr>
   </tfoot>
 </table>
-<div class="h-96"></div>
 @endif
-
 @endsection

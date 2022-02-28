@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Offer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Search;
 use App\Repository\Genre\GenreRepository;
-use App\Repository\Library\LibraryRepository;
 use App\Repository\Offer\OfferRepository;
 use App\Repository\Producers\ProducersRepository;
 use Illuminate\Contracts\View\View;
@@ -19,13 +18,11 @@ class OfferController extends Controller {
   private OfferRepository $offerRepository;
   private GenreRepository $genreRepository;
   private ProducersRepository $producersRepository;
-  private LibraryRepository $libraryRepository;
 
-  public function __construct(OfferRepository $offerRepository, GenreRepository $genreRepository, ProducersRepository $producersRepository, LibraryRepository $libraryRepository) {
+  public function __construct(OfferRepository $offerRepository, GenreRepository $genreRepository, ProducersRepository $producersRepository) {
     $this->offerRepository = $offerRepository;
     $this->genreRepository = $genreRepository;
     $this->producersRepository = $producersRepository;
-    $this->libraryRepository = $libraryRepository;
   }
 
   public function show(): View {
@@ -36,7 +33,7 @@ class OfferController extends Controller {
     ]);
   }
 
-  public function search(Request $request): View {
+  public function search(Request $request, Search $search): View {
 
     $categories = $languages = $ages = $producers = [];
     foreach ($request->all() as $property => $filter) {

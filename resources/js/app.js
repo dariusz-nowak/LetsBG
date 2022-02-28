@@ -53,15 +53,6 @@ if (document.querySelector('header')) {
     userMenu.classList.toggle('active')
     searchForm.classList.remove('active')
   })
-
-  if (document.querySelector('.errors')) {
-    setTimeout(() => {
-      document.querySelector('.errors').style.opacity = 0
-      setTimeout(() => {
-        document.querySelector('.errors').remove()
-      }, 1000);
-    }, 5000);
-  }
 }
 
 if (document.querySelector('.free')) {
@@ -69,11 +60,13 @@ if (document.querySelector('.free')) {
   document.querySelector('.free').addEventListener('change', () => document.querySelector('.prices').classList.toggle('hide'))
 }
 
-document.querySelector('body>.content').addEventListener('click', () => {
+function hideAllMenus(){
   if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active')
   if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active')
   if (document.querySelector('.currency-form')) document.querySelector('.currency-form').classList.remove('active')
   if (document.querySelector('.language-form')) document.querySelector('.language-form').classList.remove('active')
   if (document.querySelector('.search-form')) document.querySelector('.search-form').classList.remove('active')
-})
+}
 
+document.querySelector('body>.content').addEventListener('click', () => hideAllMenus())
+document.querySelector('body>footer').addEventListener('click', () => hideAllMenus())

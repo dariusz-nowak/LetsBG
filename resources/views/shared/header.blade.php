@@ -55,15 +55,12 @@
               <li class="p-2"><button><a href="{{ route('library.show') }}" class="font-semibold">Library</a></button>
               </li>
               <li class="currency p-2">
-                <button class="font-semibold">Currency
+                <button class="font-semibold">
+                  <span class="capitalize">{{ $userSettings->currency }}</span>
                   <svg class="inline-block h-4 w-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-
-                {{-- @php dump($currenciesList) @endphp
-                @php dump($languagesList) @endphp --}}
-
                 <div class="currency-form absolute flex flex-col h-0 overflow-hidden bg-white">
                   @foreach ($currenciesList as $currency)
                   <form action="{{ route('settings.changeCurrency', ['currency' => $currency]) }}" method="post"
@@ -74,12 +71,10 @@
                   </form>
                   @endforeach
                 </div>
-
-
-
               </li>
               <li class="language p-2">
-                <button class="font-semibold">Language
+                <button class="font-semibold">
+                  <span class="capitalize">{{ $userSettings->language }}</span>
                   <svg class="inline-block h-4 w-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
@@ -93,7 +88,9 @@
                     class="p-2 cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
                 </form>
               </li>
-              <li class="p-2"><button><a href="{{ route('logout') }}" class="font-semibold">Logout</a></button>
+              <li class="p-2">
+                <form action="{{ route('logout') }}" method="post"> @csrf <button class="font-semibold">Logout</button></form>
+              </li>
             </ul>
           </div>
         </li>

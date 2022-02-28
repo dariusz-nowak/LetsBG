@@ -7,7 +7,7 @@ namespace App\Http\Controllers\UserSettings;
 use App\Http\Controllers\Controller;
 use App\Repository\UserSettings\UserSettingsRepository;
 
-class UserSettings extends Controller {
+class UserSettingsController extends Controller {
   private UserSettingsRepository $userSettingsRepository;
   public function __construct(UserSettingsRepository $userSettingsRepository) {
     $this->userSettingsRepository = $userSettingsRepository;
