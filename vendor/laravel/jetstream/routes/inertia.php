@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ViewShareMiddleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\CurrentTeamController;
 use Laravel\Jetstream\Http\Controllers\Inertia\ApiTokenController;
@@ -24,7 +25,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
     ? 'auth:' . config('jetstream.guard')
     : 'auth';
 
-  Route::group(['middleware' => [$authMiddleware, 'verified']], function () {
+  Route::group(['middleware' => [$authMiddleware, 'verified', ViewShareMiddleware::class]], function () {
     // User & Profile...
     Route::get('/user/profile', [UserProfileController::class, 'show'])
       ->name('profile.show');

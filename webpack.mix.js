@@ -22,4 +22,4 @@ if (mix.inProduction()) {
 }
 
 mix.disableNotifications()
-mix.browserSync('127.0.0.1:8000');
+mix.browserSync('127.0.0.1:8001');
