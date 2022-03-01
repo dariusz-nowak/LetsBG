@@ -22,21 +22,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation {
       'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
     ])->validateWithBag('updateProfileInformation');
 
-    if (isset($input['photo'])) {
-      $user->updateProfilePhoto($input['photo']);
-    }
+    if (isset($input['photo'])) $user->updateProfilePhoto($input['photo']);
 
-    if (
-      $input['email'] !== $user->email &&
-      $user instanceof MustVerifyEmail
-    ) {
-      $this->updateVerifiedUser($user, $input);
-    } else {
-      $user->forceFill([
-        'name' => $input['name'],
-        'email' => $input['email'],
-      ])->save();
-    }
+    if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) $this->updateVerifiedUser($user, $input);
+    else $user->forceFill(['name' => $input['name'], 'email' => $input['email']])->save();
   }
 
   /**

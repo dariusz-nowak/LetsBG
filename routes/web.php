@@ -70,6 +70,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'as' => 'settings.'
   ], function () {
     Route::post('changeCurrency/{currency}', [UserSettingsController::class, 'changeCurrency'])->name('changeCurrency');
+    Route::post('updateUserInformations', [UserSettingsController::class, 'updateUserInformations'])->name('updateUserInformations');
   });
 
   // Gry
