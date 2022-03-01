@@ -53,23 +53,21 @@
     <!-- Name -->
     <div class="col-span-6 sm:col-span-4">
       <x-jet-label for="name" value="{{ __('Username') }}" />
-      <x-jet-input id="name" type="text" class="mt-1 block w-full border-gray-300 rounded-md" wire:model.defer="state.name" autocomplete="name" />
+      <x-jet-input id="name" type="text" class="mt-1 block w-full border-gray-300 rounded-md"
+        wire:model.defer="state.name" autocomplete="name" />
       <x-jet-input-error for="name" class="mt-2" />
     </div>
 
     <!-- Email -->
     <div class="col-span-6 sm:col-span-4">
       <x-jet-label for="email" value="{{ __('Email') }}" />
-      <x-jet-input id="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md" wire:model.defer="state.email" />
+      <x-jet-input id="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md"
+        wire:model.defer="state.email" />
       <x-jet-input-error for="email" class="mt-2" />
     </div>
   </x-slot>
 
   <x-slot name="actions">
-    <x-jet-action-message class="mr-3" on="saved">
-      {{ __('Saved.') }}
-    </x-jet-action-message>
-
     <x-jet-button wire:loading.attr="enabled" wire:target="photo">
       {{ __('Save') }}
     </x-jet-button>
@@ -86,31 +84,45 @@
     @csrf
     <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
       <div class="flex flex-wrap">
-        <label for="fname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">First name<input type="text" name="fname" class="block w-full border-gray-300 rounded-md"></label>
-        <label for="lname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Last name<input type="text" name="lname" class="block w-full border-gray-300 rounded-md"></label>
-        <label for="phone" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Phone<input type="tel" name="phone" class="block w-full border-gray-300 rounded-md"></label>
+        <label for="fname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">First name<input type="text"
+            name="fname" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->first_name}}"></label>
+        <label for="lname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Last name<input type="text"
+            name="lname" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->last_name}}"></label>
+        <label for="phone" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Phone<input type="tel"
+            name="phone" class="block w-full border-gray-300 rounded-md" value="{{ $userInformations->phone}}"></label>
         <label for="currency" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">
           Currency
           <select name="currency" class="block w-full border-gray-300 rounded-md">
-            <option value="USD">USD</option>
-            <option value="PLN">PLN</option>
+            <option value="USD" @if ($userSettings->currency == 'USD') selected @endif>USD</option>
+            <option value="PLN" @if ($userSettings->currency == 'PLN') selected @endif>PLN</option>
           </select>
         </label>
         <label for="language" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">
           Language
           <select name="language" class="block w-full border-gray-300 rounded-md">
-            <option value="english">English</option>
-            <option value="polish">Polish</option>
+            <option value="english" @if ($userSettings->language == 'english') selected @endif>English</option>
+            <option value="polish" @if ($userSettings->language == 'polish') selected @endif>Polish</option>
           </select>
         </label>
-        <label for="address" class="basis-3/4 pr-4 pb-4 font-medium text-sm text-gray-700">Address<input type="text" name="address" class="block w-full border-gray-300 rounded-md"></label>
-        <label for="pcode" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">Post Code<input type="text" name="pcode" class="block w-full border-gray-300 rounded-md"></label>
-        <label for="city" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">City<input type="text" name="city" class="block w-full border-gray-300 rounded-md"></label>
-        <label for="country" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Country<input type="text" name="country" class="block w-full border-gray-300 rounded-md"></label>
+        <label for="address" class="basis-3/4 pr-4 pb-4 font-medium text-sm text-gray-700">Address<input type="text"
+            name="address" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->address}}"></label>
+        <label for="pcode" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">Post Code<input type="text"
+            name="pcode" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->post_code}}"></label>
+        <label for="city" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">City<input type="text"
+            name="city" class="block w-full border-gray-300 rounded-md" value="{{ $userInformations->city}}"></label>
+        <label for="country" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Country<input type="text"
+            name="country" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->country}}"></label>
       </div>
     </div>
-    <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
-      <input type="submit" value="Save" class="px-4 py-2 cursor-pointer bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase hover:bg-gray-700 transition">
+    <div
+      class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+      <input type="submit" value="Save"
+        class="px-4 py-2 cursor-pointer bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase hover:bg-gray-700 transition">
     </div>
   </form>
 </div>

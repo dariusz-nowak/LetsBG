@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace App\Repository\UserSettings;
 
+use App\Models\UsersInformations;
 use App\Models\UsersSettings;
 use App\Repository\UserSettingsRepository as UserSettingsRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
 class UserSettingsRepository implements UserSettingsRepositoryInterface {
   private UsersSettings $userSettingsModel;
+  private UsersInformations $usersInformations;
 
-  public function __construct(UsersSettings $userSettingsModel) {
+  public function __construct(UsersSettings $userSettingsModel, UsersInformations $usersInformations) {
     $this->userSettingsModel = $userSettingsModel;
+    $this->usersInformations = $usersInformations;
   }
 
   public function getSettings() {

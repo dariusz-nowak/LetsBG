@@ -50,9 +50,7 @@ class UsersSeeder extends Seeder {
       'first_name' => 'Dariusz',
       'last_name' => 'Nowak',
       'phone' => '788660097',
-      'street' => 'ul. Anny Jasinskiej',
-      'house_number' => '7',
-      'apartment_number' => '1a',
+      'address' => 'ul. Anny Jasinskiej 7/1a',
       'post_code' => '54-330',
       'city' => 'Wroclaw',
       'country' => 'Polska'

@@ -18,7 +18,7 @@
     <div class="max-w-screen-lg pt-10 m-auto">
       @if ($errors->any())
       <div class="messages mb-10">
-        @include('shared.messages')
+        @include('shared.errors')
       </div>
       @endif
       @yield('content')

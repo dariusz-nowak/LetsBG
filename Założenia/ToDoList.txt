@@ -1,15 +1,3 @@
-Account:
-- Edytować widok edycji informacji profilowych
-
-Zbiorcze:
-- Dodać walidacje formularzy
-- Dodać wiadomości dla użytkownika (session flash + redirect)
-
-Header:
-- Dodać link do biblioteki, jeśli brak ulubionych gier
-- Dodać linki do ulubionych gier (do lobby)
-- Dodać wielojęzykowość
-
 Homepage:
 - Dodać info ogólne o stronie
 - Dodać widget najlepiej sprzedawanych (4 + link do reszty)
@@ -50,6 +38,30 @@ Policy:
 
 Regulations:
 - Dodać regulamin strony
+
+Zbiorcze:
+- Dodać wiadomości dla użytkownika (session flash + redirect)
+
+Udana rejestracja
+Witaj ponownie po zalogowaniu
+Dodanie do biblioteki
+Dodanie do koszyka + link do koszyka
+Aktualizacja danych profilowych
+Dodanie gry do ulubionych
+Usunięcie gry z ulubionych
+Dodanie gry do nielubianych
+Usunięcie gry z nielubianych
+Zmiana waluty
+Zmiana języka
+Wylogowanie
+Usunięcie produktu z koszyka + link do przywrócenia
+Wyczyszczenie koszyka
+
+Szlify:
+- Edytować walidacje formularzy wyszukiwania, użytkownika, logowanie, rejestracji etc... (komunikat błędu pod danym danym polem, dostosować treść)
+
+Header:
+- Dodać wielojęzykowość
 
 Lobby:
 - Dodać lobby gier

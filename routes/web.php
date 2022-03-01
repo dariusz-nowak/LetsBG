@@ -5,12 +5,12 @@ use App\Http\Controllers\Offer\OfferController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
+use App\Http\Controllers\UserInformations\UserInformationsController;
 use App\Http\Controllers\UserSettings\UserSettingsController;
 use App\Http\Middleware\CheckGameExists;
 use App\Http\Middleware\CheckGameStatus;
 use App\Http\Middleware\CheckUserHaveGame;
 use App\Http\Middleware\ViewShareMiddleware;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,7 +48,8 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     Route::post('{game}/{status}', [LibraryController::class, 'checkGameStatus'])
       ->middleware(CheckGameStatus::class)
       ->middleware(CheckGameExists::class)
-      ->middleware(CheckUserHaveGame::class)->name('checkGameStatus');
+      ->middleware(CheckUserHaveGame::class)
+      ->name('checkGameStatus');
   });
 
   // Koszyk
@@ -70,7 +71,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'as' => 'settings.'
   ], function () {
     Route::post('changeCurrency/{currency}', [UserSettingsController::class, 'changeCurrency'])->name('changeCurrency');
-    Route::post('updateUserInformations', [UserSettingsController::class, 'updateUserInformations'])->name('updateUserInformations');
+    Route::post('updateUserInformations', [UserInformationsController::class, 'updateUserInformations'])->name('updateUserInformations');
   });
 
   // Gry

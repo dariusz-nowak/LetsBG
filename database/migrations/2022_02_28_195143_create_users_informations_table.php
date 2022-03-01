@@ -15,10 +15,8 @@ return new class extends Migration {
       $table->integer('user_id')->unique()->index();
       $table->string('first_name')->nullable()->index();
       $table->string('last_name')->nullable()->index();
-      $table->integer('phone')->nullable()->index();
-      $table->string('street')->nullable()->index();
-      $table->string('house_number')->nullable()->index();
-      $table->string('apartment_number')->nullable()->index();
+      $table->string('phone')->nullable()->index();
+      $table->string('address')->nullable()->index();
       $table->string('post_code')->nullable()->index();
       $table->string('city')->nullable()->index();
       $table->string('country')->nullable()->index();

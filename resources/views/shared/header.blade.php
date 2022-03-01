@@ -29,11 +29,20 @@
             </a>
           </button>
           <div
-            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all overflow-hidden">
-            <ul class="flex justify-end max-w-screen-lg m-auto">
+            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all">
+            <ul
+              class="overflow-x-auto overflow-y-hidden overscroll-x-contain max-w-screen-lg mx-auto text-right whitespace-nowrap">
+              @if (!$favoriteGames->isEmpty())
               @foreach ($favoriteGames as $game)
-              <li class="p-2">{{ $game->name }}</li>
+              <li class="p-2 font-semibold whitespace-nowrap inline-block"><a
+                  href="{{ route('game.lobby', ['game' => $game->id]) }}">{{
+                  $game->name }}</a>
+              </li>
               @endforeach
+              @else
+              <li class="p-2 font-semibold whitespace-nowrap inline-block"><a href="{{ route('library.show') }}">Add
+                  games to your favorite list here</a></li>
+              @endif
             </ul>
           </div>
         </li>
@@ -89,7 +98,8 @@
                 </form>
               </li>
               <li class="p-2">
-                <form action="{{ route('logout') }}" method="post"> @csrf <button class="font-semibold">Logout</button></form>
+                <form action="{{ route('logout') }}" method="post"> @csrf <button class="font-semibold">Logout</button>
+                </form>
               </li>
             </ul>
           </div>
