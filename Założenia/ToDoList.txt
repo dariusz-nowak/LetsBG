@@ -1,3 +1,5 @@
+- zapisywać ustawienia użytkownika
+
 Homepage:
 - Dodać info ogólne o stronie
 - Dodać widget najlepiej sprzedawanych (4 + link do reszty)
