@@ -1,27 +1,12 @@
-Homepage:
-- Dodać info ogólne o stronie
-
-Offer:
-- Dodać info ogólne o ofercie
-- Zmienić wyświetlanie przycisku "Add to cart" względem tego, czy dana rzecz jest w koszyku
-- Określić domyślne zaznaczenie języka wg ustawień użytkownika
-
-Bestsellers:
-- Dodać podstronę z najlepiej sprzedającymi się grami
-
-Promotions:
-- Dodać podstronę z promocjami
-
-Game:
-- Dodać info ogólne o widoku gry
-- Edytować widok gry
+Game
+- Widok gry
 
 Library:
-- Dodać info ogólne o bibliotece
 - Oddzielić ulubione i zwykłe od nielubianych
 - Dodać ocenianie gier (?)
 
 Cart:
+- Powrót do oferty
 - Dodać info ogólne o koszyku
 - Dodać czyszczenie koszyka względem waluty
 - Dodać kroki zamówienia
@@ -62,6 +47,15 @@ Szlify:
 
 Header:
 - Dodać wielojęzykowość
+
+Dodatkowe:
+- Podmienić filtr promocji z osobną podstroną z promocjami
+
+Treść
+- Strona główna
+- Oferta
+- Gra
+- Biblioteka
 
 Lobby:
 - Dodać lobby gier

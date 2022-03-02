@@ -24,8 +24,8 @@
           <div>
             <select name="sort" id="" class="w-full h-8 px-2 py-0 leading-none">
               <option value="">-- Choose an option --</option>
-              <option value="newest" @php if (isset($request['sort']) && $request['sort']==='newest' ) {
-                echo 'selected' ; } @endphp>Newest</option>
+              <option value="newest" @php if (isset($request['sort']) && $request['sort']==='newest' ) { echo 'selected'
+                ; } @endphp>Newest</option>
               <option value="bestsellers" @php if (isset($request['sort']) && $request['sort']==='bestsellers' ) {
                 echo 'selected' ; } @endphp>Bestsellers</option>
               <option value="nameAsc" @php if (isset($request['sort']) && $request['sort']==='nameAsc' ) {
@@ -91,8 +91,8 @@
             @php asort($languages) @endphp
             @foreach ($languages as $language)
             <label class="block">
-              <input type="checkbox" name="{{ $language }}" value="language" @php if (isset($request[$language]))
-                echo 'checked' @endphp>
+              <input type="checkbox" name="{{ $language }}" value="language" @php if (isset($request[$language]) ||
+                isset($requestLanguage)) echo 'checked' @endphp>
               {{ $language }}
             </label>
             @endforeach
@@ -117,22 +117,21 @@
             @endforeach
           </div>
         </fieldset>
-        @auth
         <fieldset>
           <p class="pb-2 font-bold">Other</p>
           <div class="flex flex-col">
             <label>
               <input type="checkbox" name="promo" @php if (isset($request['promo'])) echo 'checked' @endphp> Promotions
             </label>
+            @auth
             <label>
               <input type="checkbox" name="owned" @php if (isset($request['owned'])) echo 'checked' @endphp> Show Owned
             </label>
+            @endauth
           </div>
           <div class="h-0 overflow-hidden transition-all">
-
           </div>
         </fieldset>
-        @endauth
         <input type="submit" value="Submit"
           class="block ml-auto py-1 px-4 border-2 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-white transition-all">
       </form>
@@ -203,10 +202,15 @@
                 <input type="submit" value="Add to Library" class="block w-full py-2 cursor-pointer">
               </form>
               @else
+              @if (!in_array($game->id ,session('cartItems')))
               <form action="{{ route('cart.add', ['game' => $game->id]) }}" method="post">
                 @csrf
                 <input type="submit" value="Add to cart" class="block w-full py-2 cursor-pointer">
               </form>
+              @else
+              <p class="absolute top-0 -left-1 -rotate-12 rounded px-4 py-1 bg-red-700 text-white">In cart</p>
+              <a href="{{ route('cart.show') }}">Continue order</a>
+              @endif
               @endif
             </button>
           </div>

@@ -25,11 +25,12 @@ class OfferController extends Controller {
     $this->producersRepository = $producersRepository;
   }
 
-  public function show(): View {
+  public function show(Request $request): View {
     return view('offer.main', [
-      'games' => $this->offerRepository->getAll(Auth::user()),
+      'games' => $this->offerRepository->getAll(Auth::user(), $request->language),
       'genres' => $this->genreRepository->getAll(),
       'producers' => $this->producersRepository->getAll(),
+      'requestLanguage' => $request->language
     ]);
   }
 

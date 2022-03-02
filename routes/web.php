@@ -31,7 +31,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'prefix' => 'offer', // ścieżka początkowa do przekierowania
     'as' => 'offer.' // ścieżka początkowa do nazwy
   ], function () {
-    Route::get('', [OfferController::class, 'show'])->name('show');
+    Route::get('show', [OfferController::class, 'show'])->name('show');
     Route::get('search', [OfferController::class, 'search'])->name('search');
     Route::get('{game}', [OfferController::class, 'gameDetails'])
       ->middleware(CheckGameExists::class)->name('gameDetails');

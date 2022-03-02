@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 interface OfferRepository {
-  public function getAll($user);
+  public function getAll($user, $language);
   public function search($user, $categories, $languages, $ages, $producers, $request);
   public function getGame($gameId);
   public function getNewest();
