@@ -1,5 +1,4 @@
 Homepage:
-- Dodać widget z promocjami (4 + link do reszty)
 - Dodać info ogólne o stronie
 
 Offer:

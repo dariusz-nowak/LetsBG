@@ -17,6 +17,9 @@ class Game extends Model {
   public function producers() {
     return $this->belongsToMany('App\Models\Producer', 'pivot_games_producers');
   }
+  public function promotions() {
+    return $this->belongsToMany('App\Models\Promotion', 'pivot_games_promotions');
+  }
   public function users() {
     return $this->belongsToMany('App\Models\User', 'pivot_users_games')->withPivot('favorite', 'hidden');
   }

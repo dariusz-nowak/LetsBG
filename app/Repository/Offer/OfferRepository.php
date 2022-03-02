@@ -65,7 +65,7 @@ class OfferRepository implements OfferRepositoryInterface {
 
     if (!empty($ages)) $result = $result->whereIn('min_age', $ages);
 
-    // if (!empty($request->promo)) $result = $result->whereIn('min_age', $ages);
+    if (!empty($request->promo)) $result = $result->whereHas('promotions');
 
     if (empty($request->owned) && $user) $result = $result->whereDoesntHave('users', function ($query) use ($user) {
       $query->where('user_id', $user->id);
@@ -79,11 +79,12 @@ class OfferRepository implements OfferRepositoryInterface {
       ->find($gameId);
   }
   public function getNewest() {
-    return $this->gameModel->with('genres')->orderBy('updated_at', 'desc')->limit(4)->get();
+    return $this->gameModel->orderBy('updated_at', 'desc')->limit(4)->get();
   }
   public function getBestsellers() {
-    return $this->gameModel->with('genres')->orderBy('sold', 'desc')->limit(4)->get();
+    return $this->gameModel->orderBy('sold', 'desc')->limit(4)->get();
   }
   public function getPromotions() {
+    return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
   }
 }

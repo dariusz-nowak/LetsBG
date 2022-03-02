@@ -249,7 +249,7 @@
     </div>
     @endforeach
   </div>
-  <a href="{{ route('offer.search', ['sort' => 'bestsellers']) }}" class="block w-full text-right">Show more...</a>
+  <a href="{{ route('offer.search', ['promo' => 'on']) }}" class="block w-full text-right">Show more...</a>
 </div>
 @endif
 
