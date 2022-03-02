@@ -24,6 +24,10 @@
           <div>
             <select name="sort" id="" class="w-full h-8 px-2 py-0 leading-none">
               <option value="">-- Choose an option --</option>
+              <option value="newest" @php if (isset($request['sort']) && $request['sort']==='newest' ) {
+                echo 'selected' ; } @endphp>Newest</option>
+              <option value="bestsellers" @php if (isset($request['sort']) && $request['sort']==='bestsellers' ) {
+                echo 'selected' ; } @endphp>Bestsellers</option>
               <option value="nameAsc" @php if (isset($request['sort']) && $request['sort']==='nameAsc' ) {
                 echo 'selected' ; } @endphp>Name, Ascending</option>
               <option value="nameDesc" @php if (isset($request['sort']) && $request['sort']==='nameDesc' ) {
@@ -116,11 +120,14 @@
         @auth
         <fieldset>
           <p class="pb-2 font-bold">Other</p>
-          <div>
+          <div class="flex flex-col">
             <label>
-              <input type="checkbox" name="owned" @php if (isset($request['owned'])) echo 'checked' @endphp> Show owned
+              <input type="checkbox" name="promo" @php if (isset($request['promo'])) echo 'checked' @endphp> Promotions
+            </label>
+            <label>
+              <input type="checkbox" name="owned" @php if (isset($request['owned'])) echo 'checked' @endphp> Show Owned
+            </label>
           </div>
-          </label>
           <div class="h-0 overflow-hidden transition-all">
 
           </div>

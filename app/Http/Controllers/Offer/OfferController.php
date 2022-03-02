@@ -43,7 +43,7 @@ class OfferController extends Controller {
       else if ($filter === 'producer') array_push($producers, $property);
     }
 
-    $gamesWithPaginator = $this->offerRepository->search(Auth::user(), $request->owned, $request->phrase, $request->sort, $categories, $languages, $ages, $producers, $request->free_only, $request->min_price, $request->max_price);
+    $gamesWithPaginator = $this->offerRepository->search(Auth::user(), $categories, $languages, $ages, $producers, $request);
 
     $FiltersToAppend = [];
     $FiltersToAppend['sort'] = $request->sort;

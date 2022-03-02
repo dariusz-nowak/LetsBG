@@ -11,18 +11,12 @@ return new class extends Migration {
    * @return void
    */
   public function up() {
-    Schema::create('games', function (Blueprint $table) {
+    Schema::create('promotions', function (Blueprint $table) {
       $table->id();
       $table->string('name');
       $table->text('description');
-      $table->text('short_description');
-      $table->string('language', 20)->nullable();
-      $table->string('image', 200);
-      $table->float('price')->nullable();
-      $table->string('price_currency', 3)->nullable();
-      $table->string('min_age', 3);
-      $table->integer('sold', 0);
-      $table->timestamps();
+      $table->float('value')->nullable();
+      $table->integer('percent')->nullable();
     });
   }
 
@@ -32,6 +26,6 @@ return new class extends Migration {
    * @return void
    */
   public function down() {
-    Schema::dropIfExists('games');
+    Schema::dropIfExists('promotions');
   }
 };

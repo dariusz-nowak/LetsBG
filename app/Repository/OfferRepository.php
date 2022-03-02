@@ -6,6 +6,9 @@ namespace App\Repository;
 
 interface OfferRepository {
   public function getAll($user);
-  public function search($user, $owned, $phrase, $sort, $categories, $languages, $ages, $producers, $freeOnly, $min_price, $max_price);
+  public function search($user, $categories, $languages, $ages, $producers, $request);
   public function getGame($gameId);
+  public function getNewest();
+  public function getBestsellers();
+  public function getPromotions();
 }

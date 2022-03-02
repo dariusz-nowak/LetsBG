@@ -88,14 +88,16 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <form action="" method="post"
-                  class="language-form absolute flex flex-col w-24 h-0 overflow-hidden bg-white">
-                  @csrf
-                  <input type="submit" value="Polish"
-                    class="p-2 cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
-                  <input type="submit" value="English"
-                    class="p-2 cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
-                </form>
+                <div class="language-form absolute flex flex-col h-0 overflow-hidden bg-white">
+                  @foreach ($languagesList as $language)
+                  <form action="{{ route('settings.changeLanguage', ['language' => $language]) }}" method="post"
+                    class="w-20">
+                    @csrf
+                    <input type="submit" value="{{$language}}"
+                      class="p-2 w-full cursor-pointer transition-all hover:bg-gray-600 hover:text-white">
+                  </form>
+                  @endforeach
+                </div>
               </li>
               <li class="p-2">
                 <form action="{{ route('logout') }}" method="post"> @csrf <button class="font-semibold">Logout</button>

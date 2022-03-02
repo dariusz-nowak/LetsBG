@@ -18,6 +18,7 @@ class GamesSeeder extends Seeder {
     DB::table('games')->truncate();
     DB::table('pivot_games_genres')->truncate();
     DB::table('pivot_games_producers')->truncate();
+    DB::table('pivot_games_promotions')->truncate();
 
     $faker = Factory::create();
 
@@ -37,6 +38,7 @@ class GamesSeeder extends Seeder {
         'price' => $faker->randomElement([$faker->randomFloat(2, 10, 200), 0]),
         'price_currency' => $langWithpriceCurrency[1],
         'min_age' => $faker->randomElement([3, 7, 12, 18]) . '+',
+        'sold' => $faker->numberBetween(1, 100),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ];
@@ -52,10 +54,20 @@ class GamesSeeder extends Seeder {
         'game_id' => $i,
         'producer_id' => $faker->numberBetween(1, 5),
       ];
+
+      if ($faker->randomElement([1, 2]) == 1) {
+        for ($j = 0; $j < $faker->numberBetween(1, 3); $j++) {
+          $pivotPromotions[] = [
+            'game_id' => $i,
+            'promotion_id' => $faker->randomElement([1, 2, 3, 4]),
+          ];
+        }
+      }
     }
 
     DB::table('games')->insert($games);
     DB::table('pivot_games_genres')->insert($pivotGenres);
     DB::table('pivot_games_producers')->insert($pivotProducers);
+    DB::table('pivot_games_promotions')->insert($pivotPromotions);
   }
 }

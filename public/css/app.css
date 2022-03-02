@@ -1014,10 +1014,6 @@ select {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
-}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1110,9 +1106,6 @@ select {
 }
 .mb-1 {
   margin-bottom: 0.25rem;
-}
-.mr-auto {
-  margin-right: auto;
 }
 .block {
   display: block;
@@ -1368,9 +1361,6 @@ select {
 .items-center {
   align-items: center;
 }
-.justify-start {
-  justify-content: flex-start;
-}
 .justify-end {
   justify-content: flex-end;
 }
@@ -1413,9 +1403,6 @@ select {
 .overflow-hidden {
   overflow: hidden;
 }
-.overflow-scroll {
-  overflow: scroll;
-}
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -1425,17 +1412,8 @@ select {
 .overflow-y-hidden {
   overflow-y: hidden;
 }
-.overflow-x-scroll {
-  overflow-x: scroll;
-}
-.overscroll-x-auto {
-  overscroll-behavior-x: auto;
-}
 .overscroll-x-contain {
   overscroll-behavior-x: contain;
-}
-.overscroll-x-none {
-  overscroll-behavior-x: none;
 }
 .truncate {
   overflow: hidden;

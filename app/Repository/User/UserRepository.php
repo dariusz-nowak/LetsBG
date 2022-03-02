@@ -2,23 +2,38 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\UserInformations;
+namespace App\Repository\User;
 
 use App\Models\UsersInformations;
-use App\Repository\UserInformationsRepository as UserInformationsRepositoryInterface;
+use App\Models\UsersSettings;
+use App\Repository\UserRepository as UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class UserInformationsRepository implements UserInformationsRepositoryInterface {
-  private UsersInformations $usersInformations;
+class UserRepository implements UserRepositoryInterface {
+  private UsersSettings $userSettingsModel;
 
-  public function __construct(UsersInformations $usersInformations) {
+  public function __construct(UsersSettings $userSettingsModel, UsersInformations $usersInformations) {
+    $this->userSettingsModel = $userSettingsModel;
     $this->usersInformations = $usersInformations;
+  }
+
+  public function getSettings() {
+    $settings = $this->userSettingsModel->where('user_id', Auth::user()->id)->limit(1)->get();
+    return $settings[0];
   }
 
   public function getInformations() {
     $informations = $this->usersInformations->where('user_id', Auth::user()->id)->limit(1)->get();
     return $informations[0];
+  }
+
+  public function changeCurrency($currency) {
+    return $this->userSettingsModel->where('user_id', Auth::user()->id)->update(['currency' => $currency]);
+  }
+
+  public function changeLanguage($language) {
+    return $this->userSettingsModel->where('user_id', Auth::user()->id)->update(['language' => $language]);
   }
 
   public function saveInformations($userInformations) {
@@ -31,7 +46,5 @@ class UserInformationsRepository implements UserInformationsRepositoryInterface 
       'city' => $userInformations['city'] ?? null,
       'country' => $userInformations['country'] ?? null,
     ]);
-
-    return redirect()->back();
   }
 }

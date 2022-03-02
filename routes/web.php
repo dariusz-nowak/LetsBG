@@ -5,8 +5,7 @@ use App\Http\Controllers\Offer\OfferController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Home\Homepage;
 use App\Http\Controllers\Library\LibraryController;
-use App\Http\Controllers\UserInformations\UserInformationsController;
-use App\Http\Controllers\UserSettings\UserSettingsController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Middleware\CheckGameExists;
 use App\Http\Middleware\CheckGameStatus;
 use App\Http\Middleware\CheckUserHaveGame;
@@ -70,8 +69,9 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'prefix' => 'settings',
     'as' => 'settings.'
   ], function () {
-    Route::post('changeCurrency/{currency}', [UserSettingsController::class, 'changeCurrency'])->name('changeCurrency');
-    Route::post('updateUserInformations', [UserInformationsController::class, 'updateUserInformations'])->name('updateUserInformations');
+    Route::post('changeCurrency/{currency}', [UserController::class, 'changeCurrency'])->name('changeCurrency');
+    Route::post('changeLanguage/{language}', [UserController::class, 'changeLanguage'])->name('changeLanguage');
+    Route::post('updateUserInformations', [UserController::class, 'updateUserInformations'])->name('updateUserInformations');
   });
 
   // Gry

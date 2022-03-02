@@ -1,9 +1,6 @@
-- zapisywać ustawienia użytkownika
-
 Homepage:
-- Dodać info ogólne o stronie
-- Dodać widget najlepiej sprzedawanych (4 + link do reszty)
 - Dodać widget z promocjami (4 + link do reszty)
+- Dodać info ogólne o stronie
 
 Offer:
 - Dodać info ogólne o ofercie
@@ -58,6 +55,8 @@ Zmiana języka
 Wylogowanie
 Usunięcie produktu z koszyka + link do przywrócenia
 Wyczyszczenie koszyka
+Brak posiadanych gier
+Brak promocji w wyszukiwarce
 
 Szlify:
 - Edytować walidacje formularzy wyszukiwania, użytkownika, logowanie, rejestracji etc... (komunikat błędu pod danym danym polem, dostosować treść)
