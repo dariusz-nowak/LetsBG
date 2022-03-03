@@ -202,7 +202,7 @@
                 <input type="submit" value="Add to Library" class="block w-full py-2 cursor-pointer">
               </form>
               @else
-              @if (!in_array($game->id ,session('cartItems')))
+              @if (!in_array($game->id, session('cartItems') ?? []))
               <form action="{{ route('cart.add', ['game' => $game->id]) }}" method="post">
                 @csrf
                 <input type="submit" value="Add to cart" class="block w-full py-2 cursor-pointer">

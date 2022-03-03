@@ -17,7 +17,13 @@
   <div class="basis-1/4">
     <h1 class="text-xl">Products</h1>
     <ul class="px-4 py-2">
-      <li class="pt-1"><a href="{{ route('offer.show', ['language' => $userSettings->language]) }}">Offer</a></li>
+      <li class="pt-1"><a href="
+        @auth
+        {{ route('offer.show', ['language' => $userSettings->language ]) }}
+        @endauth
+        @guest
+        {{ route('offer.show') }}
+        @endguest">Offer</a></li>
       <li class="pt-1"><a href="{{ route('offer.search', ['sort' => 'newest']) }}">Newest</a></li>
       <li class="pt-1"><a href="{{ route('offer.search', ['sort' => 'bestsellers']) }}">Bestsellers</a></li>
       <li class="pt-1"><a href="{{ route('offer.search', ['promo' => 'on']) }}">Promotions</a></li>
