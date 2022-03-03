@@ -5627,41 +5627,41 @@ window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 if (document.querySelector('header')) {
-  var currency = document.querySelector('header .currency');
-  var currencyForm = document.querySelector('header .currency-form');
-  var language = document.querySelector('header .language');
-  var languageForm = document.querySelector('header .language-form');
-  var search = document.querySelector('.search');
-  var searchForm = document.querySelector('.search-form');
-  var favGamesBtn = document.querySelector('.fav-games');
-  var favGamesMenu = document.querySelector('.fav-games-menu');
-  var userBtn = document.querySelector('.user');
-  var userMenu = document.querySelector('.user-menu');
-  currency.addEventListener('click', function () {
-    currencyForm.classList.toggle('active');
-    languageForm.classList.remove('active');
-  });
-  language.addEventListener('click', function () {
-    languageForm.classList.toggle('active');
-    currencyForm.classList.remove('active');
-  });
-  search.addEventListener('click', function (e) {
+  var navBtn = document.querySelector('.nav-icon');
+  var navMenu = document.querySelector('.nav-container');
+  var favGamesBtn = document.querySelector('.fav-icon');
+  var favGamesMenu = document.querySelector('.fav-container');
+  var userBtn = document.querySelector('.user-icon');
+  var userMenu = document.querySelector('.user-container');
+  var search = document.querySelector('.search-icon');
+  var searchForm = document.querySelector('.search-container');
+  navBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    searchForm.classList.toggle('active');
-    if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active');
-    if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
+    navMenu.classList.toggle('active');
+    favGamesMenu.classList.remove('active');
+    userMenu.classList.remove('active');
+    searchForm.classList.remove('active');
   });
   favGamesBtn.addEventListener('click', function (e) {
     e.preventDefault();
     favGamesMenu.classList.toggle('active');
     userMenu.classList.remove('active');
     searchForm.classList.remove('active');
+    navMenu.classList.remove('active');
   });
   userBtn.addEventListener('click', function (e) {
     e.preventDefault();
     favGamesMenu.classList.remove('active');
     userMenu.classList.toggle('active');
     searchForm.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+  search.addEventListener('click', function (e) {
+    e.preventDefault();
+    searchForm.classList.toggle('active');
+    if (document.querySelector('.fav-container')) document.querySelector('.fav-container').classList.remove('active');
+    if (document.querySelector('.user-container')) document.querySelector('.user-container').classList.remove('active');
+    if (document.querySelector('.nav-container')) document.querySelector('.nav-container').classList.remove('active');
   });
 }
 
@@ -5673,11 +5673,10 @@ if (document.querySelector('.free')) {
 }
 
 function hideAllMenus() {
-  if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active');
-  if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active');
-  if (document.querySelector('.currency-form')) document.querySelector('.currency-form').classList.remove('active');
-  if (document.querySelector('.language-form')) document.querySelector('.language-form').classList.remove('active');
+  if (document.querySelector('.fav-container')) document.querySelector('.fav-container').classList.remove('active');
+  if (document.querySelector('.user-container')) document.querySelector('.user-container').classList.remove('active');
   if (document.querySelector('.search-form')) document.querySelector('.search-form').classList.remove('active');
+  if (document.querySelector('.nav-container')) document.querySelector('.nav-container').classList.remove('active');
 }
 
 document.querySelector('body>.content').addEventListener('click', function () {

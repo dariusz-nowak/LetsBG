@@ -8,36 +8,24 @@ Alpine.start();
 
 if (document.querySelector('header')) {
 
-  const currency = document.querySelector('header .currency')
-  const currencyForm = document.querySelector('header .currency-form')
+  const navBtn = document.querySelector('.nav-icon')
+  const navMenu = document.querySelector('.nav-container')
 
-  const language = document.querySelector('header .language')
-  const languageForm = document.querySelector('header .language-form')
+  const favGamesBtn = document.querySelector('.fav-icon')
+  const favGamesMenu = document.querySelector('.fav-container')
 
-  const search = document.querySelector('.search')
-  const searchForm = document.querySelector('.search-form')
+  const userBtn = document.querySelector('.user-icon')
+  const userMenu = document.querySelector('.user-container')
 
-  const favGamesBtn = document.querySelector('.fav-games')
-  const favGamesMenu = document.querySelector('.fav-games-menu')
+  const search = document.querySelector('.search-icon')
+  const searchForm = document.querySelector('.search-container')
 
-  const userBtn = document.querySelector('.user')
-  const userMenu = document.querySelector('.user-menu')
-
-  currency.addEventListener('click', () => {
-    currencyForm.classList.toggle('active');
-    languageForm.classList.remove('active')
-  })
-
-  language.addEventListener('click', () => {
-    languageForm.classList.toggle('active');
-    currencyForm.classList.remove('active')
-  })
-
-  search.addEventListener('click', e => {
+  navBtn.addEventListener('click', e => {
     e.preventDefault()
-    searchForm.classList.toggle('active')
-    if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active')
-    if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active')
+    navMenu.classList.toggle('active')
+    favGamesMenu.classList.remove('active')
+    userMenu.classList.remove('active')
+    searchForm.classList.remove('active')
   })
 
   favGamesBtn.addEventListener('click', e => {
@@ -45,6 +33,7 @@ if (document.querySelector('header')) {
     favGamesMenu.classList.toggle('active')
     userMenu.classList.remove('active')
     searchForm.classList.remove('active')
+    navMenu.classList.remove('active')
   })
 
   userBtn.addEventListener('click', e => {
@@ -52,6 +41,15 @@ if (document.querySelector('header')) {
     favGamesMenu.classList.remove('active')
     userMenu.classList.toggle('active')
     searchForm.classList.remove('active')
+    navMenu.classList.remove('active')
+  })
+
+  search.addEventListener('click', e => {
+    e.preventDefault()
+    searchForm.classList.toggle('active')
+    if (document.querySelector('.fav-container')) document.querySelector('.fav-container').classList.remove('active')
+    if (document.querySelector('.user-container')) document.querySelector('.user-container').classList.remove('active')
+    if (document.querySelector('.nav-container')) document.querySelector('.nav-container').classList.remove('active')
   })
 }
 
@@ -60,12 +58,11 @@ if (document.querySelector('.free')) {
   document.querySelector('.free').addEventListener('change', () => document.querySelector('.prices').classList.toggle('hide'))
 }
 
-function hideAllMenus(){
-  if (document.querySelector('.fav-games-menu')) document.querySelector('.fav-games-menu').classList.remove('active')
-  if (document.querySelector('.user-menu')) document.querySelector('.user-menu').classList.remove('active')
-  if (document.querySelector('.currency-form')) document.querySelector('.currency-form').classList.remove('active')
-  if (document.querySelector('.language-form')) document.querySelector('.language-form').classList.remove('active')
+function hideAllMenus() {
+  if (document.querySelector('.fav-container')) document.querySelector('.fav-container').classList.remove('active')
+  if (document.querySelector('.user-container')) document.querySelector('.user-container').classList.remove('active')
   if (document.querySelector('.search-form')) document.querySelector('.search-form').classList.remove('active')
+  if (document.querySelector('.nav-container')) document.querySelector('.nav-container').classList.remove('active')
 }
 
 document.querySelector('body>.content').addEventListener('click', () => hideAllMenus())

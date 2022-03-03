@@ -28,7 +28,7 @@
   <footer>
     <div class="relative top-14 w-full mt-10 bg-gray-800 text-white">
       <div class="max-w-screen-lg pt-14 pb-20 m-auto">
-        @include('shared.footer')
+        {{-- @include('shared.footer') --}}
       </div>
     </div>
   </footer>

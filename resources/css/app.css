@@ -2,14 +2,22 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.fav-games-menu.active,
-.user-menu.active,
+.nav-container.active {
+  height: 144px;
+  visibility: visible;
+}
+
+.fav-container.active,
+.user-container.active,
 .cart-menu.active,
 .search-form.active,
 .currency-form.active,
 .language-form.active {
-  height: 40px;
+  height: 55px;
   visibility: visible;
+}
+
+.user-container.active {
   overflow: visible;
 }
 
