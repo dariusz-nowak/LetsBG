@@ -14,6 +14,7 @@
   <header>
     @include('shared.header')
   </header>
+  {{-- <div class="h-screen w-full bg-center" style="background-image: url('images/banner2.jpg')"></div> --}}
   <div class="content relative top-16" style="min-height: calc(100vh - 360px)">
     <div class="max-w-screen-lg pt-10 m-auto">
       @if ($errors->any())
