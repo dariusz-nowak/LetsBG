@@ -25,4 +25,10 @@ class LibraryController extends Controller {
       'games' => $this->libraryRepository->getAll(),
     ]);
   }
+
+  public function favorites() {
+    return view('shared.onClick.favoriteGames', [
+      'favoriteGames' => $this->libraryRepository->getFavorites()
+    ]);
+  }
 }

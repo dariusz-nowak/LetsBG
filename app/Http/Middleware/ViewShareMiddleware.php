@@ -25,7 +25,6 @@ class ViewShareMiddleware {
   }
 
   public function handle(Request $request, Closure $next) {
-    view()->share('favoriteGames', $this->libraryRepository->getFavorites());
     view()->share('currenciesList', ['PLN', 'USD']);
     view()->share('languagesList', ['polish', 'english']);
     if (Auth::user()) view()->share('userSettings', $this->userRepository->getSettings());

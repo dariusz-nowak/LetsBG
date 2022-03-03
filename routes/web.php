@@ -49,6 +49,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
       ->middleware(CheckGameExists::class)
       ->middleware(CheckUserHaveGame::class)
       ->name('checkGameStatus');
+    Route::get('/favorites', [LibraryController::class, 'favorites']);
   });
 
   // Koszyk

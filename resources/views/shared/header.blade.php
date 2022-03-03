@@ -24,7 +24,8 @@
         </li>
         <li class="p-1.5 font-semibold">Hello {{ Auth::user()->name; }}</li>
         <li>
-          <button class="fav-games p-1.5">
+          <script>function test() {$('#favorites').load('/library/favorites')}</script>
+          <button onclick="test()" class="fav-games p-1.5">
             <a href="">
               <svg class="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -36,22 +37,8 @@
               </svg>
             </a>
           </button>
-          <div
-            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all">
-            <ul
-              class="overflow-x-auto overflow-y-hidden overscroll-x-contain max-w-screen-lg mx-auto text-right whitespace-nowrap">
-              @if (!$favoriteGames->isEmpty())
-              @foreach ($favoriteGames as $game)
-              <li class="p-2 font-semibold whitespace-nowrap inline-block"><a
-                  href="{{ route('game.lobby', ['game' => $game->id]) }}">{{
-                  $game->name }}</a>
-              </li>
-              @endforeach
-              @else
-              <li class="p-2 font-semibold whitespace-nowrap inline-block"><a href="{{ route('library.show') }}">Add
-                  games to your favorite list here</a></li>
-              @endif
-            </ul>
+          <div class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all">
+            <ul id="favorites" class="overflow-x-auto overflow-y-hidden overscroll-x-contain max-w-screen-lg mx-auto text-right whitespace-nowrap"></ul>
           </div>
         </li>
         <li>
