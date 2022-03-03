@@ -24,7 +24,11 @@
         </li>
         <li class="p-1.5 font-semibold">Hello {{ Auth::user()->name; }}</li>
         <li>
-          <script>function test() {$('#favorites').load('/library/favorites')}</script>
+          <script type="text/javascript">
+            function test() {
+              $('#favorites').load('/library/favorites')
+              }
+            </script>
           <button onclick="test()" class="fav-games p-1.5">
             <a href="">
               <svg class="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
