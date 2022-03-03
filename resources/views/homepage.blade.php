@@ -2,8 +2,9 @@
 
 @section('content')
 @php $gamesSections = [$newGames, $bestsellers, $promotionGames] @endphp
+
 @foreach ($gamesSections as $key => $games)
-<div class="newest">
+<div class="mb-8">
   <div class="py-4 text-center text-xl font-semibold">
     <h1>
       @if ($key == 0) Newest and updated games
@@ -14,8 +15,8 @@
   </div>
   <div class="offer flex flex-wrap justify-between">
     @foreach ($games as $game)
-    <div class="relative mb-4 flex flex-col justify-between shadow-lg" style="flex-basis:24%">
-      <div class="flex flex-col justify-between h-full">
+    <div class="relative mb-2 flex flex-col justify-between shadow-lg" style="flex-basis:19%">
+      <div class="flex flex-col justify-between bg-zinc-50 h-full pb-2">
         <div>
           <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
               href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
@@ -60,7 +61,7 @@
         </div>
       </div>
       <div>
-        <div class="flex mt-2 border-t-2 border-neutral-100">
+        <div class="flex border-t-2 border-neutral-100">
           <button class="basis-1/2 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all"><a
               href="{{ route('offer.gameDetails', ['game' => $game->id . '?game=' . $game->name]) }}"
               class="block py-2">Details</a></button>

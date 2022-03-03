@@ -1,5 +1,5 @@
-<div class="fixed w-full px-5 pt-3 pb-2 bg-white border-b-2 border-gray-50 shadow-md z-50">
-  <div class="flex max-w-screen-lg m-auto">
+<div class="fixed w-full px-5 pt-3 pb-2 border-b-2 bg-slate-100 border-gray-50 shadow-md z-50">
+  <div class="flex max-w-screen-xl m-auto">
     <div class="w-1/2 m-1.5 font-semibold">
       LetsBG
     </div>
@@ -14,8 +14,7 @@
           @guest
           {{ route('offer.show') }}
           @endguest
-          "
-              class="font-semibold">Offer</a></button></li>
+          " class="font-semibold">Offer</a></button></li>
         <li class="mx-1.5 py-1.5 border-gray-100 border-l-2"></li>
         @guest
         <li class="p-1.5"><button><a href="{{ route('login') }}" class="font-semibold">Login</a></button></li>
@@ -28,7 +27,7 @@
             function test() {
               $('#favorites').load('/library/favorites')
               }
-            </script>
+          </script>
           <button onclick="test()" class="fav-games p-1.5">
             <a href="">
               <svg class="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -41,8 +40,11 @@
               </svg>
             </a>
           </button>
-          <div class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all">
-            <ul id="favorites" class="overflow-x-auto overflow-y-hidden overscroll-x-contain max-w-screen-lg mx-auto text-right whitespace-nowrap"></ul>
+          <div
+            class="fav-games-menu absolute top-0 left-0 max-w-full h-0 invisible w-full mt-14 shadow-md bg-white transition-all">
+            <ul id="favorites"
+              class="overflow-x-auto overflow-y-hidden overscroll-x-contain max-w-screen-lg mx-auto text-right whitespace-nowrap">
+            </ul>
           </div>
         </li>
         <li>
