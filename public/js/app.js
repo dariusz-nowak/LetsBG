@@ -5665,6 +5665,12 @@ if (document.querySelector('header')) {
   });
 }
 
+if (document.querySelector('.filters-icon')) {
+  document.querySelector('.filters-icon').addEventListener('click', function () {
+    document.querySelector('.filters-container').classList.toggle('active');
+  });
+}
+
 if (document.querySelector('.free')) {
   if (document.querySelector('.free').firstChild.checked) document.querySelector('.prices').classList.add('hide');
   document.querySelector('.free').addEventListener('change', function () {

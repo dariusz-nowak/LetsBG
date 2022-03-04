@@ -21,6 +21,10 @@
   overflow: visible;
 }
 
+.filters-container.active {
+  max-height: 1000px;
+}
+
 .library-game:hover .play {
   opacity: .5;
 }

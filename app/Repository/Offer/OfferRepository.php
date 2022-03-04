@@ -18,13 +18,10 @@ class OfferRepository implements OfferRepositoryInterface {
 
   public function getAll($user, $language) {
     $query = $this->gameModel->with('genres')->with('producers');
-
     if ($language) $query->where('language', $language);
-
     if ($user) $query = $query->with('users')->whereDoesntHave('users', function ($query) use ($user) {
       $query->where('user_id', $user->id);
     });
-
     return $query->paginate(12);
   }
 
