@@ -81,12 +81,12 @@ class OfferRepository implements OfferRepositoryInterface {
       ->find($gameId);
   }
   public function getNewest() {
-    return $this->gameModel->orderBy('updated_at', 'desc')->limit(5)->get();
+    return $this->gameModel->orderBy('updated_at', 'desc')->limit(3)->get();
   }
   public function getBestsellers() {
-    return $this->gameModel->orderBy('sold', 'desc')->limit(5)->get();
+    return $this->gameModel->orderBy('sold', 'desc')->limit(3)->get();
   }
   public function getPromotions() {
-    return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(5)->get();
+    return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(3)->get();
   }
 }

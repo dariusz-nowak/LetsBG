@@ -13,17 +13,17 @@
       @endif
     </h1>
   </div>
-  <div class="offer flex flex-wrap justify-between">
+  <div class="offer relative flex flex-wrap justify-between">
     @foreach ($games as $game)
-    <div class="relative mb-2 flex flex-col justify-between shadow-lg" style="flex-basis:19%">
-      <div class="flex flex-col justify-between bg-zinc-50 h-full pb-2">
+    <div class="relative mb-6 flex flex-col justify-between basis-full md:basis-1/3 lg:basis-1/4" style="">
+      <div class="flex flex-col justify-between bg-zinc-50 h-full mx-2 pb-2 shadow-lg">
         <div>
           <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
               href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
               class="relative top-1/2 -translate-y-1/2 block p-4">{{ $game->name }}</a>
           </p>
           <div class="relative">
-            <img src="{{ $game->image }}" alt="">
+            <img src="{{ $game->image }}" alt="" class="w-full">
             @if (Auth::check() && !$game->users->isEmpty())
             <p class="absolute top-0 right-0 m-2 px-4 py-2 bg-red-700 text-white rounded">Owned
             </p>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div>
-        <div class="flex border-t-2 border-neutral-100">
+        <div class="flex border-t-2 border-neutral-100 mx-2">
           <button class="basis-1/2 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all"><a
               href="{{ route('offer.gameDetails', ['game' => $game->id . '?game=' . $game->name]) }}"
               class="block py-2">Details</a></button>
@@ -87,13 +87,19 @@
       </div>
     </div>
     @endforeach
+    <div class="relative mb-6 flex flex-col justify-between basis-full md:basis-1/3 lg:basis-1/4" style="">
+      <div class="bg-zinc-50 h-full mx-2 pb-2 shadow-lg">
+        <p class="relative top-1/2 -translate-y-1/2 block w-full text-right lg:text-center">Show more...</p>
+          <a href="
+          @if ($key == 0) {{ route('offer.search', ['sort' => 'newest']) }}
+          @elseif ($key == 1) {{ route('offer.search', ['sort' => 'bestsellers']) }}
+          @elseif ($key == 2) {{ route('offer.search', ['promo' => 'on']) }}
+          @endif
+          " class="absolute top-0 right-0 w-full h-full"></a>
+        </p>
+      </div>
+    </div>
   </div>
-  <a href="
-  @if ($key == 0) {{ route('offer.search', ['sort' => 'newest']) }}
-  @elseif ($key == 1) {{ route('offer.search', ['sort' => 'bestsellers']) }}
-  @elseif ($key == 2) {{ route('offer.search', ['promo' => 'on']) }}
-  @endif
-  " class="block w-full text-right">Show more...</a>
 </div>
 @endforeach
 @endsection

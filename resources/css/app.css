@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 
 .nav-container.active {
-  height: 144px;
+  height: 88px;
   visibility: visible;
 }
 
@@ -19,12 +19,6 @@
 
 .user-container.active {
   overflow: visible;
-}
-
-.currency-form.active,
-.language-form.active {
-  height: auto;
-  border: 2px solid gainsboro
 }
 
 .library-game:hover .play {
