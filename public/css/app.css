@@ -1002,6 +1002,9 @@ select {
 .m-auto {
   margin: auto;
 }
+.m-4 {
+  margin: 1rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1009,6 +1012,18 @@ select {
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -1765,6 +1780,10 @@ select {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
 .font-medium {
   font-weight: 500;
 }
@@ -1938,6 +1957,10 @@ select {
 }
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
+}
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2426,6 +2449,10 @@ select {
     flex-basis: 33.333333%;
   }
 
+  .md\:basis-1\/2 {
+    flex-basis: 50%;
+  }
+
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2462,23 +2489,6 @@ select {
 
   .lg\:col-span-4 {
     grid-column: span 4 / span 4;
-  }
-
-  .lg\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .lg\:mb-6 {
-    margin-bottom: 1.5rem;
-  }
-
-  .lg\:h-auto {
-    height: auto;
-  }
-
-  .lg\:w-1\/4 {
-    width: 25%;
   }
 
   .lg\:basis-1\/4 {

@@ -1,8 +1,8 @@
-<div class="flex">
-  <div class="basis-1/4">
+<div class="flex flex-wrap mx-5">
+  <div class="basis-full mb-6 md:basis-1/2 lg:basis-1/4">
     LetsBG logo
   </div>
-  <div class="basis-1/4">
+  <div class="basis-full mb-6 md:basis-1/2 lg:basis-1/4">
     <h1 class="text-xl">Main menu</h1>
     <ul class="px-4 py-2">
       <li class="pt-1"><a href="{{ route('homepage') }}">Homepage</a></li>
@@ -14,7 +14,7 @@
       </li>
     </ul>
   </div>
-  <div class="basis-1/4">
+  <div class="basis-full mb-6 md:basis-1/2 lg:basis-1/4">
     <h1 class="text-xl">Products</h1>
     <ul class="px-4 py-2">
       <li class="pt-1"><a href="
@@ -30,7 +30,7 @@
     </ul>
   </div>
   @auth
-  <div class="basis-1/4">
+  <div class="basis-full mb-6 md:basis-1/2 lg:basis-1/4">
     <h1 class="text-xl">User</h1>
     <ul class="px-4 py-2">
       <li class="pt-1"><a href="{{ route('profile.show') }}">Account</a></li>

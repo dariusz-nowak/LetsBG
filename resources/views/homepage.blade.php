@@ -6,7 +6,7 @@
 @foreach ($gamesSections as $key => $games)
 <div class="mb-8">
   <div class="py-4 text-center text-xl font-semibold">
-    <h1>
+    <h1 class="text-2xl font-bold">
       @if ($key == 0) Newest and updated games
       @elseif ($key == 1) Bestsellers
       @elseif ($key == 2) Promotions
@@ -15,7 +15,7 @@
   </div>
   <div class="offer relative flex flex-wrap justify-between">
     @foreach ($games as $game)
-    <div class="relative mb-6 flex flex-col justify-between basis-full md:basis-1/3 lg:basis-1/4" style="">
+    <div class="relative  flex flex-col justify-between basis-full md:basis-1/2 lg:basis-1/4" style="">
       <div class="flex flex-col justify-between bg-zinc-50 h-full mx-2 pb-2 shadow-lg">
         <div>
           <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
@@ -87,17 +87,13 @@
       </div>
     </div>
     @endforeach
-    <div class="relative mb-6 flex flex-col justify-between basis-full md:basis-1/3 lg:basis-1/4" style="">
-      <div class="bg-zinc-50 h-full mx-2 pb-2 shadow-lg">
-        <p class="relative top-1/2 -translate-y-1/2 block w-full text-right lg:text-center">Show more...</p>
-          <a href="
-          @if ($key == 0) {{ route('offer.search', ['sort' => 'newest']) }}
-          @elseif ($key == 1) {{ route('offer.search', ['sort' => 'bestsellers']) }}
-          @elseif ($key == 2) {{ route('offer.search', ['promo' => 'on']) }}
-          @endif
-          " class="absolute top-0 right-0 w-full h-full"></a>
-        </p>
-      </div>
+    <div class="text-right w-full h-full ">
+      <a href="
+      @if ($key == 0) {{ route('offer.search', ['sort' => 'newest']) }}
+      @elseif ($key == 1) {{ route('offer.search', ['sort' => 'bestsellers']) }}
+      @elseif ($key == 2) {{ route('offer.search', ['promo' => 'on']) }}
+      @endif
+      " class="block mx-2 px-2 py-4">Show more...</a>
     </div>
   </div>
 </div>
