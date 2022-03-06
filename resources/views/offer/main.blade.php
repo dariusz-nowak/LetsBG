@@ -3,9 +3,9 @@
 @section('content')
 <div class="flex flex-wrap md:flex-nowrap">
   <div class="filters basis-full md:basis-2/6 lg:basis-1/4 xl:basis-1/6">
-    <div class="mb-4 shadow-lg">
+    <div class="mb-4 shadow-lg bg-zinc-50 border-2 border-zinc-100">
       <div class="filters-icon relative md:hidden">
-        <h1 class="text-2xl font-bold text-center border-2 py-2 rounded bg-slate-50">Filters</h1>
+        <h1 class="text-2xl font-bold text-center border-2 border-zinc-100 py-2 rounded bg-zinc-50">Filters</h1>
         <svg class="absolute top-1/2 right-4 -translate-y-1/2 h-7 w-7 text-black" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -16,15 +16,15 @@
         <fieldset class="py-2">
           <p class="pb-2 font-bold">Search</p>
           <div>
-            <label class="block"><input type="text" name="phrase" class="h-8 p-1 w-full bg-slate-50"
+            <label class="block"><input type="text" name="phrase" class="h-8 p-1 w-full"
                 value="{{ $request['phrase'] ?? '' }}"></label>
           </div>
         </fieldset>
         <fieldset class="py-2">
           <p class="pb-2 font-bold">Sort</p>
           <div>
-            <select name="sort" id="" class="w-full h-8 px-2 py-0 leading-none bg-slate-50">
-              <option value="">-- Choose an option --</option>
+            <select name="sort" id="" class="w-full h-8 px-2 py-0 leading-none">
+              <option value="">-- Options --</option>
               <option value="newest" @php if (isset($request['sort']) && $request['sort']==='newest' ) { echo 'selected'
                 ; } @endphp>Newest</option>
               <option value="bestsellers" @php if (isset($request['sort']) && $request['sort']==='bestsellers' ) {
@@ -46,7 +46,7 @@
             @foreach ($genres as $genre)
             <label class="block">
               <input type="checkbox" name="{{ $genre->name }}" value="category" @php if (isset($request[$genre->name]))
-              echo 'checked' @endphp class="bg-slate-50">
+              echo 'checked' @endphp>
               {{ $genre->name }}
             </label>
             @endforeach
@@ -60,7 +60,7 @@
               <input type="checkbox" name="{{ $producer->name }}" value="producer" @php if
                 (isset($request[$producer->name])) {
               echo 'checked';
-              } @endphp class="bg-slate-50">
+              } @endphp>
               {{ $producer->name }}
             </label>
             @endforeach
@@ -70,12 +70,12 @@
           <p class="pb-2 font-bold">Price</p>
           <div>
             <label class="free"><input type="checkbox" name="free_only" id="" @php if (isset($request['free_only'])) {
-                echo 'checked' ; } @endphp class="bg-slate-50">
+                echo 'checked' ; } @endphp>
               Free Only</label>
             <label class="prices block mt-2">
-              <input type="number" name="min_price" class="w-16 h-6 p-1 appearance-none bg-slate-50"
+              <input type="number" name="min_price" class="w-16 h-6 p-1 appearance-none"
                 value="{{ $request['min_price'] ?? '' }}"> -
-              <input type="number" name="max_price" class="w-16 h-6 p-1 appearance-none bg-slate-50"
+              <input type="number" name="max_price" class="w-16 h-6 p-1 appearance-none"
                 value="{{ $request['max_price'] ?? '' }}">
             </label>
           </div>
@@ -93,7 +93,7 @@
             @foreach ($languages as $language)
             <label class="block">
               <input type="checkbox" name="{{ $language }}" value="language" @php if (isset($request[$language]) ||
-                isset($requestLanguage)) echo 'checked' @endphp class="bg-slate-50">
+                isset($requestLanguage)) echo 'checked' @endphp>
               {{ $language }}
             </label>
             @endforeach
@@ -112,7 +112,7 @@
             @foreach ($ages as $age)
             <label class="block">
               <input type="checkbox" name="{{ $age }}" value="age" @php if (isset($request[$age])) echo 'checked'
-                @endphp class="bg-slate-50">
+                @endphp>
               {{ $age }}
             </label>
             @endforeach
@@ -122,13 +122,11 @@
           <p class="pb-2 font-bold">Other</p>
           <div class="flex flex-col">
             <label>
-              <input type="checkbox" name="promo" @php if (isset($request['promo'])) echo 'checked' @endphp
-                class="bg-slate-50"> Promotions
+              <input type="checkbox" name="promo" @php if (isset($request['promo'])) echo 'checked' @endphp> Promotions
             </label>
             @auth
             <label>
-              <input type="checkbox" name="owned" @php if (isset($request['owned'])) echo 'checked' @endphp
-                class="bg-slate-50"> Show Owned
+              <input type="checkbox" name="owned" @php if (isset($request['owned'])) echo 'checked' @endphp> Show Owned
             </label>
             @endauth
           </div>
@@ -148,7 +146,8 @@
       </div>
       @endforeach
     </div>
-    <div class="flex justify-center px-2">{{ $games->onEachSide(2)->appends(['language' => $language])->links() }}</div>
+    <div class="flex justify-center px-2">{{ $games->onEachSide(2)->appends(['language' => $requestLanguage ??
+      ''])->links() }}</div>
   </div>
 </div>
 @endsection

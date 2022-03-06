@@ -1,4 +1,4 @@
-<div class="product flex flex-col h-full mx-2 mb-5 bg-zinc-50">
+<div class="product flex flex-col h-full mx-2 mb-5 bg-zinc-50 border-2 border-zinc-100">
   <div class="name">
     <p class="text-center font-bold hover:scale-110 transition-all h-14"><a
         href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
@@ -60,6 +60,10 @@
           @else {{ route('login') }}" method="get"> @endif
           <input type="submit" value="Add to Library" class="block w-full py-2 cursor-pointer">
         </form>
+        @elseif (session('cartItems') && in_array($game->id, session('cartItems')))
+        <a href="{{ route('cart.show') }}">
+          <input type="submit" value="Show cart" class="block w-full py-2 cursor-pointer">
+        </a>
         @else
         <form action="{{ route('cart.add', ['game' => $game->id]) }}" method="post">
           @csrf

@@ -7,7 +7,7 @@
 @php $gamesSections = [$newGames, $bestsellers, $promotionGames] @endphp
 
 @foreach ($gamesSections as $key => $games)
-<div class="mx-4 mb-8">
+<div class="mb-8">
   <div class="pb-4 text-center text-xl font-semibold">
     <h1 class="text-2xl font-bold">
       @if ($key == 0) Newest and updated games

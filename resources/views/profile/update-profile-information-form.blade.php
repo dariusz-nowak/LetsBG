@@ -84,38 +84,40 @@
     @csrf
     <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
       <div class="flex flex-wrap">
-        <label for="fname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">First name<input type="text"
-            name="fname" class="block w-full border-gray-300 rounded-md"
+        <label for="fname" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/2">First name<input
+            type="text" name="fname" class="block w-full border-gray-300 rounded-md"
             value="{{ $userInformations->first_name}}"></label>
-        <label for="lname" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Last name<input type="text"
-            name="lname" class="block w-full border-gray-300 rounded-md"
+        <label for="lname" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/2">Last name<input
+            type="text" name="lname" class="block w-full border-gray-300 rounded-md"
             value="{{ $userInformations->last_name}}"></label>
-        <label for="phone" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Phone<input type="tel"
-            name="phone" class="block w-full border-gray-300 rounded-md" value="{{ $userInformations->phone}}"></label>
-        <label for="currency" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">
+        <label for="phone" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/2">Phone<input
+            type="tel" name="phone" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->phone}}"></label>
+        <label for="currency" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/4">
           Currency
           <select name="currency" class="block w-full border-gray-300 rounded-md">
             <option value="USD" @if ($userSettings->currency == 'USD') selected @endif>USD</option>
             <option value="PLN" @if ($userSettings->currency == 'PLN') selected @endif>PLN</option>
           </select>
         </label>
-        <label for="language" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">
+        <label for="language" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/4">
           Language
           <select name="language" class="block w-full border-gray-300 rounded-md">
             <option value="english" @if ($userSettings->language == 'english') selected @endif>English</option>
             <option value="polish" @if ($userSettings->language == 'polish') selected @endif>Polish</option>
           </select>
         </label>
-        <label for="address" class="basis-3/4 pr-4 pb-4 font-medium text-sm text-gray-700">Address<input type="text"
-            name="address" class="block w-full border-gray-300 rounded-md"
+        <label for="address" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-3/4">Address<input
+            type="text" name="address" class="block w-full border-gray-300 rounded-md"
             value="{{ $userInformations->address}}"></label>
-        <label for="pcode" class="basis-1/4 pr-4 pb-4 font-medium text-sm text-gray-700">Post Code<input type="text"
-            name="pcode" class="block w-full border-gray-300 rounded-md"
+        <label for="pcode" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/4">Post Code<input
+            type="text" name="pcode" class="block w-full border-gray-300 rounded-md"
             value="{{ $userInformations->post_code}}"></label>
-        <label for="city" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">City<input type="text"
-            name="city" class="block w-full border-gray-300 rounded-md" value="{{ $userInformations->city}}"></label>
-        <label for="country" class="basis-1/2 pr-4 pb-4 font-medium text-sm text-gray-700">Country<input type="text"
-            name="country" class="block w-full border-gray-300 rounded-md"
+        <label for="city" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/2">City<input
+            type="text" name="city" class="block w-full border-gray-300 rounded-md"
+            value="{{ $userInformations->city}}"></label>
+        <label for="country" class="basis-full pr-4 pb-4 font-medium text-sm text-gray-700 lg:basis-1/2">Country<input
+            type="text" name="country" class="block w-full border-gray-300 rounded-md"
             value="{{ $userInformations->country}}"></label>
       </div>
     </div>

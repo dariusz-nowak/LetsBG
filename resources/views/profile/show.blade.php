@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="" method="get" class="accound-details flex w-full shadow-md">
+<form action="" method="get" class="accound-details flex flex-col w-full shadow-md lg:flex-row">
   <input
     class="basis-1/5 py-3  cursor-pointer hover:bg-gray-800 hover:text-white transition-all @if (!$request->page || $request->page === 'Profile informations') active @endif "
     type="submit" name='page' value="Profile informations">
@@ -21,7 +21,7 @@
 </form>
 
 <x-app-layout>
-  <div class="py-16">
+  <div class="lg:py-16">
     @if ($request->page === 'Change password')
     @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
     <div class="mt-10 sm:mt-0">

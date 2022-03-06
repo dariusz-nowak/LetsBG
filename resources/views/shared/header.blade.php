@@ -1,11 +1,11 @@
-<div class="fixed w-full border-b-2 bg-slate-100 border-gray-50 shadow-md z-50">
+<div class="fixed w-full border-b-2 bg-zinc-50 border-gray-50 shadow-md z-50">
   <div class="flex max-w-screen-xl mx-auto px-5 pt-3 pb-2 xl:px-0">
     <div class="nav basis-5/12">
       <svg class="nav-icon h-6 w-6 text-black md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
       <div
-        class="nav-container flex flex-col absolute top-11 left-0 h-0 px-5 py-2 w-full bg-gray-100 border-b-2 overflow-hidden invisible transition-all md:relative md:top-0 md:h-auto md:flex-row md:p-0 md:border-none md:visible">
+        class="nav-container flex flex-col absolute top-11 left-0 h-0 px-5 py-2 w-full bg-zinc-50 border-b-2 overflow-hidden invisible transition-all md:relative md:top-0 md:h-auto md:flex-row md:p-0 md:border-none md:visible">
         <a href="{{ route('homepage') }}" class="block px-2 py-1 font-semibold">Home</a>
         <a href="
         @auth {{ route('offer.show', ['language' => $userSettings->language ]) }}
@@ -45,9 +45,9 @@
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
-        <div class="user-container absolute top-11 left-0 w-full h-0 px-5 py-2 bg-gray-100 border-b-2 overflow-hidden invisible transition-all xl:px-0">
-          <div
-            class="flex justify-end max-w-screen-xl mx-auto">
+        <div
+          class="user-container absolute top-11 left-0 w-full h-0 px-5 py-2 bg-gray-100 border-b-2 overflow-hidden invisible transition-all xl:px-0">
+          <div class="flex justify-end max-w-screen-xl mx-auto">
             @auth
             <a href="{{ route('profile.show') }}" class="block p-2 font-semibold">Profile</a>
             <a href="{{ route('library.show') }}" class="block p-2 font-semibold">Library</a>

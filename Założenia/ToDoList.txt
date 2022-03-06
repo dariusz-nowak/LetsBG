@@ -1,5 +1,3 @@
-Stworzyć widok kafelka z grą i wczytywać na stronie głównej i ofercie w zależności od przekazanych danych
-
 Game
 - Widok gry
 
