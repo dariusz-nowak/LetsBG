@@ -3,7 +3,7 @@
 @section('content')
 <div class="newest mb-24">
   <div class="pb-4 text-center text-xl font-semibold">
-    <h1 class="text-2xl font-bold">Newest and updated games</h1>
+    <h1 class="text-2xl font-bold mb-4">Newest and updated games</h1>
   </div>
   <div class="offer relative flex flex-wrap justify-between">
     @foreach ($newGames as $game)
@@ -19,17 +19,19 @@
 
 <div class="bestsellers mb-24">
   <div class="pb-4 text-center text-xl font-semibold">
-    <h1 class="text-2xl font-bold">Bestsellers</h1>
+    <h1 class="text-2xl font-bold mb-4">Bestsellers</h1>
   </div>
-  <div class="products relative -bottom-48 opacity-0 flex flex-wrap justify-between transition-all"  style="transition-duration: 1500ms; min-height: 400px">
+  <div class="products relative -bottom-48 opacity-0 flex flex-wrap justify-between transition-all"
+    style="transition-duration: 1500ms; min-height: 400px">
   </div>
 </div>
 
 <div class="promotions mb-24">
   <div class="pb-4 text-center text-xl font-semibold">
-    <h1 class="text-2xl font-bold">Promotions</h1>
+    <h1 class="text-2xl font-bold mb-4">Promotions</h1>
   </div>
-  <div class="products relative -bottom-48 opacity-0 flex flex-wrap justify-between transition-all" style="transition-duration: 1500ms; min-height: 400px">
+  <div class="products relative -bottom-48 opacity-0 flex flex-wrap justify-between transition-all"
+    style="transition-duration: 1500ms; min-height: 400px">
   </div>
 </div>
 
@@ -37,7 +39,7 @@
   $(document).ready(function(){
     function loadBestsellers() {
       if(!document.querySelector('.bestsellers').classList.contains('active')) {
-        if( $(window).scrollTop() + $(window).height() > document.querySelector('.bestsellers').offsetTop) {
+        if( $(window).scrollTop() + $(window).height() > document.querySelector('.bestsellers').offsetTop + 200) {
           $('.bestsellers .products').load('/load/bestsellers')
           document.querySelector('.bestsellers').classList.add('active')
         }
@@ -48,7 +50,7 @@
 
     function loadPromotions() {
       if(!document.querySelector('.promotions').classList.contains('active')) {
-        if ($(window).scrollTop() + $(window).height() > document.querySelector('.promotions').offsetTop) {
+        if ($(window).scrollTop() + $(window).height() > document.querySelector('.promotions').offsetTop + 200) {
           $('.promotions .products').load('/load/promotions')
           document.querySelector('.promotions').classList.add('active')
         }

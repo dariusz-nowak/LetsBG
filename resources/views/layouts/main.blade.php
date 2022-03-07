@@ -17,10 +17,12 @@
   <div class="content relative top-14" style="min-height: calc(100vh - 360px)" class="">
     @if ($_SERVER['REQUEST_URI'] === '/')
     <div class="banner relative shadow-lg">
-      <div class="image w-full h-96 bg-bottom bg-cover brightness-50" style="background-image: url('images/banner.jpg')"></div>
+      <div class="image w-full bg-center bg-cover brightness-50"
+        style="height: calc(125vh/2);background-image: url('images/banner.png')">
+      </div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-zinc-50">
         <h1 class="text-4xl font-bold lg:text-7xl">Let's boardgame!</h1>
-        <p class="py-4 text-3xl">Check your skills, play and win</p>
+        <p class="py-4 text-3xl">Check your skills, play and have fun!</p>
       </div>
     </div>
     @endif

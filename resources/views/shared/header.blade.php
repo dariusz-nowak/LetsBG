@@ -18,8 +18,9 @@
     </div>
     <div class="menu basis-7/12 flex justify-end md:basis-5/12">
       <div class="favorites mx-2 py-1">
-        <svg onclick="loadFavorites()" class="fav-icon h-6 w-6 text-black cursor-pointer" width="24" height="24" viewBox="0 0 24 24"
-          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg onclick="loadFavorites()" class="fav-icon h-6 w-6 text-black cursor-pointer" width="24" height="24"
+          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" />
           <rect x="2" y="6" width="20" height="12" rx="2" />
           <path d="M6 12h4m-2 -2v4" />
@@ -29,19 +30,26 @@
         <div
           class="fav-container absolute top-11 left-0 w-full h-0 px-5 py-2 bg-gray-100 border-b-2 text-right overflow-x-auto overflow-y-hidden invisible whitespace-nowrap transition-all">
         </div>
+        @auth
         <script type="text/javascript">
           function loadFavorites() {
             if(!document.querySelector('.fav-icon').classList.contains('loaded')){
-              console.log('działa')
               document.querySelector('.fav-icon').classList.add('loaded')
-            $('.fav-container').load('/library/favorites')
+              $('.fav-container').load('/library/favorites')
             }
           }
         </script>
+        @else
+        <script>
+          function loadFavorites() {
+            window.location.replace("/login");
+          }
+        </script>
+        @endauth
       </div>
       <div class="profile mx-2 py-1">
-        <svg class="user-icon h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+        <svg class="user-icon h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
@@ -63,7 +71,8 @@
         </div>
       </div>
       <div class="messages mx-2 py-1">
-        <svg class="search-icon h-6 w-6 cursor-pointer text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="search-icon h-6 w-6 cursor-pointer text-black" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
@@ -73,8 +82,8 @@
       </div>
       <div class="cart relative mx-2 py-1">
         <a href="{{ route('cart.show') }}">
-          <svg class="h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg class="h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1" />
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />

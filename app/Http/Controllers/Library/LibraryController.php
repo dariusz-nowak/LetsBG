@@ -27,7 +27,7 @@ class LibraryController extends Controller {
   }
 
   public function favorites() {
-    return view('shared.laod.favoriteGames', [
+    return view('shared.load.favoriteGames', [
       'favoriteGames' => $this->libraryRepository->getFavorites()
     ]);
   }
