@@ -26,6 +26,15 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ViewShareMiddleware::class], function () {
   Route::get('/', [Homepage::class, 'load'])->name('homepage');
 
+  // Dynamiczne wczytywanie treści
+  Route::group([
+    'prefix' => 'load', // ścieżka początkowa do przekierowania
+    'as' => 'load.' // ścieżka początkowa do nazwy
+  ], function () {
+    Route::get('bestsellers', [Homepage::class, 'loadBestsellers']);
+    Route::get('promotions', [Homepage::class, 'loadPromotions']);
+  });
+
   // Oferta
   Route::group([
     'prefix' => 'offer', // ścieżka początkowa do przekierowania

@@ -25,6 +25,12 @@
   max-height: 1000px;
 }
 
+.bestsellers.active .products,
+.promotions.active .products {
+  bottom: 0px;
+  opacity: 1
+}
+
 .library-game:hover .play {
   opacity: .5;
 }

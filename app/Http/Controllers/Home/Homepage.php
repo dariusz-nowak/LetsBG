@@ -21,10 +21,22 @@ class Homepage extends Controller {
   public function load() {
     return view('homepage', [
       'newGames' => $this->offerRepository->getNewest(),
+    ]);
+  }
+
+  public function loadBestsellers() {
+    return view('shared.load.bestsellers', [
       'bestsellers' => $this->offerRepository->getBestsellers(),
+    ]);
+  }
+
+
+  public function loadPromotions() {
+    return view('shared.load.promotions', [
       'promotionGames' => $this->offerRepository->getPromotions(),
     ]);
   }
+
   public function redirect() {
     return redirect('/');
   }
