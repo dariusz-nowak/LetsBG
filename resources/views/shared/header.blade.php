@@ -18,7 +18,7 @@
     </div>
     <div class="menu basis-7/12 flex justify-end md:basis-5/12">
       <div class="favorites mx-2 py-1">
-        <svg onclick="loadFavorites()" class="fav-icon h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24"
+        <svg onclick="loadFavorites()" class="fav-icon h-6 w-6 text-black cursor-pointer" width="24" height="24" viewBox="0 0 24 24"
           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" />
           <rect x="2" y="6" width="20" height="12" rx="2" />
@@ -40,7 +40,7 @@
         </script>
       </div>
       <div class="profile mx-2 py-1">
-        <svg class="user-icon h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        <svg class="user-icon h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="messages mx-2 py-1">
-        <svg class="search-icon h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="search-icon h-6 w-6 cursor-pointer text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
@@ -73,7 +73,7 @@
       </div>
       <div class="cart relative mx-2 py-1">
         <a href="{{ route('cart.show') }}">
-          <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          <svg class="h-6 w-6 text-black cursor-pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1" />
             <circle cx="20" cy="21" r="1" />

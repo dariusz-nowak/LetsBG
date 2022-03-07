@@ -14,10 +14,19 @@
   <header>
     @include('shared.header')
   </header>
-  <div class="content relative top-10" style="min-height: calc(100vh - 360px)">
+  <div class="content relative top-14" style="min-height: calc(100vh - 360px)" class="">
+    @if ($_SERVER['REQUEST_URI'] === '/')
+    <div class="banner relative shadow-lg">
+      <div class="image w-full h-96 bg-bottom bg-cover brightness-50" style="background-image: url('images/banner.jpg')"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-zinc-50">
+        <h1 class="text-4xl font-bold lg:text-7xl">Let's boardgame!</h1>
+        <p class="py-4 text-3xl">Check your skills, play and win</p>
+      </div>
+    </div>
+    @endif
     <div class="max-w-screen-xl m-auto pt-10 px-4 xl:px-0">
       @if ($errors->any())
-      <div class=" messages mb-10">
+      <div class="messages mb-10">
         @include('shared.errors')
       </div>
       @endif
