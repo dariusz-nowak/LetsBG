@@ -1,4 +1,4 @@
-<div class="product flex flex-col h-full mx-2 mb-5 bg-zinc-50 border-2 border-zinc-100">
+<div class="product flex flex-col h-full mx-2 mb-5 bg-zinc-50 border-2 border-zinc-100 shadow-lg">
   <div class="name">
     <p class="text-center font-bold hover:scale-110 transition-all h-14"><a
         href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"

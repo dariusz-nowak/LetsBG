@@ -2,19 +2,9 @@
 
 @section('content')
 
-
-{{-- <div class="text-center">
-  <p class="py-2">{{ $game->name }}</p>
-  <p class="py-2"></p>
-  <p class="py-2">{{ $game->short_description }}</p>
-  <p class="py-2">{{ $game->languages }}</p>
-  <p class="py-2">{{ $game->image }}</p>
-  <p class="py-2">{{ $game->price }} {{ $game->price_currency }}</p>
-</div> --}}
-
-<div class="product flex flex-col text-center font-bold">
+<div class="product flex flex-col text-center">
   <div class="name h-14">
-    <h1 class="relative top-1/2 -translate-y-1/2 block">{{ $game->name }}</h1>
+    <h1 class="relative top-1/2 -translate-y-1/2 block font-bold">{{ $game->name }}</h1>
   </div>
   <div>
     <div class="carousel">
@@ -25,12 +15,24 @@
 
       </div>
     </div>
-    <div class="informations">
-      <p class="short-description"></p>
-      <div class="language"></div>
-      <div class="producer"></div>
-      <div class="price"></div>
-      <div class="buttons">
+    <div class="informations my-4">
+      <div class="language flex justify-between">
+        <p>Language</p>
+        <p>{{ $game->language }}</p>
+      </div>
+      <div class="producer flex justify-between">
+        <p>Producers</p>
+        <p>
+          @foreach ($game->producers as $producer)
+          <span>{{ $producer->name }}</span>
+          @endforeach
+        </p>
+      </div>
+      <div class="price flex justify-between">
+        <p>Price</p>
+        <p>{{ $game->price }} {{ $game->price_currency }}</p>
+      </div>
+      <div class="buttons mt-4">
         <button class="w-full bg-gray-50 hover:bg-gray-700 hover:text-white transition-all">
           @if (Auth::check() && !$game->users->isEmpty())
           <a href="{{ route('library.show') }}">
@@ -57,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="description">
+  <div class="description my-4">
     {{ $game->description }}
   </div>
 </div>
