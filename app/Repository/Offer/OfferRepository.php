@@ -74,7 +74,7 @@ class OfferRepository implements OfferRepositoryInterface {
   }
 
   public function getGame($gameId) {
-    return $this->gameModel->with('genres')
+    return $this->gameModel->with('genres')->with('screenshot')
       ->find($gameId);
   }
   public function getNewest() {

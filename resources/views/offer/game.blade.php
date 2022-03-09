@@ -1,18 +1,39 @@
 @extends('layouts.main')
 
 @section('content')
-
 <div class="product flex flex-col text-center">
   <div class="name h-14">
     <h1 class="relative top-1/2 -translate-y-1/2 block font-bold">{{ $game->name }}</h1>
   </div>
   <div>
     <div class="carousel">
-      <div class="image">
-        <img src="{{ $game->image }}" alt="" class="w-full">
+      <div class="image relative">
+        <p class="arrow-left absolute top-0 left-0 w-1/6 h-full cursor-pointer transition-all">
+          <svg class="relative top-1/2 -translate-y-1/2 h-10 w-full text-black center"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </p>
+        <img src="{{ $game->image }}" alt="" class="w-full cursor-pointer">
+        <p class="arrow-right absolute top-0 right-0 w-1/6 h-full cursor-pointer transition-all">
+          <svg class="relative top-1/2 -translate-y-1/2 h-10 w-full text-black center"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </p>
       </div>
-      <div class="thumbnails">
-
+      <div class="thumbnails relative">
+        <p class="arrow-left absolute top-0 left-0 w-8 h-full cursor-pointer transition-all">
+          <svg class="relative top-1/2 -translate-y-1/2 h-6 w-full text-black center"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </p>
+        <div class="images whitespace-nowrap">
+          @foreach ($game->screenshot as $key => $screenshot)<div class="w-1/3 inline-block cursor-pointer"><img src="{{ $screenshot->thumbnail }}" class="p-2"></div>@endforeach
+        </div>
+        <p class="arrow-right absolute top-0 right-0 w-8 h-full cursor-pointer transition-all">
+          <svg class="relative top-1/2 -translate-y-1/2 h-6 w-full text-black center"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </p>
       </div>
     </div>
     <div class="informations my-4">

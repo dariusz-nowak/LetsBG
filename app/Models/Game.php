@@ -11,6 +11,9 @@ class Game extends Model {
     'user_id', 'game_id'
   ];
 
+  public function screenshot() {
+    return $this->hasMany('App\Models\Screenshot', 'game_id');
+  }
   public function genres() {
     return $this->belongsToMany('App\Models\Genre', 'pivot_games_genres');
   }

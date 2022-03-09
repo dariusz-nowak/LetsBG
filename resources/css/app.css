@@ -44,6 +44,10 @@
   display: none;
 }
 
+.arrow-left:hover, .arrow-right:hover {
+  background-color: rgba(0,0,0,.2);
+}
+
 .accound-details input.active {
   background-color: rgb(31 41 55);
   color: white;

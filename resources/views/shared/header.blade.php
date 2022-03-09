@@ -1,7 +1,7 @@
 <div class="fixed w-full border-b-2 bg-zinc-50 border-gray-50 shadow-md z-50">
   <div class="flex max-w-screen-xl mx-auto px-5 pt-3 pb-2 xl:px-0">
     <div class="nav basis-5/12">
-      <svg class="nav-icon h-6 w-6 text-black md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg class="nav-icon h-6 w-6 text-black cursor-pointer md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
       <div
