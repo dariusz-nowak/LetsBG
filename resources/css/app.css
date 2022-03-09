@@ -44,8 +44,14 @@
   display: none;
 }
 
-.arrow-left:hover, .arrow-right:hover {
-  background-color: rgba(0,0,0,.2);
+.arrow-left,
+.arrow-right {
+  background-color: rgba(0, 0, 0, .025);
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+  background-color: rgba(0, 0, 0, .2);
 }
 
 .accound-details input.active {

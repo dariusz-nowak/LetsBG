@@ -1,5 +1,5 @@
 Game
-- Widok gry
+- Widok gry dla 768px
 
 Library:
 - Oddzielić ulubione i zwykłe od nielubianych
