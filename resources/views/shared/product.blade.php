@@ -20,7 +20,11 @@
     </div>
   </div>
   <div class="description basis-full mx-4 my-2">
-    <p class="text-sm text-center">{{ $game->short_description }}</p>
+    <p class="text-sm text-center">
+      @php $shortDescription = explode(' ', $game->short_description) @endphp
+      @for ($i=0;$i<36;$i++) {{ $shortDescription[$i] }} @endfor
+      ...
+    </p>
   </div>
   <div class="informations mx-4 my-2">
     <div class="language flex justify-between">

@@ -3,21 +3,21 @@
 @section('content')
 <div class="product flex flex-col text-center">
   <div class="name h-14">
-    <h1 class="relative top-1/2 -translate-y-1/2 block font-bold">{{ $game->name }}</h1>
+    <h1 class="relative top-1/2 -translate-y-1/2 block font-bold md:text-2xl">{{ $game->name }}</h1>
   </div>
   <div class="flex flex-col md:flex-row">
-    <div class="carousel md:basis-2/5 lg:basis-1/3">
-      <div class="image relative">
+    <div class="carousel md:basis-1/2 lg:basis-2/5">
+      <div class="image relative h-80">
         <p onclick="changeActiveImage('left')"
-          class="arrow-left absolute top-0 left-0 w-1/6 h-full cursor-pointer transition-all">
+          class="arrow-left absolute top-0 left-0 w-1/6 h-full cursor-pointer transition-all z-10">
           <svg class="relative top-1/2 -translate-y-1/2 h-10 w-full text-black center" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </p>
-        <img src="{{ $game->image }}" alt="" class="w-full cursor-pointer">
+        <img src="{{ $game->image }}" alt="" class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-full cursor-pointer">
         <p onclick="changeActiveImage('right')"
-          class="arrow-right absolute top-0 right-0 w-1/6 h-full cursor-pointer transition-all">
+          class="arrow-right absolute top-0 right-0 w-1/6 h-full cursor-pointer transition-all z-10">
           <svg class="relative top-1/2 -translate-y-1/2 h-10 w-full text-black center" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -33,11 +33,11 @@
           </svg>
         </p>
         <div class="relative left-0 whitespace-nowrap overflow-hidden -mx-2" style="font-size:0">
-          <div class="images relative left-0 transition-all">
+          <div class="images relative left-0 transition-all max-h-20">
             @foreach ($game->screenshot as $key => $screenshot)
-            <div onclick="loadScreen({{ $key }})" class="w-1/3 inline-block cursor-pointer"
+            <div onclick="loadScreen({{ $key }})" class="w-1/3 h-20 inline-block cursor-pointer"
               style="font-size:0;letter-spacing:-1px">
-              <img src="{{ $screenshot->thumbnail }}" class="w-full p-2">
+              <img src="{{ $screenshot->thumbnail }}" class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block max-h-full p-2">
             </div>
             @endforeach
           </div>
@@ -74,9 +74,9 @@
         document.querySelector('.images').style.left = -Math.round(document.querySelector('.images').clientWidth / 3) * thumbnailsPosition + 'px'
       }
     </script>
-    <div class="informations flex flex-col justify-around my-4 md:basis-3/5 md:mt-0 md:mb-2 md:px-4 lg:basis-2/3">
-      <div class="short-description">{{ $game->short_description }}</div>
-      <div class="details">
+    <div class="informations flex flex-col justify-between md:basis-1/2 md:pl-4 lg:basis-3/5">
+      <div class="short-description my-2 md:w-11/12 md:h-full md:my-0 md:mx-auto"><p class="md:relative md:top-1/2 md:-translate-y-1/2 md:block">{{ $game->short_description }}</p></div>
+      <div class="details my-2 md:w-10/12 md:my-0 md:mx-auto lg:w-1/2 lg:mr-4">
         <div class="language flex justify-between">
           <p>Language</p>
           <p>{{ $game->language }}</p>
@@ -122,6 +122,7 @@
     </div>
   </div>
   <div class="description my-4">
+    <h1 class="w-full text-center text-3xl py-4">Description</h1>
     {{ $game->description }}
   </div>
 </div>

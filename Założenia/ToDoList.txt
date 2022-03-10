@@ -1,9 +1,12 @@
-Game
-- Widok gry dla 768px
-
 Library:
-- Oddzielić ulubione i zwykłe od nielubianych
 - Dodać ocenianie gier (?)
+  - Dodać widok najlepiej ocenianych gier do strony głównej
+  - Dodać sortowanie po najlepiej ocenianych
+- Oddzielić ulubione i zwykłe od nielubianych
+
+Messages (Mail):
+- Dodać widok wiadomości prywatnych
+- Oprogramować wiadomości prywatne
 
 Cart:
 - Powrót do oferty
@@ -11,10 +14,6 @@ Cart:
 - Dodać czyszczenie koszyka względem waluty
 - Dodać kroki zamówienia
 - Dodać widok pustego koszyka
-
-Messages (Mail):
-- Dodać widok wiadomości prywatnych
-- Oprogramować wiadomości prywatne
 
 Policy:
 - Dodać politykę prywatności

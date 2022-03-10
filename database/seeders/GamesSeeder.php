@@ -16,6 +16,7 @@ class GamesSeeder extends Seeder {
    */
   public function run() {
     DB::table('games')->truncate();
+    DB::table('screenshots')->truncate();
     DB::table('pivot_games_genres')->truncate();
     DB::table('pivot_games_producers')->truncate();
     DB::table('pivot_games_promotions')->truncate();
@@ -30,9 +31,9 @@ class GamesSeeder extends Seeder {
     for ($i = 1; $i < $gamesCount + 1; $i++) {
       $langWithpriceCurrency = $faker->randomElement([['english', 'USD'], ['polish', 'PLN']]);
       $games[] = [
-        'name' => $faker->words($faker->numberBetween(1, 3), true),
-        'description' => $faker->sentence(64, true),
-        'short_description' => $faker->sentence(16, true),
+        'name' => $faker->words($faker->numberBetween(1, 5), true),
+        'description' => $faker->sentence(512, true),
+        'short_description' => $faker->sentence(64, true),
         'language' => $langWithpriceCurrency[0],
         'image' => 'https://picsum.photos/seed/picsum/300/300',
         'price' => $faker->randomElement([$faker->randomFloat(2, 10, 200), 0]),
@@ -63,9 +64,19 @@ class GamesSeeder extends Seeder {
           ];
         }
       }
+      for ($j = 0; $j < $faker->numberBetween(2, 8); $j++) {
+        $screenshots[] = [
+          'game_id' => $i,
+          'thumbnail' => 'https://picsum.photos/seed/picsum/' . $faker->randomElement([100, 200, 300]) . '/' . $faker->randomElement([100, 200, 300]) . '',
+          'url' => 'https://picsum.photos/seed/picsum/' . $faker->randomElement([400, 500, 600]) . '/' . $faker->randomElement([400, 500, 600]) . '',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
+        ];
+      }
     }
 
     DB::table('games')->insert($games);
+    DB::table('screenshots')->insert($screenshots);
     DB::table('pivot_games_genres')->insert($pivotGenres);
     DB::table('pivot_games_producers')->insert($pivotProducers);
     DB::table('pivot_games_promotions')->insert($pivotPromotions);

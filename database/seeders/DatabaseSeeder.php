@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder {
       ProducersSeeder::class,
       PromotionsSeeder::class,
       GamesSeeder::class,
-      ScreenshotsSeeder::class,
       UsersSeeder::class,
     ]);
   }
