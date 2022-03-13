@@ -31,4 +31,10 @@ class LibraryController extends Controller {
       'favoriteGames' => $this->libraryRepository->getFavorites()
     ]);
   }
+  public function loadGameDetails($gameId) {
+    return view('shared.load.loadGameDetails', [
+      'game' => $this->libraryRepository->getGame($gameId),
+      'gameId' => $gameId
+    ]);
+  }
 }

@@ -40,7 +40,7 @@
     function loadBestsellers() {
       if(!document.querySelector('.bestsellers').classList.contains('active')) {
         if( $(window).scrollTop() + $(window).height() > document.querySelector('.bestsellers').offsetTop + 200) {
-          $('.bestsellers .products').load('/load/bestsellers')
+          $('.bestsellers .products').load('{{ route('load.bestsellers') }}')
           document.querySelector('.bestsellers').classList.add('active')
         }
       } else window.removeEventListener("scroll", loadBestsellers)
@@ -51,7 +51,7 @@
     function loadPromotions() {
       if(!document.querySelector('.promotions').classList.contains('active')) {
         if ($(window).scrollTop() + $(window).height() > document.querySelector('.promotions').offsetTop + 200) {
-          $('.promotions .products').load('/load/promotions')
+          $('.promotions .products').load('{{ route('load.promotions') }}')
           document.querySelector('.promotions').classList.add('active')
         }
       } else window.removeEventListener("scroll", loadPromotions)

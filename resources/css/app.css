@@ -21,8 +21,14 @@
   overflow: visible;
 }
 
-.filters-container.active {
+.filters-container.active,
+.gamesLists .games.active,
+.gamesLists.active {
   max-height: 1000px;
+}
+
+.gamesLists h1:hover svg {
+  display: block;
 }
 
 .bestsellers.active .products,
@@ -44,14 +50,13 @@
   display: none;
 }
 
-.arrow-left,
-.arrow-right {
+/* .arrow-left,.arrow-right {
   background-color: rgba(0, 0, 0, .025);
-}
+} */
 
 .arrow-left:hover,
 .arrow-right:hover {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, .1);
 }
 
 .accound-details input.active {

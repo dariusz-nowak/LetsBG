@@ -1,87 +1,57 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="library relative">
-  <div class="list absolute top-0">
-    <button class="h-10">Game list</button>
-    <div class="games">
-
+<div class="library relative md:flex">
+  <div class="list md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+    <button class="relative w-full text-2xl font-bold text-center border-2 border-zinc-100 py-2 rounded bg-zinc-50">
+      Game list
+      <svg class="absolute top-1/2 right-4 -translate-y-1/2 h-7 w-7 text-black md:hidden" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+    <div class="gamesLists active max-h-0 overflow-hidden transition-all">
       @php $favorites = $remaining = $hidden = [];
       foreach($games as $game) foreach ($game->users as $user) {
       if ($user->pivot->favorite === 1) $favorites[] = $game;
-      elseif ($user->pivot->hidden === 0) $remaining[] = $game;
-      else $hidden[] = $game;} @endphp
-
-      <div class="favoriteGames">
-        <h1>Favorite:</h1>
-        <div class="games"></div>
-      </div>
-      <div class="remainingGames">
-        <h1>Games:</h1>
-        <div class="games"></div>
-      </div>
-      <div class="hiddenGames">
-        <h1>Hidden:</h1>
-        <div class="games"></div>
-      </div>
-    </div>
-  </div>
-  <div class="game">
-    {{-- <h1>{{ $game->name }}</h1>
-    <div class="description">{{ $game->description }}</div>
-    <button class="lobby">Lobby</button> --}}
-  </div>
-</div>
-
-{{-- <div class="library flex flex-wrap justify-around">
-  @foreach ($games as $game)
-  <div
-    class="relative mb-4 flex flex-col shadow-lg @foreach ($game->users as $user) {{ !$user->pivot->favorite ? (!$user->pivot->hidden ? '' : 'order-last') : 'order-first'}} @endforeach"
-    style="flex-basis:24%">
-    <div class="flex flex-col justify-between h-full">
-      <div>
-        <p class="text-center text-base font-bold hover:scale-110 transition-all h-14"><a
-            href="{{ route('offer.gameDetails', ['game' => $game->id . ',' . $game->name]) }}"
-            class="relative top-1/2 -translate-y-1/2 block p-4">{{ $game->name }}</a>
-        </p>
-        <div class="relative">
-          <img src="{{ $game->image }}" alt="">
+      elseif ($user->pivot->hidden === 1) $hidden[] = $game;
+      else $remaining[] = $game;}
+      $sortGames = [$favorites, $remaining, $hidden]; @endphp
+      @foreach ($sortGames as $key => $games)
+      <div class="my-3 overflow-hidden">
+        <h1 class="relative text-center border-2 border-zinc-100 rounded bg-zinc-50 cursor-pointer">
+          @if ($key === 0) Favorite @elseif ($key === 1) Games @else Hidden @endif
+          <svg class="arrow-down absolute top-1/2 right-4 -translate-y-1/2 h-4 w-4 text-black md:hidden" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </h1>
+        <div class="games @if ($key !== 2)active @endif max-h-0 cursor-pointer transition-all">
+          <ul class="mb-2">
+            @foreach ($games as $game)
+            <li onclick="loadGame({{ $game->id }})"
+              class="p-2 text-sm border-b-2 border-zinc-100 cursor-pointer hover:bg-gray-700 hover:text-white transition-all">
+              {{
+              $game->name }}
+            </li>
+            @endforeach
+          </ul>
         </div>
       </div>
-    </div>
-    <div class="flex">
-      <form action="{{ route('library.checkGameStatus', ['game' => $game, 'status' => 'fav']) }}" method="post"
-        class="basis-1/6 bg-gray-50 hover:bg-gray-700 transition-all">
-        @csrf
-        <button class="block w-full py-2">
-          <svg
-            class="relative left-1/2 -translate-x-1/2 h-6 w-6 @foreach ($game->users as $user) {{ !$user->pivot->favorite ? 'text-black' : 'text-yellow-500'}} @endforeach"
-            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <path
-              d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
-          </svg>
-        </button>
-      </form>
-      <button class="basis-4/6 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all">
-        <a href="" class="block py-2">Join to the lobby</a>
-      </button>
-      <form action="{{ route('library.checkGameStatus', ['game' => $game, 'status' => 'hid']) }}" method="post"
-        class="basis-1/6 bg-gray-50 hover:bg-gray-700 hover:text-white transition-all">
-        @csrf
-        <button class="w-full block py-2">
-          <svg
-            class="relative left-1/2 -translate-x-1/2 h-6 w-6 @foreach ($game->users as $user) {{ !$user->pivot->hidden ? 'text-black' : 'text-red-500'}} @endforeach"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
-          </svg>
-        </button>
-      </form>
+      @endforeach
     </div>
   </div>
-  @endforeach
-</div> --}}
-
+  <div class="game my-4 opacity-100 transition-all md:basis-3/4 md:ml-4 md:mt-0 lg:basis-4/5 xl:basis-5/6"></div>
+  <script type="text/javascript">
+    function loadGame($gameId) {
+      document.querySelector('.game').style.opacity = 0;
+      $('.game').load('/library/loadGameDetails/' + $gameId, function() {
+        document.querySelector('.game').style.opacity = 1;
+      });
+    }
+    loadGame('{{ $favorites[0]->id }}')
+    document.querySelector('.list button').addEventListener('click', () => document.querySelector('.gamesLists').classList.toggle('active'))
+    document.querySelectorAll('.gamesLists h1').forEach(e => e.addEventListener('click', () => e.nextElementSibling.classList.toggle('active')))
+  </script>
+</div>
 @endsection

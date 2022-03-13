@@ -1,5 +1,3 @@
-Edycja widoku biblioteki gier
-
 Library:
 - Dodać ocenianie gier (?)
   - Dodać widok najlepiej ocenianych gier do strony głównej
@@ -63,4 +61,3 @@ Treść
 
 Lobby:
 - Dodać lobby gier
-'

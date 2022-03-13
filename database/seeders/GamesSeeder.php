@@ -65,10 +65,12 @@ class GamesSeeder extends Seeder {
         }
       }
       for ($j = 0; $j < $faker->numberBetween(2, 8); $j++) {
+        $screenWidth = $faker->randomElement([100, 200, 300]);
+        $screenHeight = $faker->randomElement([100, 200, 300]);
         $screenshots[] = [
           'game_id' => $i,
-          'thumbnail' => 'https://picsum.photos/seed/picsum/' . $faker->randomElement([100, 200, 300]) . '/' . $faker->randomElement([100, 200, 300]) . '',
-          'url' => 'https://picsum.photos/seed/picsum/' . $faker->randomElement([400, 500, 600]) . '/' . $faker->randomElement([400, 500, 600]) . '',
+          'thumbnail' => 'https://picsum.photos/seed/picsum/' . $screenWidth  . '/' .  $screenHeight . '',
+          'url' => 'https://picsum.photos/seed/picsum/' . $screenWidth * 2 . '/' . $screenHeight * 2 . '',
           'created_at' => Carbon::now(),
           'updated_at' => Carbon::now(),
         ];

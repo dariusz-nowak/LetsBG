@@ -31,8 +31,8 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'prefix' => 'load', // ścieżka początkowa do przekierowania
     'as' => 'load.' // ścieżka początkowa do nazwy
   ], function () {
-    Route::get('bestsellers', [Homepage::class, 'loadBestsellers']);
-    Route::get('promotions', [Homepage::class, 'loadPromotions']);
+    Route::get('bestsellers', [Homepage::class, 'loadBestsellers'])->name('bestsellers');
+    Route::get('promotions', [Homepage::class, 'loadPromotions'])->name('promotions');
   });
 
   // Oferta
@@ -53,12 +53,13 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     'as' => 'library.'
   ], function () {
     Route::get('', [LibraryController::class, 'show'])->name('show');
+    Route::get('favorites', [LibraryController::class, 'favorites'])->name('favorites');
+    Route::get('loadGameDetails/{game}', [LibraryController::class, 'loadGameDetails'])->name('loadGameDetails');
     Route::post('{game}/{status}', [LibraryController::class, 'checkGameStatus'])
       ->middleware(CheckGameStatus::class)
       ->middleware(CheckGameExists::class)
       ->middleware(CheckUserHaveGame::class)
       ->name('checkGameStatus');
-    Route::get('/favorites', [LibraryController::class, 'favorites']);
   });
 
   // Koszyk
