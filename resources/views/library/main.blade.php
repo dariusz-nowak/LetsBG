@@ -1,14 +1,39 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="text-center">
-  Library <br><br>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem deleniti a, ex odit laudantium ipsam minus maxime
-  repellat sit culpa, labore sapiente, voluptatibus modi facere! Error at expedita sed voluptate. <br><br>
+<div class="library relative">
+  <div class="list absolute top-0">
+    <button class="h-10">Game list</button>
+    <div class="games">
+
+      @php $favorites = $remaining = $hidden = [];
+      foreach($games as $game) foreach ($game->users as $user) {
+      if ($user->pivot->favorite === 1) $favorites[] = $game;
+      elseif ($user->pivot->hidden === 0) $remaining[] = $game;
+      else $hidden[] = $game;} @endphp
+
+      <div class="favoriteGames">
+        <h1>Favorite:</h1>
+        <div class="games"></div>
+      </div>
+      <div class="remainingGames">
+        <h1>Games:</h1>
+        <div class="games"></div>
+      </div>
+      <div class="hiddenGames">
+        <h1>Hidden:</h1>
+        <div class="games"></div>
+      </div>
+    </div>
+  </div>
+  <div class="game">
+    {{-- <h1>{{ $game->name }}</h1>
+    <div class="description">{{ $game->description }}</div>
+    <button class="lobby">Lobby</button> --}}
+  </div>
 </div>
 
-
-<div class="library flex flex-wrap justify-around">
+{{-- <div class="library flex flex-wrap justify-around">
   @foreach ($games as $game)
   <div
     class="relative mb-4 flex flex-col shadow-lg @foreach ($game->users as $user) {{ !$user->pivot->favorite ? (!$user->pivot->hidden ? '' : 'order-last') : 'order-first'}} @endforeach"
@@ -57,6 +82,6 @@
     </div>
   </div>
   @endforeach
-</div>
+</div> --}}
 
 @endsection

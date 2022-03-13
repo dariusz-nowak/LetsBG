@@ -1,3 +1,5 @@
+Edycja widoku biblioteki gier
+
 Library:
 - Dodać ocenianie gier (?)
   - Dodać widok najlepiej ocenianych gier do strony głównej
@@ -14,6 +16,9 @@ Cart:
 - Dodać czyszczenie koszyka względem waluty
 - Dodać kroki zamówienia
 - Dodać widok pustego koszyka
+
+Promocje
+- Uwzględnić przy wyświetlaniu treści
 
 Policy:
 - Dodać politykę prywatności
@@ -58,3 +63,4 @@ Treść
 
 Lobby:
 - Dodać lobby gier
+'
