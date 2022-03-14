@@ -9,4 +9,5 @@ interface LibraryRepository {
   public function checkGameStatus($gameId, $status);
   public function getFavorites();
   public function getGame($gameId);
+  public function getRates($gameId);
 }

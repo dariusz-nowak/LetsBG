@@ -60,7 +60,7 @@
   color: white;
 }
 
-.star:hover ~ .star svg,
+.star:hover~.star svg,
 .star:hover svg {
-  color: gold
+  color: red
 }

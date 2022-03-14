@@ -11,7 +11,6 @@
 </head>
 
 <body>
-  test
   <header>
     @include('shared.header')
   </header>

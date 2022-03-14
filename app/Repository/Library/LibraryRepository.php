@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace App\Repository\Library;
 
 use App\Models\Game;
+use App\Models\User;
 use App\Repository\LibraryRepository as LibraryRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
 class LibraryRepository implements LibraryRepositoryInterface {
   private Game $gameModel;
+  private User $userModel;
 
-  public function __construct(Game $gameModel) {
+  public function __construct(Game $gameModel, User $userModel) {
     $this->gameModel = $gameModel;
+    $this->userModel = $userModel;
   }
 
   public function getAll() {
@@ -27,6 +30,13 @@ class LibraryRepository implements LibraryRepositoryInterface {
 
   public function getGame($gameId) {
     return $this->gameModel->with('genres')->with('producers')->where('id', $gameId)->first();
+  }
+
+  public function getRates($gameId) {
+    return $this->userModel->where('id', Auth::user()->id)
+      ->with(['rates' => function ($query) use ($gameId) {
+        $query->where('user_id', Auth::user()->id)->where('game_id', $gameId);
+      }])->first()->rates[0];
   }
 
   public function checkGameStatus($gameId, $status) {

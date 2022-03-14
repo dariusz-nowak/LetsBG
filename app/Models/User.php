@@ -67,4 +67,10 @@ class User extends Authenticatable {
   public function usersInformations() {
     return $this->hasOne('App\Models\UsersInformations', 'used_id');
   }
+  public function rates() {
+    return $this->hasMany('App\Models\UsersGamesRating', 'user_id');
+  }
+  public function comments() {
+    return $this->hasMany('App\Model\Comment', 'user_id');
+  }
 }

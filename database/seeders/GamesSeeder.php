@@ -86,7 +86,7 @@ class GamesSeeder extends Seeder {
         $userGamesComments[] = [
           'user_id' => $faker->numberBetween(2, 5),
           'game_id' => $i,
-          'rating' => $faker->numberBetween(1, 10),
+          'rating' => $faker->numberBetween(1, 5),
           'comment' => $faker->words($faker->numberBetween(10, 100), true),
           'created_at' => Carbon::now(),
           'updated_at' => Carbon::now()

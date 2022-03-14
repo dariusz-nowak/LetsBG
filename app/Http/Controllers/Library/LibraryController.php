@@ -22,7 +22,7 @@ class LibraryController extends Controller {
 
   public function show() {
     return view('library.main', [
-      'games' => $this->libraryRepository->getAll(),
+      'games' => $this->libraryRepository->getAll()
     ]);
   }
 
@@ -34,7 +34,8 @@ class LibraryController extends Controller {
   public function loadGameDetails($gameId) {
     return view('shared.load.loadGameDetails', [
       'game' => $this->libraryRepository->getGame($gameId),
-      'gameId' => $gameId
+      'rate' => $this->libraryRepository->getRates($gameId)->rating,
+      'comment' => $this->libraryRepository->getRates($gameId)->comment
     ]);
   }
 }
