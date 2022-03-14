@@ -56,21 +56,38 @@ class UsersSeeder extends Seeder {
       'country' => 'Polska'
     ]);
 
-    $pivotGames = [];
+    $users = $pivotGames = [];
     $gamesCount = 50;
 
-    for ($i = 1; $i < $gamesCount + 1; $i++) {
-      for ($j = 1; $j < $faker->numberBetween(1, 16); $j++) {
+    for ($i = 0; $i < 4; $i++) {
+      $users[] = [
+        'name' => $faker->words($faker->numberBetween(1, 5), true),
+        'email' => $faker->email(),
+        'email_verified_at' => null,
+        'password' => 'xxx',
+        'two_factor_secret' => null,
+        'two_factor_recovery_codes' => null,
+        'remember_token' => null,
+        'current_team_id' => null,
+        'profile_photo_path' => null,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
+      ];
+    }
+
+    for ($i = 1; $i < count($users) + 1; $i++) {
+      for ($j = 1; $j < $gamesCount; $j++) {
         $randomBoolean = $faker->boolean();
         $pivotGames[] = [
           'user_id' => $i,
-          'game_id' => $faker->numberBetween(1, 50),
-          'favorite' => $randomBoolean,
+          'game_id' => $j,
+          'favorite' => $faker->randomElement([$randomBoolean, 0]),
           'hidden' => !$randomBoolean
         ];
       }
     }
 
     DB::table('pivot_users_games')->insert($pivotGames);
+    DB::table('users')->insert($users);
   }
 }

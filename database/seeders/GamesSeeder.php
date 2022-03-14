@@ -20,12 +20,11 @@ class GamesSeeder extends Seeder {
     DB::table('pivot_games_genres')->truncate();
     DB::table('pivot_games_producers')->truncate();
     DB::table('pivot_games_promotions')->truncate();
+    DB::table('users_games_ratings')->truncate();
 
     $faker = Factory::create();
 
-    $games = [];
-    $pivotGenres = [];
-    $pivotProducers = [];
+    $games = $pivotGenres = $pivotProducers = $userGamesComments = [];
     $gamesCount = 50;
 
     for ($i = 1; $i < $gamesCount + 1; $i++) {
@@ -75,6 +74,24 @@ class GamesSeeder extends Seeder {
           'updated_at' => Carbon::now(),
         ];
       }
+      $userGamesComments[] = [
+        'user_id' => 1,
+        'game_id' => $i,
+        'rating' => $faker->numberBetween(1, 10),
+        'comment' => $faker->words($faker->numberBetween(10, 100), true),
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
+      ];
+      for ($j = 0; $j < $faker->numberBetween(2, 8); $j++) {
+        $userGamesComments[] = [
+          'user_id' => $faker->numberBetween(2, 5),
+          'game_id' => $i,
+          'rating' => $faker->numberBetween(1, 10),
+          'comment' => $faker->words($faker->numberBetween(10, 100), true),
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now()
+        ];
+      }
     }
 
     DB::table('games')->insert($games);
@@ -82,5 +99,6 @@ class GamesSeeder extends Seeder {
     DB::table('pivot_games_genres')->insert($pivotGenres);
     DB::table('pivot_games_producers')->insert($pivotProducers);
     DB::table('pivot_games_promotions')->insert($pivotPromotions);
+    DB::table('users_games_ratings')->insert($userGamesComments);
   }
 }

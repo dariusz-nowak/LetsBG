@@ -24,7 +24,7 @@
 .filters-container.active,
 .gamesLists .games.active,
 .gamesLists.active {
-  max-height: 1000px;
+  max-height: 10000px;
 }
 
 .gamesLists h1:hover svg {
@@ -50,10 +50,6 @@
   display: none;
 }
 
-/* .arrow-left,.arrow-right {
-  background-color: rgba(0, 0, 0, .025);
-} */
-
 .arrow-left:hover,
 .arrow-right:hover {
   background-color: rgba(0, 0, 0, .1);
@@ -62,4 +58,9 @@
 .accound-details input.active {
   background-color: rgb(31 41 55);
   color: white;
+}
+
+.star:hover ~ .star svg,
+.star:hover svg {
+  color: gold
 }

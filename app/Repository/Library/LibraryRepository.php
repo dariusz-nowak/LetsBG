@@ -17,10 +17,12 @@ class LibraryRepository implements LibraryRepositoryInterface {
 
   public function getAll() {
     return $this->gameModel->with('genres')->with('producers')
+      ->with(['users' => function ($query) {
+        if (Auth::user()) $query->where('user_id', Auth::user()->id);
+      }])
       ->whereHas('users', function ($query) {
         if (Auth::user()) $query->where('user_id', Auth::user()->id);
-      })
-      ->paginate(24);
+      })->get();
   }
 
   public function getGame($gameId) {

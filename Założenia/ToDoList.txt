@@ -1,8 +1,13 @@
 Library:
 - Dodać ocenianie gier (?)
+  - Dodać możliwość dodania komentarza do zakupionej gry
   - Dodać widok najlepiej ocenianych gier do strony głównej
   - Dodać sortowanie po najlepiej ocenianych
 - Oddzielić ulubione i zwykłe od nielubianych
+
+Game view:
+- Wyświetlić pod grą 3 najlepiej oceniane komentarze i kilka ostatnio dodanych
+- Dodać możliwość polubienia komentarza
 
 Messages (Mail):
 - Dodać widok wiadomości prywatnych
@@ -43,6 +48,7 @@ Usunięcie produktu z koszyka + link do przywrócenia
 Wyczyszczenie koszyka
 Brak posiadanych gier
 Brak promocji w wyszukiwarce
+Gra jest już w bibliotece (przypadek, gry user kliknął wstecz po dodaniu gry do biblioteki)
 
 Szlify:
 - Edytować walidacje formularzy wyszukiwania, użytkownika, logowanie, rejestracji etc... (komunikat błędu pod danym danym polem, dostosować treść)

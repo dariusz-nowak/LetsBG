@@ -10,13 +10,19 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </button>
+
     <div class="gamesLists active max-h-0 overflow-hidden transition-all">
       @php $favorites = $remaining = $hidden = [];
-      foreach($games as $game) foreach ($game->users as $user) {
-      if ($user->pivot->favorite === 1) $favorites[] = $game;
-      elseif ($user->pivot->hidden === 1) $hidden[] = $game;
-      else $remaining[] = $game;}
-      $sortGames = [$favorites, $remaining, $hidden]; @endphp
+      foreach($games as $game) {
+        foreach ($game->users as $user) {
+          if ($user->pivot->favorite === 1) $favorites[] = $game;
+          elseif ($user->pivot->hidden === 1) $hidden[] = $game;
+          else $remaining[] = $game;
+        }
+      }
+      $sortGames = [$favorites, $remaining, $hidden];
+      @endphp
+
       @foreach ($sortGames as $key => $games)
       <div class="my-3 overflow-hidden">
         <h1 class="relative text-center border-2 border-zinc-100 rounded bg-zinc-50 cursor-pointer">

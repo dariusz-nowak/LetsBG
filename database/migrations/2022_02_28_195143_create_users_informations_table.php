@@ -12,14 +12,14 @@ return new class extends Migration {
    */
   public function up() {
     Schema::create('users_informations', function (Blueprint $table) {
-      $table->integer('user_id')->unique()->index();
-      $table->string('first_name')->nullable()->index();
-      $table->string('last_name')->nullable()->index();
-      $table->string('phone')->nullable()->index();
-      $table->string('address')->nullable()->index();
-      $table->string('post_code')->nullable()->index();
-      $table->string('city')->nullable()->index();
-      $table->string('country')->nullable()->index();
+      $table->integer('user_id')->unique();
+      $table->string('first_name')->nullable();
+      $table->string('last_name')->nullable();
+      $table->string('phone')->nullable();
+      $table->string('address')->nullable();
+      $table->string('post_code')->nullable();
+      $table->string('city')->nullable();
+      $table->string('country')->nullable();
     });
   }
 
