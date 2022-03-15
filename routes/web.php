@@ -60,6 +60,8 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
       ->middleware(CheckGameExists::class)
       ->middleware(CheckUserHaveGame::class)
       ->name('checkGameStatus');
+    Route::post('rate', [LibraryController::class, 'rate'])->name('rate');
+    Route::post('comment', [LibraryController::class, 'comment'])->name('comment');
   });
 
   // Koszyk

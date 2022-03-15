@@ -19,13 +19,13 @@ class UserRepository implements UserRepositoryInterface {
   }
 
   public function getSettings() {
-    $settings = $this->userSettingsModel->where('user_id', Auth::user()->id)->limit(1)->get();
-    return $settings[0];
+    $settings = $this->userSettingsModel->where('user_id', Auth::user()->id)->first();
+    return $settings;
   }
 
   public function getInformations() {
-    $informations = $this->usersInformations->where('user_id', Auth::user()->id)->limit(1)->get();
-    return $informations[0];
+    $informations = $this->usersInformations->where('user_id', Auth::user()->id)->first();
+    return $informations;
   }
 
   public function changeCurrency($currency) {

@@ -10,4 +10,6 @@ interface LibraryRepository {
   public function getFavorites();
   public function getGame($gameId);
   public function getRates($gameId);
+  public function rate($rate, $gameId);
+  public function comment($comment);
 }

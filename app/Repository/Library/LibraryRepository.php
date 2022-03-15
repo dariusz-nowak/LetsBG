@@ -40,11 +40,13 @@ class LibraryRepository implements LibraryRepositoryInterface {
   }
 
   public function checkGameStatus($gameId, $status) {
-    $gameCollection = $this->gameModel->with('users')->whereHas('users', function ($query) use ($gameId) {
-      $query->where('user_id', Auth::user()->id)->where('game_id', $gameId);
-    })->get();
+    $game = $this->gameModel->with(['users' => function ($query) {
+      $query->where('id', Auth::user()->id);
+    }])->whereHas('users', function ($query) {
+      $query->where('user_id', Auth::user()->id)->where('game_id', 1);
+    })->first();
 
-    if ($status == 'fav' || $status == 'hid') foreach ($gameCollection as $game) foreach ($game->users as $user) {
+    if ($status == 'fav' || $status == 'hid') foreach ($game->users as $user) {
       if ($status == 'fav') {
         if (!$user->pivot->favorite) {
           $user->pivot->favorite = 1;
@@ -65,5 +67,15 @@ class LibraryRepository implements LibraryRepositoryInterface {
       ->whereHas('users', function ($query) {
         $query->where('user_id', Auth::user()->id ?? '')->where('favorite', 1);
       })->get();
+  }
+
+  public function rate($rate, $gameId) {
+    $this->userModel->with(['rates' => function ($query) use ($gameId) {
+      $query->where('user_id', Auth::user()->id)->where('game_id', $gameId);
+    }])->first()->rates->first()->update(['rating' => $rate]);
+  }
+
+  public function comment($comment) {
+    dump($comment);
   }
 }
