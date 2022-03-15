@@ -70,12 +70,14 @@ class LibraryRepository implements LibraryRepositoryInterface {
   }
 
   public function rate($rate, $gameId) {
-    $this->userModel->with(['rates' => function ($query) use ($gameId) {
-      $query->where('user_id', Auth::user()->id)->where('game_id', $gameId);
-    }])->first()->rates->first()->update(['rating' => $rate]);
+    if ($rate > 0 && $rate <= 5) {
+      $this->userModel->with('rates')->first()->rates->first()->where('user_id', Auth::user()->id)->where('game_id', $gameId)->update(['rating' => $rate]);
+      return $gameId;
+    } else return redirect()->back();
   }
 
-  public function comment($comment) {
-    dump($comment);
+  public function comment($comment, $gameId) {
+    $this->userModel->with('comments')->first()->comments->first()->where('user_id', Auth::user()->id)->where('game_id', $gameId)->update(['comment' => $comment]);
+    return $gameId;
   }
 }

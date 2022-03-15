@@ -8,6 +8,8 @@ interface OfferRepository {
   public function getAll($user, $language);
   public function search($user, $categories, $languages, $ages, $producers, $request);
   public function getGame($gameId);
+  public function getComments($gameId);
+  public function getLikes($gameId, $commentId);
   public function getNewest();
   public function getBestsellers();
   public function getPromotions();

@@ -71,6 +71,9 @@ class OfferController extends Controller {
   public function gameDetails($gameId) {
     return view('offer.game', [
       'game' => $this->offerRepository->getGame($gameId),
+      'comments' => $this->offerRepository->getComments($gameId)
     ]);
+  }
+  public function like() {
   }
 }

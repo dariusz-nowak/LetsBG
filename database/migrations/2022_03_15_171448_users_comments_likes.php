@@ -6,16 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
   public function up() {
-    Schema::create('users_games_comments', function (Blueprint $table) {
-      $table->id();
+    Schema::create('users_comments_likes', function (Blueprint $table) {
       $table->integer('user_id')->index();
-      $table->integer('game_id')->index();
-      $table->integer('rating');
-      $table->text('comment');
+      $table->integer('comment_id')->index();
+      $table->boolean('like');
       $table->timestamps();
     });
   }
+
   public function down() {
-    Schema::dropIfExists('users_games_comments');
+    Schema::dropIfExists('users_comments_likes');
   }
 };

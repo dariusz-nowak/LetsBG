@@ -97,7 +97,7 @@
       </form>
     </div>
     <div class="comment">
-      <form action="{{ route('library.comment') }}" method="post">
+      <form action="{{ route('library.comment', ['game' => $game->id]) }}" method="post">
         @csrf
         <textarea name="comment" cols="30" rows="10" class="py-4">{{ $comment }}</textarea>
         <input type="submit" value="Submit">

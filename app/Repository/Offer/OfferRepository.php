@@ -6,14 +6,17 @@ namespace App\Repository\Offer;
 
 use App\Http\Requests\Search;
 use App\Models\Game;
+use App\Models\User;
 use App\Repository\OfferRepository as OfferRepositoryInterface;
 
 class OfferRepository implements OfferRepositoryInterface {
 
   private Game $gameModel;
+  private User $userModel;
 
-  public function __construct(Game $gameModel) {
+  public function __construct(Game $gameModel, User $userModel) {
     $this->gameModel = $gameModel;
+    $this->userModel = $userModel;
   }
 
   public function getAll($user, $language) {
@@ -76,6 +79,31 @@ class OfferRepository implements OfferRepositoryInterface {
   public function getGame($gameId) {
     return $this->gameModel->with('genres')->with('screenshot')
       ->find($gameId);
+  }
+  public function getComments($gameId) {
+    $comments = [];
+    $users = $this->userModel->with(['comments' => function ($query) use ($gameId) {
+      $query->where('game_id', $gameId);
+    }])->get();
+
+    foreach ($users as $user) foreach ($user->comments as $comment) {
+      $comments[] = [
+        'userId' => $user->id,
+        'user' => $user->name,
+        'commentId' => $this->getLikes($gameId, $comment->id),
+        'comment' => $comment->comment
+      ];
+    }
+
+    return $comments;
+  }
+  public function getLikes($gameId, $commentId) {
+    $likeNumbers = 0;
+    $likes = $this->userModel->with(['likes' => function ($query) use ($gameId, $commentId) {
+      $query->where('comment_id', $commentId)->where('like', 1);
+    }])->get();
+    foreach ($likes as $like) if (!$like->likes->isEmpty()) $likeNumbers++;
+    return $likeNumbers;
   }
   public function getNewest() {
     return $this->gameModel->orderBy('updated_at', 'desc')->limit(4)->get();

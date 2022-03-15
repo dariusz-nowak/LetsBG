@@ -20,7 +20,8 @@ class GamesSeeder extends Seeder {
     DB::table('pivot_games_genres')->truncate();
     DB::table('pivot_games_producers')->truncate();
     DB::table('pivot_games_promotions')->truncate();
-    DB::table('users_games_ratings')->truncate();
+    DB::table('users_games_comments')->truncate();
+    DB::table('users_comments_likes')->truncate();
 
     $faker = Factory::create();
 
@@ -92,6 +93,15 @@ class GamesSeeder extends Seeder {
           'updated_at' => Carbon::now()
         ];
       }
+      for ($j = 0; $j < $faker->numberBetween(5, 25); $j++) {
+        $userCommentsLikes[] = [
+          'user_id' => $faker->numberBetween(1, 4),
+          'comment_id' => $faker->numberBetween(1, 250),
+          'like' => $faker->boolean(),
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now()
+        ];
+      }
     }
 
     DB::table('games')->insert($games);
@@ -99,6 +109,7 @@ class GamesSeeder extends Seeder {
     DB::table('pivot_games_genres')->insert($pivotGenres);
     DB::table('pivot_games_producers')->insert($pivotProducers);
     DB::table('pivot_games_promotions')->insert($pivotPromotions);
-    DB::table('users_games_ratings')->insert($userGamesComments);
+    DB::table('users_games_comments')->insert($userGamesComments);
+    DB::table('users_comments_likes')->insert($userCommentsLikes);
   }
 }

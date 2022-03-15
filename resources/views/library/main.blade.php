@@ -14,11 +14,11 @@
     <div class="gamesLists active max-h-0 overflow-hidden transition-all">
       @php $favorites = $remaining = $hidden = [];
       foreach($games as $game) {
-        foreach ($game->users as $user) {
-          if ($user->pivot->favorite === 1) $favorites[] = $game;
-          elseif ($user->pivot->hidden === 1) $hidden[] = $game;
-          else $remaining[] = $game;
-        }
+      foreach ($game->users as $user) {
+      if ($user->pivot->favorite === 1) $favorites[] = $game;
+      elseif ($user->pivot->hidden === 1) $hidden[] = $game;
+      else $remaining[] = $game;
+      }
       }
       $sortGames = [$favorites, $remaining, $hidden];
       @endphp
@@ -55,7 +55,7 @@
         document.querySelector('.game').style.opacity = 1;
       });
     }
-    loadGame('{{ $favorites[0]->id }}')
+    loadGame('@if($gameRated){{ $gameRated }}@else{{ $favorites[0]->id }}@endif')
     document.querySelector('.list button').addEventListener('click', () => document.querySelector('.gamesLists').classList.toggle('active'))
     document.querySelectorAll('.gamesLists h1').forEach(e => e.addEventListener('click', () => e.nextElementSibling.classList.toggle('active')))
   </script>

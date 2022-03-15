@@ -23,9 +23,10 @@ class LibraryController extends Controller {
     return redirect()->route('library.show');
   }
 
-  public function show() {
+  public function show($gameId = null) {
     return view('library.main', [
-      'games' => $this->libraryRepository->getAll()
+      'games' => $this->libraryRepository->getAll(),
+      'gameRated' => $gameId
     ]);
   }
 
@@ -42,11 +43,9 @@ class LibraryController extends Controller {
     ]);
   }
   public function rate() {
-    $this->libraryRepository->rate($this->request->rate, $this->request->game);
-    return redirect()->back();
+    return $this->show($this->libraryRepository->rate($this->request->rate, $this->request->game));
   }
   public function comment() {
-    $this->libraryRepository->comment($this->request->comment);
-    return redirect()->back();
+    return $this->show($this->libraryRepository->comment($this->request->comment, $this->request->game));
   }
 }

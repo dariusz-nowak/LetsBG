@@ -44,6 +44,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
     Route::get('search', [OfferController::class, 'search'])->name('search');
     Route::get('{game}', [OfferController::class, 'gameDetails'])
       ->middleware(CheckGameExists::class)->name('gameDetails');
+    Route::post('like', [OfferController::class, 'like'])->name('like');
   });
 
   // Biblioteka

@@ -11,5 +11,5 @@ interface LibraryRepository {
   public function getGame($gameId);
   public function getRates($gameId);
   public function rate($rate, $gameId);
-  public function comment($comment);
+  public function comment($comment, $gameId);
 }
