@@ -813,8 +813,8 @@ class Str
         $parts = explode(' ', $value);
 
         $parts = count($parts) > 1
-            ? $parts = array_map([static::class, 'title'], $parts)
-            : $parts = array_map([static::class, 'title'], static::ucsplit(implode('_', $parts)));
+            ? array_map([static::class, 'title'], $parts)
+            : array_map([static::class, 'title'], static::ucsplit(implode('_', $parts)));
 
         $collapsed = static::replace(['-', '_', ' '], '_', implode('_', $parts));
 
@@ -985,6 +985,17 @@ class Str
     public static function swap(array $map, $subject)
     {
         return strtr($subject, $map);
+    }
+
+    /**
+     * Make a string's first character lowercase.
+     *
+     * @param  string  $string
+     * @return string
+     */
+    public static function lcfirst($string)
+    {
+        return static::lower(static::substr($string, 0, 1)).static::substr($string, 1);
     }
 
     /**

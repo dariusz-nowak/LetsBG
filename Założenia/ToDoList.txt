@@ -1,9 +1,5 @@
-Do poprawy!!
-- wyciąganie danych z właściwych modeli z pominięciem user i game
-
 Library:
 - Dodać ocenianie gier (?)
-  - Wyświetlanie komentarzy w szczegółach produktów
   - Dodać możliwość like'owania komentarzy
   - Dodać widok najlepiej ocenianych gier do strony głównej
   - Dodać sortowanie po najlepiej ocenianych

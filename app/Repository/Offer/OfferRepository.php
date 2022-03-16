@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repository\Offer;
 
-use App\Http\Requests\Search;
 use App\Models\Game;
 use App\Models\User;
+use App\Models\UsersCommentsLike;
 use App\Repository\OfferRepository as OfferRepositoryInterface;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class OfferRepository implements OfferRepositoryInterface {
 
   private Game $gameModel;
   private User $userModel;
+  private UsersCommentsLike $usersCommentsLike;
 
-  public function __construct(Game $gameModel, User $userModel) {
+  public function __construct(Game $gameModel, User $userModel, UsersCommentsLike $usersCommentsLike) {
     $this->gameModel = $gameModel;
     $this->userModel = $userModel;
+    $this->usersCommentsLike = $usersCommentsLike;
   }
 
   public function getAll($user, $language) {
@@ -77,8 +81,7 @@ class OfferRepository implements OfferRepositoryInterface {
   }
 
   public function getGame($gameId) {
-    return $this->gameModel->with('genres')->with('screenshot')
-      ->find($gameId);
+    return $this->gameModel->with('genres')->with('screenshot')->find($gameId);
   }
   public function getComments($gameId) {
     $comments = [];
@@ -90,20 +93,35 @@ class OfferRepository implements OfferRepositoryInterface {
       $comments[] = [
         'userId' => $user->id,
         'user' => $user->name,
-        'commentId' => $this->getLikes($gameId, $comment->id),
-        'comment' => $comment->comment
+        'like' => $this->isUserLike($comment->id),
+        'likes' => $this->getLikes($comment->id),
+        'comment' => $comment->comment,
+        'commentId' => $comment->id
       ];
     }
-
     return $comments;
   }
-  public function getLikes($gameId, $commentId) {
-    $likeNumbers = 0;
-    $likes = $this->userModel->with(['likes' => function ($query) use ($gameId, $commentId) {
-      $query->where('comment_id', $commentId)->where('like', 1);
-    }])->get();
-    foreach ($likes as $like) if (!$like->likes->isEmpty()) $likeNumbers++;
-    return $likeNumbers;
+  public function isUserLike($commentId) {
+    return $this->usersCommentsLike->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->where('like', 1)->first();
+  }
+  public function getLikes($commentId) {
+    return count($this->usersCommentsLike->where('comment_id', $commentId)->where('like', 1)->get());
+  }
+  public function isLikeComment($commentId) {
+    $comment = $this->usersCommentsLike->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->first();
+    if ($comment) {
+      $comment->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->update(['like' => (int) !$comment->like]);
+      return (int) !$comment->like;
+    } else {
+      UsersCommentsLike::insert([
+        'user_id' => Auth::user()->id,
+        'comment_id' => $commentId,
+        'like' => 1,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
+      ]);
+      return $this->usersCommentsLike->latest()->first();
+    }
   }
   public function getNewest() {
     return $this->gameModel->orderBy('updated_at', 'desc')->limit(4)->get();

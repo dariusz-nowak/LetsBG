@@ -70,6 +70,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
   }
 
   public function rate($rate, $gameId) {
+    // DO UPROSZCZENIA, SKORZYSTAĆ Z INNYCH MODELI
     if ($rate > 0 && $rate <= 5) {
       $this->userModel->with('rates')->first()->rates->first()->where('user_id', Auth::user()->id)->where('game_id', $gameId)->update(['rating' => $rate]);
       return $gameId;
@@ -77,6 +78,7 @@ class LibraryRepository implements LibraryRepositoryInterface {
   }
 
   public function comment($comment, $gameId) {
+    // DO UPROSZCZENIA, SKORZYSTAĆ Z INNYCH MODELI
     $this->userModel->with('comments')->first()->comments->first()->where('user_id', Auth::user()->id)->where('game_id', $gameId)->update(['comment' => $comment]);
     return $gameId;
   }

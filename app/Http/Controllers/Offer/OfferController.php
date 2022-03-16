@@ -74,6 +74,13 @@ class OfferController extends Controller {
       'comments' => $this->offerRepository->getComments($gameId)
     ]);
   }
-  public function like() {
+  public function like($commentId) {
+    return view('shared.load.like', [
+      'comment' => [
+        'commentId' => $commentId,
+        'like' => $this->offerRepository->isLikeComment($commentId),
+        'likes' => $this->offerRepository->getLikes($commentId)
+      ]
+    ]);
   }
 }
