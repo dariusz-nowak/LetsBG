@@ -1,9 +1,8 @@
 Library:
 - Dodać ocenianie gier (?)
-  - Dodać możliwość like'owania komentarzy
+  - Wyślietlić 3 najlepsze komentarze i resztę osobno, [7 komentarzy, podzielić na strony]
   - Dodać widok najlepiej ocenianych gier do strony głównej
   - Dodać sortowanie po najlepiej ocenianych
-- Oddzielić ulubione i zwykłe od nielubianych
 
 Game view:
 - Wyświetlić pod grą 3 najlepiej oceniane komentarze i kilka ostatnio dodanych
