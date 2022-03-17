@@ -58,8 +58,9 @@ class UsersSeeder extends Seeder {
 
     $users = $pivotGames = [];
     $gamesCount = 50;
+    $usersCount = 50;
 
-    for ($i = 0; $i < 4; $i++) {
+    for ($i = 0; $i < $usersCount; $i++) {
       $users[] = [
         'name' => $faker->words($faker->numberBetween(1, 5), true),
         'email' => $faker->email(),
@@ -73,21 +74,19 @@ class UsersSeeder extends Seeder {
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
       ];
-    }
 
-    for ($i = 1; $i < count($users) + 1; $i++) {
-      for ($j = 1; $j < $gamesCount; $j++) {
+      for ($j = 0; $j < $gamesCount; $j++) {
         $randomBoolean = $faker->boolean();
         $pivotGames[] = [
-          'user_id' => $i,
-          'game_id' => $j,
+          'user_id' => $i + 1,
+          'game_id' => $j + 1,
           'favorite' => $faker->randomElement([$randomBoolean, 0]),
           'hidden' => !$randomBoolean
         ];
       }
     }
 
-    DB::table('pivot_users_games')->insert($pivotGames);
     DB::table('users')->insert($users);
+    DB::table('pivot_users_games')->insert($pivotGames);
   }
 }

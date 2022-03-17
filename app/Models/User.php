@@ -61,19 +61,20 @@ class User extends Authenticatable {
   public function games() {
     return $this->belongsToMany('App\Models\Game', 'pivot_users_games');
   }
+
   public function usersSettings() {
     return $this->hasOne('App\Models\UserSettings', 'used_id');
   }
+
   public function usersInformations() {
     return $this->hasOne('App\Models\UsersInformations', 'used_id');
   }
+
   public function rates() {
     return $this->hasMany('App\Models\UsersGamesComment', 'user_id');
   }
+
   public function comments() {
     return $this->hasMany('App\Models\UsersGamesComment', 'user_id');
-  }
-  public function likes() {
-    return $this->hasMany('App\Models\UsersCommentsLike', 'user_id');
   }
 }

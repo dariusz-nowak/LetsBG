@@ -151,8 +151,9 @@
     @endforeach
     <script type="text/javascript">
       function like(svg, id) {
-        $(svg.parentElement).load('/offer/like/' + id)
-        svg.remove()
+        $(svg.parentElement).load('/offer/like/' + id, function () {
+          svg.remove()
+        })
       }
     </script>
   </div>

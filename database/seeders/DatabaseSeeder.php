@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder {
       PromotionsSeeder::class,
       GamesSeeder::class,
       UsersSeeder::class,
+      CommentsSeeder::class
     ]);
   }
 }
