@@ -7,25 +7,25 @@ namespace App\Repository\User;
 use App\Models\UsersInformations;
 use App\Models\UsersSettings;
 use App\Repository\UserRepository as UserRepositoryInterface;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserRepositoryInterface {
   private UsersSettings $userSettingsModel;
+  private UsersInformations $usersInformationsModel;
 
-  public function __construct(UsersSettings $userSettingsModel, UsersInformations $usersInformations) {
+  public function __construct(UsersSettings $userSettingsModel, UsersInformations $usersInformationsModel) {
     $this->userSettingsModel = $userSettingsModel;
-    $this->usersInformations = $usersInformations;
+    $this->usersInformationsModel = $usersInformationsModel;
   }
 
   public function getSettings() {
-    $settings = $this->userSettingsModel->where('user_id', Auth::user()->id)->first();
-    return $settings;
+    return $this->userSettingsModel->where('user_id', Auth::user()->id)->first();
   }
 
   public function getInformations() {
-    $informations = $this->usersInformations->where('user_id', Auth::user()->id)->first();
-    return $informations;
+    return $this->usersInformationsModel->where('user_id', Auth::user()->id)->first();
   }
 
   public function changeCurrency($currency) {

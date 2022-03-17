@@ -16,11 +16,9 @@ class ViewShareMiddleware {
    * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
    * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
    */
-  private LibraryRepository $libraryRepository;
   private UserRepository $userRepository;
 
-  public function __construct(UserRepository $userRepository, LibraryRepository $libraryRepository) {
-    $this->libraryRepository = $libraryRepository;
+  public function __construct(UserRepository $userRepository) {
     $this->userRepository = $userRepository;
   }
 
