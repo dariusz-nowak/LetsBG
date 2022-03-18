@@ -22,7 +22,7 @@ class CommentsSeeder extends Seeder {
       for ($j = 0; $j < $commentsCount; $j++) {
         $pivotUsers[] = [
           'user_id' => $faker->numberBetween(1, $usersCount),
-          'comment_id' => $faker->numberBetween(1, 200),
+          'users_games_comment_id' => $faker->numberBetween(1, 200),
           'created_at' => Carbon::now(),
           'updated_at' => Carbon::now()
         ];

@@ -83,6 +83,22 @@ class OfferRepository implements OfferRepositoryInterface {
   public function getGame($gameId) {
     return $this->gameModel->with('genres')->with('screenshot')->find($gameId);
   }
+
+  public function getNewest() {
+    return $this->gameModel->orderBy('updated_at', 'desc')->limit(4)->get();
+  }
+
+  public function getBestsellers() {
+    return $this->gameModel->orderBy('sold', 'desc')->limit(4)->get();
+  }
+
+  public function getPromotions() {
+    return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
+  }
+
+
+
+  // ----------
   public function getComments($gameId) {
     $comments = [];
     $users = $this->userModel->with(['comments' => function ($query) use ($gameId) {
@@ -101,35 +117,47 @@ class OfferRepository implements OfferRepositoryInterface {
     }
     return $comments;
   }
-  public function getNewest() {
-    return $this->gameModel->orderBy('updated_at', 'desc')->limit(4)->get();
-  }
-  public function getBestsellers() {
-    return $this->gameModel->orderBy('sold', 'desc')->limit(4)->get();
-  }
-  public function getPromotions() {
-    return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
-  }
-
-
-  // ----------
-
 
   public function isUserLike($commentId) {
-    // return $this->usersGamesCommentModel->with('likes')->where('user_id', Auth::user()->id)->where('comment_id', $commentId)->first();
+    // rekord z tabeli pivot users likes, który w kolumnie commentid ma commentid
+
+    $comment = $this->userModel->with([
+      'likes' => function ($query) use ($commentId) {
+        $query->where('users_games_comment_id', $commentId);
+      }
+    ])->first()->likes;
+    dump($comment);
+
+    // if ($comment) {
+    // $comment->delete();
+    //   return 0;
+    // } else {
+    // UsersCommentsLike::insert([
+    //   'user_id' => Auth::user()->id,
+    //   'comment_id' => $commentId,
+    //   'like' => 1,
+    //   'created_at' => Carbon::now(),
+    //   'updated_at' => Carbon::now()
+    // ]);
+    // return $this->usersCommentsLike->latest()->first();
+    // }
+
+
+    if (Auth::user()) return $this->userModel->with(
+      ['likes' => function ($query) use ($commentId) {
+        $query->where('user_id', Auth::user()->id)->where('users_games_comment_id', $commentId)->first();
+      }]
+    );
   }
-
-
-  // ----------
-
 
   public function getLikes($commentId) {
-    // return count($this->usersCommentsLike->where('comment_id', $commentId)->where('like', 1)->get());
+    return count($this->userModel->whereHas(
+      'likes',
+      function ($query) use ($commentId) {
+        $query->where('users_games_comment_id', $commentId);
+      }
+    )->get());
   }
-
-
-  // ----------
-
 
   public function isLikeComment($commentId) {
     // $comment = $this->usersCommentsLike->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->first();
@@ -147,7 +175,4 @@ class OfferRepository implements OfferRepositoryInterface {
     //   return $this->usersCommentsLike->latest()->first();
     // }
   }
-
-
-  // ----------
 }

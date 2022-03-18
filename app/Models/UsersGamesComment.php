@@ -10,5 +10,6 @@ class UsersGamesComment extends Model {
     'rating',
     'comment',
   ];
+
   use HasFactory;
 }

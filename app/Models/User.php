@@ -77,4 +77,8 @@ class User extends Authenticatable {
   public function comments() {
     return $this->hasMany('App\Models\UsersGamesComment', 'user_id');
   }
+
+  public function likes() {
+    return $this->belongsToMany('App\Models\UsersGamesComment', 'pivot_users_likes');
+  }
 }
