@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UsersCommentsLike;
 use App\Models\UsersGamesComment;
 use App\Repository\OfferRepository as OfferRepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class OfferRepository implements OfferRepositoryInterface {
@@ -96,15 +97,12 @@ class OfferRepository implements OfferRepositoryInterface {
     return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
   }
 
-
-
-  // ----------
-  public function getComments($gameId) {
-    $comments = [];
+  public function getComments($gameId, $option) {
     $users = $this->userModel->with(['comments' => function ($query) use ($gameId) {
       $query->where('game_id', $gameId);
     }])->get();
 
+    $comments = [];
     foreach ($users as $user) foreach ($user->comments as $comment) {
       $comments[] = [
         'userId' => $user->id,
@@ -112,42 +110,23 @@ class OfferRepository implements OfferRepositoryInterface {
         'like' => $this->isUserLike($comment->id),
         'likes' => $this->getLikes($comment->id),
         'comment' => $comment->comment,
-        'commentId' => $comment->id
+        'commentId' => $comment->id,
+        'created_at' => $comment->created_at->toDateString()
       ];
     }
-    return $comments;
+
+    if ($option === 'best') array_multisort(array_column($comments, 'likes'), SORT_DESC, $comments);
+    else if ($option === 'last') array_multisort(array_column($comments, 'created_at'), SORT_DESC, $comments);
+
+    return array_slice($comments, 0, 5);
   }
 
   public function isUserLike($commentId) {
-    // rekord z tabeli pivot users likes, który w kolumnie commentid ma commentid
-
-    $comment = $this->userModel->with([
+    if (Auth::user()) return $this->userModel->with([
       'likes' => function ($query) use ($commentId) {
         $query->where('users_games_comment_id', $commentId);
       }
-    ])->first()->likes;
-    dump($comment);
-
-    // if ($comment) {
-    // $comment->delete();
-    //   return 0;
-    // } else {
-    // UsersCommentsLike::insert([
-    //   'user_id' => Auth::user()->id,
-    //   'comment_id' => $commentId,
-    //   'like' => 1,
-    //   'created_at' => Carbon::now(),
-    //   'updated_at' => Carbon::now()
-    // ]);
-    // return $this->usersCommentsLike->latest()->first();
-    // }
-
-
-    if (Auth::user()) return $this->userModel->with(
-      ['likes' => function ($query) use ($commentId) {
-        $query->where('user_id', Auth::user()->id)->where('users_games_comment_id', $commentId)->first();
-      }]
-    );
+    ])->first()->likes->isNotEmpty();
   }
 
   public function getLikes($commentId) {
@@ -159,20 +138,19 @@ class OfferRepository implements OfferRepositoryInterface {
     )->get());
   }
 
-  public function isLikeComment($commentId) {
-    // $comment = $this->usersCommentsLike->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->first();
-    // if ($comment) {
-    //   $comment->where('comment_id', $commentId)->where('user_id', Auth::user()->id)->update(['like' => (int) !$comment->like]);
-    //   return (int) !$comment->like;
-    // } else {
-    //   // UsersCommentsLike::insert([
-    //   //   'user_id' => Auth::user()->id,
-    //   //   'comment_id' => $commentId,
-    //   //   'like' => 1,
-    //   //   'created_at' => Carbon::now(),
-    //   //   'updated_at' => Carbon::now()
-    //   // ]);
-    //   return $this->usersCommentsLike->latest()->first();
-    // }
+  public function like($commentId) {
+    if (Auth::user()) {
+      $user = $this->userModel->with([
+        'likes' => function ($query) use ($commentId) {
+          $query->where('users_games_comment_id', $commentId);
+        }
+      ])->first();
+      if ($user->likes->isEmpty()) $user->likes()->attach(Auth::user()->id, [
+        'users_games_comment_id' => $commentId,
+        'created_at' => Carbon::now()
+      ]);
+      else $user->likes()->detach();
+      return $user->likes->isEmpty();
+    };
   }
 }

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,8 +22,7 @@ class CommentsSeeder extends Seeder {
         $pivotUsers[] = [
           'user_id' => $faker->numberBetween(1, $usersCount),
           'users_games_comment_id' => $faker->numberBetween(1, 200),
-          'created_at' => Carbon::now(),
-          'updated_at' => Carbon::now()
+          'created_at' => Carbon::now()
         ];
       }
     }

@@ -1,14 +1,13 @@
 Library:
 - Dodać ocenianie gier (?)
-  - Zmienić bazę lików, aby po unliku wpis się usuwał, nie sprawdzać kolumny like, tylko podliczać like kiedy istnieje wpis w bazie. Pivot?
-  - Wyślietlić 3 najlepsze komentarze i resztę osobno, [7 komentarzy, podzielić na strony]
+  - Link do wszystkich komentarzy na osobnej stronie
+  - Filtrowanie wszystkich komentarzy produktu po ocenie
   - Dodać możliwość dodawania/edycji komentarza na podstronie szczegółów gry
   - Dodać widok najlepiej ocenianych gier do strony głównej
   - Dodać sortowanie po najlepiej ocenianych
 
-Game view:
-- Wyświetlić pod grą 3 najlepiej oceniane komentarze i kilka ostatnio dodanych
-- Dodać możliwość polubienia komentarza
+Newsletter
+  - Wysyłka info o nowych i zaktualizowanych grach oraz promocjach
 
 Messages (Mail):
 - Dodać widok wiadomości prywatnych

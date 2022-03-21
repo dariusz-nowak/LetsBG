@@ -9,7 +9,7 @@ return new class extends Migration {
     Schema::create('pivot_users_likes', function (Blueprint $table) {
       $table->integer('user_id')->index();
       $table->integer('users_games_comment_id')->index();
-      $table->timestamps();
+      $table->dateTime('created_at');
     });
   }
 

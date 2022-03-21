@@ -129,8 +129,9 @@
     <h1 class="w-full text-center text-3xl py-4">Description</h1>
     {{ $game->description }}
   </div>
-  <div class="comments py-4">
-    @foreach ($comments as $comment)
+  <div class="best-comments py-4">
+    <h1 class="order-1">Best comments</h1>
+    @foreach ($bestComments as $comment)
     <div class="comment relative my-4 border-2 rounded-xl">
       <div class="header flex flex-col border-b-2 md:flex-row">
         <div class="user basis-1/2">
@@ -138,8 +139,8 @@
         </div>
         <div class="likes basis-1/2 flex justify-end">
           <p class="likes p-2 text-left">{{ $comment['likes'] }} likes</p>
-          <svg onclick="like(this, {{ $comment['commentId'] }})"
-            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif" fill="none" viewBox="0 0 24 24"
+          <svg @auth onclick="like(this, {{ $comment['commentId'] }})" @endauth
+            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
@@ -149,13 +150,35 @@
       <p class="comment px-4 py-2">{{ $comment['comment'] }}</p>
     </div>
     @endforeach
-    <script type="text/javascript">
-      function like(svg, id) {
-        $(svg.parentElement).load('/offer/like/' + id, function () {
-          svg.remove()
-        })
-      }
-    </script>
   </div>
+  <div class="last-comments py-4">
+    <h1 class="order-1">Last comments</h1>
+    @foreach ($lastComments as $comment)
+    <div class="comment relative my-4 border-2 rounded-xl">
+      <div class="header flex flex-col border-b-2 md:flex-row">
+        <div class="user basis-1/2">
+          <p class="user px-4 py-2 text-left">{{ $comment['user'] }}</p>
+        </div>
+        <div class="likes basis-1/2 flex justify-end">
+          <p class="likes p-2 text-left">{{ $comment['likes'] }} likes</p>
+          <svg @auth onclick="like(this, {{ $comment['commentId'] }})" @endauth
+            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+          </svg>
+        </div>
+      </div>
+      <p class="comment px-4 py-2">{{ $comment['comment'] }}</p>
+    </div>
+    @endforeach
+  </div>
+  @auth
+  <script type="text/javascript">
+    function like(svg, id) {
+      $(svg.parentElement).load('/offer/like/' + id, () => svg.remove())
+    }
+  </script>
+  @endauth
 </div>
 @endsection

@@ -71,14 +71,15 @@ class OfferController extends Controller {
   public function gameDetails($gameId) {
     return view('offer.game', [
       'game' => $this->offerRepository->getGame($gameId),
-      'comments' => $this->offerRepository->getComments($gameId)
+      'bestComments' => $this->offerRepository->getComments($gameId, 'best'),
+      'lastComments' => $this->offerRepository->getComments($gameId, 'last')
     ]);
   }
   public function like($commentId) {
     return view('shared.load.like', [
       'comment' => [
         'commentId' => $commentId,
-        'like' => $this->offerRepository->isLikeComment($commentId),
+        'like' => $this->offerRepository->like($commentId),
         'likes' => $this->offerRepository->getLikes($commentId)
       ]
     ]);
