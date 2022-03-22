@@ -129,9 +129,24 @@
     <h1 class="w-full text-center text-3xl py-4">Description</h1>
     {{ $game->description }}
   </div>
+
+
+  <div class="comments">
+    <div class="menu">
+      <ul class="flex flex-wrap text-center">
+        <li class="basis-full p-2 border-2">Best</li>
+        <li class="basis-full p-2 border-2">Last</li>
+        <li class="basis-full p-2 border-2">Top rated</li>
+        <li class="basis-full p-2 border-2">Lowest rated</li>
+        <li class="basis-full p-2 border-2">All comments</li>
+      </ul>
+    </div>
+  </div>
+
+
   <div class="best-comments py-4">
     <h1 class="order-1">Best comments</h1>
-    @foreach ($bestComments as $comment)
+    @foreach ($comments['best'] as $comment)
     <div class="comment relative my-4 border-2 rounded-xl">
       <div class="header flex flex-col border-b-2 md:flex-row">
         <div class="user basis-1/2">
@@ -153,7 +168,7 @@
   </div>
   <div class="last-comments py-4">
     <h1 class="order-1">Last comments</h1>
-    @foreach ($lastComments as $comment)
+    @foreach ($comments['last'] as $comment)
     <div class="comment relative my-4 border-2 rounded-xl">
       <div class="header flex flex-col border-b-2 md:flex-row">
         <div class="user basis-1/2">

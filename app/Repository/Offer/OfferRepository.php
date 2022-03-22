@@ -97,7 +97,7 @@ class OfferRepository implements OfferRepositoryInterface {
     return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
   }
 
-  public function getComments($gameId, $option) {
+  public function getComments($gameId) {
     $users = $this->userModel->with(['comments' => function ($query) use ($gameId) {
       $query->where('game_id', $gameId);
     }])->get();
@@ -115,10 +115,16 @@ class OfferRepository implements OfferRepositoryInterface {
       ];
     }
 
-    if ($option === 'best') array_multisort(array_column($comments, 'likes'), SORT_DESC, $comments);
-    else if ($option === 'last') array_multisort(array_column($comments, 'created_at'), SORT_DESC, $comments);
+    array_multisort(array_column($comments, 'likes'), SORT_DESC, $comments);
+    $best = $comments;
 
-    return array_slice($comments, 0, 5);
+    array_multisort(array_column($comments, 'created_at'), SORT_DESC, $comments);
+    $last = $comments;
+
+    return [
+      'best' => array_slice($best, 0, 5),
+      'last' => array_slice($last, 0, 5)
+    ];
   }
 
   public function isUserLike($commentId) {
