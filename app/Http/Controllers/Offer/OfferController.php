@@ -68,7 +68,7 @@ class OfferController extends Controller {
       'request' => $request->all(),
     ]);
   }
-  public function gameDetails($gameId) {
+  public function gameDetails($gameId, Request $request) {
     return view('offer.game', [
       'game' => $this->offerRepository->getGame($gameId),
       'comments' => $this->offerRepository->getComments($gameId)

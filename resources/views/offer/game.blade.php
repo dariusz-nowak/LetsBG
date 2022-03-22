@@ -131,16 +131,40 @@
   </div>
 
 
-  <div class="comments">
+  <div class="comments-container">
     <div class="menu">
-      <ul class="flex flex-wrap text-center">
-        <li class="basis-full p-2 border-2">Best</li>
-        <li class="basis-full p-2 border-2">Last</li>
-        <li class="basis-full p-2 border-2">Top rated</li>
-        <li class="basis-full p-2 border-2">Lowest rated</li>
-        <li class="basis-full p-2 border-2">All comments</li>
+      <ul class="flex flex-wrap text-center shadow-md">
+        <li onclick="loadComments('best')"
+          class="active basis-full md:basis-1/5 p-3 cursor-pointer hover:bg-gray-800 hover:text-white transition-all">
+          Best</li>
+        <li onclick="loadComments('last')"
+          class="basis-full md:basis-1/5 p-3 cursor-pointer hover:bg-gray-800 hover:text-white transition-all">
+          Last</li>
+        <li onclick="loadComments('top')"
+          class="basis-full md:basis-1/5 p-3 cursor-pointer hover:bg-gray-800 hover:text-white transition-all">
+          Top rated</li>
+        <li onclick="loadComments('low')"
+          class="basis-full md:basis-1/5 p-3 cursor-pointer hover:bg-gray-800 hover:text-white transition-all">
+          Lowest rated</li>
+        <li onclick="loadComments('all')"
+          class="basis-full md:basis-1/5 p-3 cursor-pointer hover:bg-gray-800 hover:text-white transition-all">
+          All comments</li>
       </ul>
     </div>
+    <div class="comments">
+      Komentarze
+    </div>
+    <script type="text/javascript">
+      menu = document.querySelectorAll('.menu ul li');
+      menu.forEach(e => e.addEventListener('click', function() {
+        menu.forEach(e => e.classList.remove('active'))
+        e.classList.add('active')
+      }));
+      function loadComments(option) {
+        $('.comments-container .comments').load('')
+        console.log(option)
+      }
+    </script>
   </div>
 
 
@@ -155,8 +179,8 @@
         <div class="likes basis-1/2 flex justify-end">
           <p class="likes p-2 text-left">{{ $comment['likes'] }} likes</p>
           <svg @auth onclick="like(this, {{ $comment['commentId'] }})" @endauth
-            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
           </svg>
@@ -177,8 +201,8 @@
         <div class="likes basis-1/2 flex justify-end">
           <p class="likes p-2 text-left">{{ $comment['likes'] }} likes</p>
           <svg @auth onclick="like(this, {{ $comment['commentId'] }})" @endauth
-            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+            class="h-8 w-8 m-1 @if ($comment['like']) text-yellow-400 @endif @auth cursor-pointer hover:text-red-500 transition-all @endauth"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
           </svg>
