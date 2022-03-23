@@ -97,7 +97,7 @@ class OfferRepository implements OfferRepositoryInterface {
     return $this->gameModel->whereHas('promotions')->orderBy('sold', 'desc')->limit(4)->get();
   }
 
-  public function getComments($gameId) {
+  public function getComments($gameId, $sort, $page) {
     $users = $this->userModel->with(['comments' => function ($query) use ($gameId) {
       $query->where('game_id', $gameId);
     }])->get();
@@ -109,21 +109,31 @@ class OfferRepository implements OfferRepositoryInterface {
         'user' => $user->name,
         'like' => $this->isUserLike($comment->id),
         'likes' => $this->getLikes($comment->id),
-        'comment' => $comment->comment,
         'commentId' => $comment->id,
+        'comment' => $comment->comment,
+        'rating' => $comment->rating,
         'created_at' => $comment->created_at->toDateString()
       ];
     }
 
-    array_multisort(array_column($comments, 'likes'), SORT_DESC, $comments);
-    $best = $comments;
+    $pages = 0;
+    $commentsPerPage = 10;
+    if ($sort === 'best') array_multisort(array_column($comments, 'likes'), SORT_DESC, $comments);
+    else if ($sort === 'last') array_multisort(array_column($comments, 'created_at'), SORT_DESC, $comments);
+    else if ($sort === 'top') array_multisort(array_column($comments, 'rating'), SORT_DESC, $comments);
+    else if ($sort === 'low') array_multisort(array_column($comments, 'rating'), SORT_ASC, $comments);
 
-    array_multisort(array_column($comments, 'created_at'), SORT_DESC, $comments);
-    $last = $comments;
+    if ($sort !== 'all') $comments = array_slice($comments, 0, $commentsPerPage);
+    else {
+      if (count($comments) > $commentsPerPage) $pages = ceil(count($comments) / $commentsPerPage);
+      $comments = array_slice($comments, ($page - 1) * $commentsPerPage, $commentsPerPage);
+    }
 
     return [
-      'best' => array_slice($best, 0, 5),
-      'last' => array_slice($last, 0, 5)
+      'comments' => $comments,
+      'sort' => $sort,
+      'pages' => $pages,
+      'page' => $page,
     ];
   }
 

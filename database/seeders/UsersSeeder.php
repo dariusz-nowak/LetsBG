@@ -58,7 +58,7 @@ class UsersSeeder extends Seeder {
 
     $users = $pivotGames = [];
     $gamesCount = 50;
-    $usersCount = 50;
+    $usersCount = 300;
 
     for ($i = 0; $i < $usersCount; $i++) {
       $users[] = [

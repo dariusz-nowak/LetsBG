@@ -56,12 +56,13 @@
 }
 
 .accound-details input.active,
-.comments-container .menu ul li.active {
+.comments-container .menu ul li.active,
+.pagination .active {
   background-color: rgb(31 41 55);
   color: white;
 }
 
-.star:hover~.star svg,
-.star:hover svg {
+.stars .star:hover~.star svg,
+.stars .star:hover svg {
   color: red
 }

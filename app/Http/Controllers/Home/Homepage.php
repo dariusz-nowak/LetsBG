@@ -7,10 +7,10 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Repository\Library\LibraryRepository;
 use App\Repository\Offer\OfferRepository;
+use Illuminate\Http\Request;
 
 class Homepage extends Controller {
 
-  private LibraryRepository $libraryRepository;
   private OfferRepository $offerRepository;
 
   public function __construct(LibraryRepository $libraryRepository, OfferRepository $offerRepository) {
@@ -34,6 +34,12 @@ class Homepage extends Controller {
   public function loadPromotions() {
     return view('shared.load.promotions', [
       'promotionGames' => $this->offerRepository->getPromotions(),
+    ]);
+  }
+
+  public function loadComments($gameId, Request $request) {
+    return view('shared.load.comments', [
+      'comments' => $this->offerRepository->getComments($gameId, $request->sort, $request->page),
     ]);
   }
 

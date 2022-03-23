@@ -1,8 +1,5 @@
 Library:
 - Dodać ocenianie gier (?)
-  - Wyświetlić informacje o ocenie (rate)
-  - Link do wszystkich komentarzy na osobnej stronie
-  - Filtrowanie wszystkich komentarzy produktu po ocenie
   - Dodać możliwość dodawania/edycji komentarza na podstronie szczegółów gry
   - Dodać widok najlepiej ocenianych gier do strony głównej
   - Dodać sortowanie po najlepiej ocenianych

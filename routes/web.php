@@ -33,6 +33,7 @@ Route::group(['middleware' => ViewShareMiddleware::class], function () {
   ], function () {
     Route::get('bestsellers', [Homepage::class, 'loadBestsellers'])->name('bestsellers');
     Route::get('promotions', [Homepage::class, 'loadPromotions'])->name('promotions');
+    Route::get('comments/{gameId}', [Homepage::class, 'loadComments'])->name('comments');
   });
 
   // Oferta

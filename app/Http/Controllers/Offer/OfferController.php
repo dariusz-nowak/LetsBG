@@ -68,10 +68,10 @@ class OfferController extends Controller {
       'request' => $request->all(),
     ]);
   }
-  public function gameDetails($gameId, Request $request) {
+  public function gameDetails($gameId) {
     return view('offer.game', [
       'game' => $this->offerRepository->getGame($gameId),
-      'comments' => $this->offerRepository->getComments($gameId)
+      'comments' => $this->offerRepository->getComments($gameId, 'best', 0)
     ]);
   }
   public function like($commentId) {

@@ -14,8 +14,8 @@ class CommentsSeeder extends Seeder {
     $faker = Factory::create();
 
     $gamesCount = 50;
-    $usersCount = 50;
-    $commentsCount = 15;
+    $usersCount = 300;
+    $commentsCount = 200;
 
     for ($i = 0; $i < $gamesCount; $i++) {
       for ($j = 0; $j < $commentsCount; $j++) {
