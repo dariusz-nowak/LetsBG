@@ -82,7 +82,7 @@ class GamesSeeder extends Seeder {
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ];
-      for ($j = 0; $j < $faker->numberBetween(10, 40); $j++) {
+      for ($j = 0; $j < $faker->numberBetween(30, 40); $j++) {
         $userGamesComments[] = [
           'user_id' => $faker->numberBetween(2, 301),
           'game_id' => $i,
