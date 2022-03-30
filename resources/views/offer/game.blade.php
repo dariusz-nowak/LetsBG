@@ -129,8 +129,6 @@
     <h1 class="w-full text-center text-3xl py-4">Description</h1>
     {{ $game->description }}
   </div>
-
-
   <div class="comments-container">
     <div class="menu">
       <ul class="flex flex-wrap text-center shadow-md">
@@ -151,6 +149,13 @@
           All comments</li>
       </ul>
     </div>
+    @auth
+    <div class="my-comment">
+      komentarz zalogowanego usera
+    </div>
+    @endauth
+
+
     <div class="comments py-4">
       <h1 class="order-1">Best comments</h1>
       @foreach ($comments['comments'] as $comment)

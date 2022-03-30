@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Offer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Search;
 use App\Repository\Genre\GenreRepository;
+use App\Repository\Library\LibraryRepository;
 use App\Repository\Offer\OfferRepository;
 use App\Repository\Producers\ProducersRepository;
 use Illuminate\Contracts\View\View;
