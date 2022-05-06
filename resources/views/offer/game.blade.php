@@ -151,7 +151,9 @@
     </div>
     @auth
     <div class="my-comment">
+      @if ($comments['loggedUserComment'])
       komentarz zalogowanego usera
+      @endif
     </div>
     @endauth
 

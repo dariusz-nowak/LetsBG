@@ -5,8 +5,8 @@
       href="{{ route('game.lobby', ['game' => $game->id]) }}">{{ $game->name }}</a></li>
   @endforeach
   @else
-  <li class="p-2 font-semibold inline-block"><a href="{{ route('library.show') }}">Add
-      games to your favorite list here</a></li>
+  <li class="p-2 font-semibold inline-block">
+    <a href="{{ route('library.show') }}">Add games to your favorite list here</a></li>
   @endif
 </ul>
 

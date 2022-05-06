@@ -102,6 +102,11 @@ class OfferRepository implements OfferRepositoryInterface {
       $query->where('game_id', $gameId);
     }])->get();
 
+    if (Auth::user()) $loggedUserComment = $users->where('id', Auth::user()->id)->first();
+    else $loggedUserComment = null;
+
+    $users = $users->where('id', '<>', Auth::user()->id);
+
     $comments = [];
     foreach ($users as $user) foreach ($user->comments as $comment) {
       $comments[] = [
@@ -130,6 +135,7 @@ class OfferRepository implements OfferRepositoryInterface {
     }
 
     return [
+      'loggedUserComment' => $loggedUserComment,
       'comments' => $comments,
       'sort' => $sort,
       'pages' => $pages,
@@ -165,7 +171,7 @@ class OfferRepository implements OfferRepositoryInterface {
         'users_games_comment_id' => $commentId,
         'created_at' => Carbon::now()
       ]);
-      else $user->likes()->detach();
+      else $user->likes()->detach(['users_games_comment_id' => $commentId]);
       return $user->likes->isEmpty();
     };
   }
